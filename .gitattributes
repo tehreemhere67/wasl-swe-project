@@ -1,0 +1,10 @@
+﻿# Normalise line endings so Windows/macOS/Linux teammates do not churn diffs.
+* text=auto eol=lf
+
+# Binary assets - never line-ending convert them.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.pdf binary
+*.docx binary
+*.ico binary

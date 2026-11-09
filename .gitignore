@@ -1,0 +1,30 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# next.js
+.next/
+out/
+next-env.d.ts
+
+# local database / PGlite data
+.data/
+
+# env
+.env
+.env.local
+.env.*.local
+
+# logs & os
+*.log
+.DS_Store
+Thumbs.db
+
+# test & coverage output
+coverage/
+test-results/
+playwright-report/
+screenshots/
+
+# typescript build info
+*.tsbuildinfo

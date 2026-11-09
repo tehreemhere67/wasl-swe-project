@@ -1,0 +1,6 @@
+# pnpm settings for the Wasl workspace.
+#
+# pnpm 10+ reads project settings from this file (not only .npmrc). A hoisted
+# node_modules layout is used so `next build` works identically on Windows,
+# macOS, Linux and sandboxed environments that do not follow symlinks.
+nodeLinker: hoisted

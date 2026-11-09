@@ -1,0 +1,332 @@
+/**
+ * `pnpm db:seed` - makes the app demoable.
+ *
+ * Creates:
+ *  - the one administrator account (Module 1.6: no public administrator signup)
+ *  - one verified hospital, one verified blood bank, one verified donation
+ *    organization (so every role can log in and see its own area)
+ *  - one Pending hospital and one Rejected organization with reasons, so the
+ *    administrator verification queue (A-02) and the status screen (G-04) are
+ *    not empty
+ *  - one donor account with a profile
+ *  - a few audit/notification rows
+ *
+ * Running it twice is safe.
+ */
+import { connect, migrate } from "./connect.ts";
+import { hashPassword } from "../src/lib/auth/password.ts";
+
+const DEMO_PASSWORD = process.env.DEMO_PASSWORD || "WaslDemo#2026";
+
+// A 1x1 transparent PNG, used as a placeholder supporting document.
+const PLACEHOLDER_PNG = Buffer.from(
+  "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==",
+  "base64",
+);
+
+interface SeedOrganization {
+  type: "hospital" | "blood_bank" | "donation_org";
+  name: string;
+  area: string;
+  address: string;
+  phone: string;
+  email: string;
+  licence: string;
+  representative: string;
+  designation: string;
+  status: "pending" | "verified" | "rejected" | "suspended";
+  reason?: string | null;
+  userPassword?: string;
+}
+
+const ORGANIZATIONS: SeedOrganization[] = [
+  {
+    type: "hospital",
+    name: "Aga Khan University Hospital",
+    area: "Gulshan-e-Iqbal",
+    address: "Stadium Road, Karachi",
+    phone: "+923001111001",
+    email: "hospital@demo.wasl",
+    licence: "HOSP-KHI-1001",
+    representative: "Dr. Sana Ahmed",
+    designation: "Medical Superintendent",
+    status: "verified",
+  },
+  {
+    type: "blood_bank",
+    name: "Karachi Blood Bank",
+    area: "Saddar",
+    address: "M.A. Jinnah Road, Saddar, Karachi",
+    phone: "+923001111002",
+    email: "bank@demo.wasl",
+    licence: "BB-KHI-2002",
+    representative: "Mr. Bilal Khan",
+    designation: "Blood Bank Manager",
+    status: "verified",
+  },
+  {
+    type: "donation_org",
+    name: "Wasl Founding Initiative",
+    area: "Clifton",
+    address: "Khayaban-e-Saadi, Clifton, Karachi",
+    phone: "+923001111003",
+    email: "organizer@demo.wasl",
+    licence: "ORG-KHI-3003",
+    representative: "Ms. Hina Raza",
+    designation: "Programme Lead",
+    status: "verified",
+  },
+  {
+    type: "hospital",
+    name: "Jinnah Postgraduate Medical Centre",
+    area: "Saddar",
+    address: "Rafiqui Shaheed Road, Karachi",
+    phone: "+923001111004",
+    email: "pending@demo.wasl",
+    licence: "HOSP-KHI-1004",
+    representative: "Dr. Imran Ali",
+    designation: "Deputy Director",
+    status: "pending",
+  },
+  {
+    type: "blood_bank",
+    name: "Karachi Metropolitan Blood Centre",
+    area: "North Nazimabad",
+    address: "Block H, North Nazimabad, Karachi",
+    phone: "+923001111005",
+    email: "rejected@demo.wasl",
+    licence: "BB-KHI-2005",
+    representative: "Mr. Adeel Sheikh",
+    designation: "Administrator",
+    status: "rejected",
+    reason: "The uploaded licence document had expired. Please reapply with a valid licence.",
+  },
+];
+
+async function ensureAdmin(
+  db: Awaited<ReturnType<typeof connect>>,
+): Promise<void> {
+  const email = (process.env.ADMIN_EMAIL || "admin@wasl.pk").toLowerCase();
+  const existing = await db.query<{ id: string }>("SELECT id FROM users WHERE lower(email) = $1", [email]);
+  if (existing.rows.length > 0) {
+    console.log(`  = admin already exists (${email})`);
+    return;
+  }
+
+  const password = process.env.ADMIN_PASSWORD || "WaslAdmin#2026";
+  const name = process.env.ADMIN_NAME || "Wasl Administrator";
+  const phone = process.env.ADMIN_PHONE || "+923000000000";
+  const hash = await hashPassword(password);
+
+  await db.query(
+    `INSERT INTO users (role, email, phone, password_hash, full_name, status)
+     VALUES ('admin', $1, $2, $3, $4, 'active')`,
+    [email, phone, hash, name],
+  );
+  console.log(`  + admin ${email}`);
+}
+
+async function ensureOrganization(
+  db: Awaited<ReturnType<typeof connect>>,
+  org: SeedOrganization,
+  passwordHash: string,
+): Promise<void> {
+  const existing = await db.query<{ id: string }>(
+    "SELECT id FROM organizations WHERE lower(official_email) = $1",
+    [org.email.toLowerCase()],
+  );
+
+  let organizationId: string;
+  if (existing.rows.length > 0) {
+    organizationId = existing.rows[0].id;
+    console.log(`  = organization already exists (${org.name})`);
+  } else {
+    const inserted = await db.query<{ id: string }>(
+      `INSERT INTO organizations
+         (type, name, address_karachi, area, official_phone, official_email, licence_number,
+          representative_name, representative_designation, verification_status, status_reason, verified_at)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)
+       RETURNING id`,
+      [
+        org.type,
+        org.name,
+        org.address,
+        org.area,
+        org.phone,
+        org.email.toLowerCase(),
+        org.licence,
+        org.representative,
+        org.designation,
+        org.status,
+        org.reason ?? null,
+        org.status === "verified" ? new Date().toISOString() : null,
+      ],
+    );
+    organizationId = inserted.rows[0].id;
+
+    await db.query(
+      `INSERT INTO organization_documents (organization_id, file_name, mime_type, size_bytes, content)
+       VALUES ($1, $2, 'image/png', $3, $4)`,
+      [organizationId, `${org.licence}-licence.png`, PLACEHOLDER_PNG.length, PLACEHOLDER_PNG],
+    );
+
+    console.log(`  + organization ${org.name} (${org.status})`);
+  }
+
+  const userExisting = await db.query<{ id: string }>("SELECT id FROM users WHERE lower(email) = $1", [
+    org.email.toLowerCase(),
+  ]);
+  let userId: string;
+  if (userExisting.rows.length > 0) {
+    userId = userExisting.rows[0].id;
+  } else {
+    const inserted = await db.query<{ id: string }>(
+      `INSERT INTO users (role, email, phone, password_hash, full_name, status, organization_id, preferred_language)
+       VALUES ($1,$2,$3,$4,$5,'active',$6,'en')
+       RETURNING id`,
+      [org.type, org.email.toLowerCase(), org.phone, passwordHash, org.representative, organizationId],
+    );
+    userId = inserted.rows[0].id;
+    console.log(`  + user ${org.email}`);
+  }
+
+  // One history row per seeded organization so G-04 and A-02 have content.
+  const history = await db.query<{ id: string }>(
+    "SELECT id FROM verification_history WHERE organization_id = $1",
+    [organizationId],
+  );
+  if (history.rows.length === 0 && org.status !== "pending") {
+    const admin = await db.query<{ id: string }>("SELECT id FROM users WHERE role = 'admin' LIMIT 1");
+    await db.query(
+      `INSERT INTO verification_history (organization_id, admin_user_id, decision, reason)
+       VALUES ($1, $2, $3, $4)`,
+      [
+        organizationId,
+        admin.rows[0]?.id ?? null,
+        org.status === "verified" ? "approved" : "rejected",
+        org.reason ?? null,
+      ],
+    );
+  }
+
+  // A registration notification for the organization user (G-05).
+  const notification = await db.query<{ id: string }>(
+    "SELECT id FROM notifications WHERE user_id = $1 LIMIT 1",
+    [userId],
+  );
+  if (notification.rows.length === 0) {
+    const copy =
+      org.status === "verified"
+        ? {
+            titleEn: "Registration approved",
+            titleUr: "رجسٹریشن منظور ہو گئی",
+            bodyEn: "Your organization is verified. You can now use its operational features.",
+            bodyUr: "آپ کی تنظیم تصدیق ہو گئی۔ اب آپ اس کی آپریشنل خصوصیات استعمال کر سکتے ہیں۔",
+          }
+        : org.status === "pending"
+          ? {
+              titleEn: "Registration received",
+              titleUr: "رجسٹریشن موصول ہو گئی",
+              bodyEn: "Your registration is Pending until an administrator reviews it.",
+              bodyUr: "منتظم کے جائزے تک آپ کی رجسٹریشن زیرِ التوا ہے۔",
+            }
+          : {
+              titleEn: "Registration rejected",
+              titleUr: "رجسٹریشن مسترد ہو گئی",
+              bodyEn: org.reason ?? "The registration was rejected.",
+              bodyUr: org.reason ?? "رجسٹریشن مسترد کر دی گئی۔",
+            };
+
+    await db.query(
+      `INSERT INTO notifications (user_id, category, title_en, title_ur, body_en, body_ur, link)
+       VALUES ($1, 'verification', $2, $3, $4, $5, '/status')`,
+      [userId, copy.titleEn, copy.titleUr, copy.bodyEn, copy.bodyUr],
+    );
+  }
+}
+
+async function ensureDonor(db: Awaited<ReturnType<typeof connect>>, passwordHash: string): Promise<void> {
+  const phone = "+923009876543";
+  const existing = await db.query<{ id: string }>("SELECT id FROM users WHERE phone = $1", [phone]);
+  if (existing.rows.length > 0) {
+    console.log("  = donor already exists");
+    return;
+  }
+
+  const user = await db.query<{ id: string }>(
+    `INSERT INTO users (role, phone, password_hash, full_name, status, preferred_language)
+     VALUES ('donor', $1, $2, $3, 'active', 'en')
+     RETURNING id`,
+    [phone, passwordHash, "Ali Raza"],
+  );
+
+  await db.query(
+    `INSERT INTO donors
+       (user_id, name, mobile, blood_group, area, availability,
+        contact_platform, contact_sms, contact_whatsapp,
+        notify_urgent, notify_campaigns, preferred_language, consent_share_contact_at)
+     VALUES ($1, $2, $3, 'O-', 'Saddar', 'available', true, true, false, true, true, 'en', now())`,
+    [user.rows[0].id, "Ali Raza", phone],
+  );
+
+  await db.query(
+    `INSERT INTO notifications (user_id, category, title_en, title_ur, body_en, body_ur, link)
+     VALUES ($1, 'account', 'Welcome to Wasl', 'واصل میں خوش آمدید',
+             'Complete your profile to be considered for nearby requests and campaigns.',
+             'قریبی درخواستوں اور مہموں کے لیے زیرِ غور آنے کے لیے اپنا پروفائل مکمل کریں۔',
+             '/donor/profile')`,
+    [user.rows[0].id],
+  );
+
+  console.log(`  + donor ${phone}`);
+}
+
+async function adminQueueNotification(db: Awaited<ReturnType<typeof connect>>): Promise<void> {
+  const admin = await db.query<{ id: string }>("SELECT id FROM users WHERE role = 'admin' LIMIT 1");
+  if (admin.rows.length === 0) return;
+  const existing = await db.query<{ id: string }>(
+    "SELECT id FROM notifications WHERE user_id = $1 AND category = 'general' LIMIT 1",
+    [admin.rows[0].id],
+  );
+  if (existing.rows.length > 0) return;
+
+  await db.query(
+    `INSERT INTO notifications (user_id, category, title_en, title_ur, body_en, body_ur, link)
+     VALUES ($1, 'general', 'Registrations waiting for review', 'جائزے کے لیے رجسٹریشنز زیرِ التوا',
+             'There are organizations waiting for verification.',
+             'کچھ تنظیمیں تصدیق کے انتظار میں ہیں۔', '/admin/verifications')`,
+    [admin.rows[0].id],
+  );
+}
+
+async function main() {
+  const db = await connect();
+  try {
+    console.log("Applying migrations…");
+    const applied = await migrate(db);
+    console.log(applied.length === 0 ? "  schema already up to date" : `  applied ${applied.join(", ")}`);
+
+    console.log("Seeding…");
+    await ensureAdmin(db);
+    const passwordHash = await hashPassword(DEMO_PASSWORD);
+    for (const org of ORGANIZATIONS) {
+      await ensureOrganization(db, org, passwordHash);
+    }
+    await ensureDonor(db, passwordHash);
+    await adminQueueNotification(db);
+
+    console.log("");
+    console.log("Demo accounts");
+    console.log(`  Administrator : ${(process.env.ADMIN_EMAIL || "admin@wasl.pk")} / ${process.env.ADMIN_PASSWORD || "WaslAdmin#2026"}`);
+    console.log(`  Hospital      : hospital@demo.wasl / ${DEMO_PASSWORD}`);
+    console.log(`  Blood bank    : bank@demo.wasl / ${DEMO_PASSWORD}`);
+    console.log(`  Organizer     : organizer@demo.wasl / ${DEMO_PASSWORD}`);
+    console.log(`  Pending org   : pending@demo.wasl / ${DEMO_PASSWORD}   (stays on G-04)`);
+    console.log(`  Rejected org  : rejected@demo.wasl / ${DEMO_PASSWORD}  (stays on G-04)`);
+    console.log(`  Donor         : +923009876543 / ${DEMO_PASSWORD}`);
+  } finally {
+    await db.close();
+  }
+}
+
+await main();
