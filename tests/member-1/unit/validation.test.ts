@@ -40,7 +40,7 @@ import {
   validateOrganizationRegistration,
   validatePasswordReset,
   type ValidationResult,
-} from "../src/lib/validation.ts";
+} from "../../../src/lib/validation.ts";
 
 /** Error codes recorded for one field. */
 function codes(result: ValidationResult, field: string): string[] {

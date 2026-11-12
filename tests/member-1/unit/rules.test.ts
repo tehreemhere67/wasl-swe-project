@@ -26,8 +26,8 @@ import {
   minutesUntil,
   registerFailedLogin,
   remainingAttempts,
-} from "../src/lib/auth/rules.ts";
-import { ROLES } from "../src/lib/validation.ts";
+} from "../../../src/lib/auth/rules.ts";
+import { ROLES } from "../../../src/lib/validation.ts";
 
 describe("ROLE_HOME", () => {
   test("every role has exactly one home", () => {

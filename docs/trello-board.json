@@ -1,0 +1,537 @@
+{
+  "name": "Wasl — Sprint 1",
+  "desc": "Sprint 1 backlog by module. One card per module sub-item plus tests and documentation per member. Member 1 is complete (all cards in Done). Source document: docs/SPRINT-BACKLOG.md",
+  "lists": [
+    {
+      "id": "list-todo",
+      "name": "To Do",
+      "closed": false,
+      "pos": 1
+    },
+    {
+      "id": "list-progress",
+      "name": "In Progress",
+      "closed": false,
+      "pos": 2
+    },
+    {
+      "id": "list-done",
+      "name": "Done",
+      "closed": false,
+      "pos": 3
+    }
+  ],
+  "cards": [
+    {
+      "id": "card-1",
+      "name": "[Member 1] Module 1 — 1.1 Login",
+      "closed": false,
+      "idList": "list-done",
+      "pos": 1024
+    },
+    {
+      "id": "card-2",
+      "name": "[Member 1] Module 1 — 1.2 Registration options",
+      "closed": false,
+      "idList": "list-done",
+      "pos": 2048
+    },
+    {
+      "id": "card-3",
+      "name": "[Member 1] Module 1 — 1.3 Password management",
+      "closed": false,
+      "idList": "list-done",
+      "pos": 3072
+    },
+    {
+      "id": "card-4",
+      "name": "[Member 1] Module 1 — 1.4 OTP verification",
+      "closed": false,
+      "idList": "list-done",
+      "pos": 4096
+    },
+    {
+      "id": "card-5",
+      "name": "[Member 1] Module 1 — 1.5 Role-based access",
+      "closed": false,
+      "idList": "list-done",
+      "pos": 5120
+    },
+    {
+      "id": "card-6",
+      "name": "[Member 1] Module 1 — 1.6 Administrator account",
+      "closed": false,
+      "idList": "list-done",
+      "pos": 6144
+    },
+    {
+      "id": "card-7",
+      "name": "[Member 1] Module 3 — 3.1 Donor registration (delivered with the authentication foundation)",
+      "closed": false,
+      "idList": "list-done",
+      "pos": 7168
+    },
+    {
+      "id": "card-8",
+      "name": "[Member 1] Module 9 — 9.1 English and Urdu",
+      "closed": false,
+      "idList": "list-done",
+      "pos": 8192
+    },
+    {
+      "id": "card-9",
+      "name": "[Member 1] Module 9 — 9.2 Role-specific interfaces",
+      "closed": false,
+      "idList": "list-done",
+      "pos": 9216
+    },
+    {
+      "id": "card-10",
+      "name": "[Member 1] Module 9 — 9.3 Navigation",
+      "closed": false,
+      "idList": "list-done",
+      "pos": 10240
+    },
+    {
+      "id": "card-11",
+      "name": "[Member 1] Module 9 — 9.4 Responsive design",
+      "closed": false,
+      "idList": "list-done",
+      "pos": 11264
+    },
+    {
+      "id": "card-12",
+      "name": "[Member 1] Module 9 — 9.5 Common validation and error handling",
+      "closed": false,
+      "idList": "list-done",
+      "pos": 12288
+    },
+    {
+      "id": "card-13",
+      "name": "[Member 1] Tests and results for Modules 1 and 9 (157 unit tests, 27 API lifecycle checks, 64 manual cases)",
+      "closed": false,
+      "idList": "list-done",
+      "pos": 13312
+    },
+    {
+      "id": "card-14",
+      "name": "[Member 1] Documentation for Modules 1 and 9 (README, architecture, traceability, wireframe map, handoff)",
+      "closed": false,
+      "idList": "list-done",
+      "pos": 14336
+    },
+    {
+      "id": "card-15",
+      "name": "[Member 2] Module 2 — 2.1 Registration form",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 15360
+    },
+    {
+      "id": "card-16",
+      "name": "[Member 2] Module 2 — 2.2 Registration submission",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 16384
+    },
+    {
+      "id": "card-17",
+      "name": "[Member 2] Module 2 — 2.3 Administrator verification interface",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 17408
+    },
+    {
+      "id": "card-18",
+      "name": "[Member 2] Module 2 — 2.4 Verification statuses",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 18432
+    },
+    {
+      "id": "card-19",
+      "name": "[Member 2] Module 2 — 2.5 Verification history",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 19456
+    },
+    {
+      "id": "card-20",
+      "name": "[Member 2] Module 2 — 2.6 Verification restrictions",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 20480
+    },
+    {
+      "id": "card-21",
+      "name": "[Member 2] Module 2 — 2.7 Registration outcome notifications",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 21504
+    },
+    {
+      "id": "card-22",
+      "name": "[Member 2] Module 8 — 8.1 Organization management",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 22528
+    },
+    {
+      "id": "card-23",
+      "name": "[Member 2] Module 8 — 8.2 Campaign management",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 23552
+    },
+    {
+      "id": "card-24",
+      "name": "[Member 2] Module 8 — 8.3 Basic inventory visibility",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 24576
+    },
+    {
+      "id": "card-25",
+      "name": "[Member 2] Module 8 — 8.4 Account management",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 25600
+    },
+    {
+      "id": "card-26",
+      "name": "[Member 2] Module 8 — 8.5 Access restrictions",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 26624
+    },
+    {
+      "id": "card-27",
+      "name": "[Member 2] Tests and results for Modules 2 and 8",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 27648
+    },
+    {
+      "id": "card-28",
+      "name": "[Member 2] Documentation update for Modules 2 and 8",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 28672
+    },
+    {
+      "id": "card-29",
+      "name": "[Member 3] Module 4 — 4.1 Add inventory",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 29696
+    },
+    {
+      "id": "card-30",
+      "name": "[Member 3] Module 4 — 4.2 View inventory",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 30720
+    },
+    {
+      "id": "card-31",
+      "name": "[Member 3] Module 4 — 4.3 Update inventory",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 31744
+    },
+    {
+      "id": "card-32",
+      "name": "[Member 3] Module 4 — 4.4 Remove or reduce inventory",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 32768
+    },
+    {
+      "id": "card-33",
+      "name": "[Member 3] Module 4 — 4.5 Inventory movement history",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 33792
+    },
+    {
+      "id": "card-34",
+      "name": "[Member 3] Module 4 — 4.6 Inventory reservations",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 34816
+    },
+    {
+      "id": "card-35",
+      "name": "[Member 3] Module 4 — 4.7 Inventory transfers",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 35840
+    },
+    {
+      "id": "card-36",
+      "name": "[Member 3] Module 4 — 4.8 Inventory availability rules",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 36864
+    },
+    {
+      "id": "card-37",
+      "name": "[Member 3] Module 7 — 7.1 Expiry monitoring",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 37888
+    },
+    {
+      "id": "card-38",
+      "name": "[Member 3] Module 7 — 7.2 Expired inventory",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 38912
+    },
+    {
+      "id": "card-39",
+      "name": "[Member 3] Module 7 — 7.3 Low-stock monitoring",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 39936
+    },
+    {
+      "id": "card-40",
+      "name": "[Member 3] Module 7 — 7.4 Alert display",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 40960
+    },
+    {
+      "id": "card-41",
+      "name": "[Member 3] Module 7 — 7.5 Optional SMS alerts",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 41984
+    },
+    {
+      "id": "card-42",
+      "name": "[Member 3] Module 7 — 7.6 Monitoring frequency",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 43008
+    },
+    {
+      "id": "card-43",
+      "name": "[Member 3] Tests and results for Modules 4 and 7",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 44032
+    },
+    {
+      "id": "card-44",
+      "name": "[Member 3] Documentation update for Modules 4 and 7",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 45056
+    },
+    {
+      "id": "card-45",
+      "name": "[Member 4] Module 3 — 3.2 Donor profile",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 46080
+    },
+    {
+      "id": "card-46",
+      "name": "[Member 4] Module 3 — 3.3 Profile management",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 47104
+    },
+    {
+      "id": "card-47",
+      "name": "[Member 4] Module 3 — 3.4 Donation history",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 48128
+    },
+    {
+      "id": "card-48",
+      "name": "[Member 4] Module 3 — 3.5 Personal donation reminders",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 49152
+    },
+    {
+      "id": "card-49",
+      "name": "[Member 4] Module 6 — 6.1 Create campaigns",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 50176
+    },
+    {
+      "id": "card-50",
+      "name": "[Member 4] Module 6 — 6.2 Campaign submission",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 51200
+    },
+    {
+      "id": "card-51",
+      "name": "[Member 4] Module 6 — 6.3 Administrator campaign approval",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 52224
+    },
+    {
+      "id": "card-52",
+      "name": "[Member 4] Module 6 — 6.4 Campaign visibility",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 53248
+    },
+    {
+      "id": "card-53",
+      "name": "[Member 4] Module 6 — 6.5 Campaign discovery",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 54272
+    },
+    {
+      "id": "card-54",
+      "name": "[Member 4] Module 6 — 6.6 Donor campaign interest",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 55296
+    },
+    {
+      "id": "card-55",
+      "name": "[Member 4] Module 6 — 6.7 Campaign management",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 56320
+    },
+    {
+      "id": "card-56",
+      "name": "[Member 4] Module 6 — 6.8 Campaign outcomes",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 57344
+    },
+    {
+      "id": "card-57",
+      "name": "[Member 4] Module 6 — 6.9 Campaign notifications",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 58368
+    },
+    {
+      "id": "card-58",
+      "name": "[Member 4] Tests and results for Modules 3 and 6",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 59392
+    },
+    {
+      "id": "card-59",
+      "name": "[Member 4] Documentation update for Modules 3 and 6",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 60416
+    },
+    {
+      "id": "card-60",
+      "name": "[Member 5] Module 5 — 5.1 Form validation and hospital-only access guard",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 61440
+    },
+    {
+      "id": "card-61",
+      "name": "[Member 5] Module 5 — 5.1 Hospital availability search form (blood group and component)",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 62464
+    },
+    {
+      "id": "card-62",
+      "name": "[Member 5] Module 5 — 5.2 Results grouped per blood bank and sorted by quantity",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 63488
+    },
+    {
+      "id": "card-63",
+      "name": "[Member 5] Module 5 — 5.2 Results: available quantity, earliest expiry and last updated time",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 64512
+    },
+    {
+      "id": "card-64",
+      "name": "[Member 5] Module 5 — 5.2 Results: bank name, verification badge, area and contact details",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 65536
+    },
+    {
+      "id": "card-65",
+      "name": "[Member 5] Module 5 — 5.3 Donors and the general public cannot view inventory",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 66560
+    },
+    {
+      "id": "card-66",
+      "name": "[Member 5] Module 5 — 5.3 Exclusions: expired and unapproved stock",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 67584
+    },
+    {
+      "id": "card-67",
+      "name": "[Member 5] Module 5 — 5.3 Exclusions: reserved stock and suspended/unverified banks",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 68608
+    },
+    {
+      "id": "card-68",
+      "name": "[Member 5] Module 5 — 5.4 Availability disclaimer",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 69632
+    },
+    {
+      "id": "card-69",
+      "name": "[Member 5] Module 5 — 5.5 No-results message and create-request option",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 70656
+    },
+    {
+      "id": "card-70",
+      "name": "[Member 5] Module 5 — Availability query against Member 3's inventory tables",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 71680
+    },
+    {
+      "id": "card-71",
+      "name": "[Member 5] Tests and results for Module 5",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 72704
+    },
+    {
+      "id": "card-72",
+      "name": "[Member 5] Documentation update for Module 5",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 73728
+    },
+    {
+      "id": "card-73",
+      "name": "[All members] User Manual for end users covering the Sprint 1 features (write after all Sprint 1 work is complete)",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 74752
+    }
+  ]
+}

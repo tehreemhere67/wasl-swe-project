@@ -11,7 +11,7 @@
 import assert from "node:assert/strict";
 import { describe, test } from "node:test";
 
-import { isSameOrigin } from "../src/lib/csrf.ts";
+import { isSameOrigin } from "../../../src/lib/csrf.ts";
 
 /** isSameOrigin only reads headers, so a minimal stand-in is enough. */
 function request(headers: Record<string, string>): Request {
