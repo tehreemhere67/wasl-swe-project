@@ -300,4 +300,37 @@ export const MIGRATIONS: Migration[] = [
     name: "Default administrator-maintained settings (SRS defaults / assumptions)",
     sql: seedSettings,
   },
+
+  //Member 2 Sprint 1: A-04 campaign review
+    {
+    id: "003_campaigns",
+    name: "Campaigns submitted for administrator review (M6/M2)",
+    sql: `
+-- M6: donation campaigns. Owner: Member 4; A-04 reads and reviews them.
+CREATE TABLE IF NOT EXISTS campaigns (
+  id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  organization_id UUID NOT NULL REFERENCES organizations (id) ON DELETE CASCADE,
+  title_en        TEXT NOT NULL,
+  title_ur        TEXT NOT NULL,
+  description_en  TEXT NOT NULL DEFAULT '',
+  description_ur  TEXT NOT NULL DEFAULT '',
+  starts_at       TIMESTAMPTZ NOT NULL,
+  ends_at         TIMESTAMPTZ,
+  venue           TEXT NOT NULL,
+  area            TEXT,
+  target_groups   TEXT[] NOT NULL DEFAULT '{}',
+  status          TEXT NOT NULL DEFAULT 'draft'
+                  CHECK (status IN ('draft','pending_approval','approved','rejected','cancelled','completed')),
+  review_reason   TEXT,
+  reviewed_by     UUID REFERENCES users (id) ON DELETE SET NULL,
+  reviewed_at     TIMESTAMPTZ,
+  created_at      TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at      TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idx_campaigns_status ON campaigns (status, created_at ASC);
+CREATE INDEX IF NOT EXISTS idx_campaigns_org ON campaigns (organization_id);
+`,
+  },
+  
 ];

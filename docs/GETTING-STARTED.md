@@ -176,11 +176,11 @@ No SMS provider is configured, so the code is not texted. Get it from **any** of
 | Command | What it does |
 | --- | --- |
 | `pnpm dev` | start the website on <http://localhost:3000> |
-| `pnpm test` | run the automated test suite (should say 157 pass, 0 fail) |
+| `pnpm test` | run the automated test suite (should say 189 pass, 0 fail) |
 | `pnpm typecheck` | check the code for type errors |
 | `pnpm build` | make the production build (what a real deployment uses) |
 | `pnpm start` | serve the production build (run `pnpm build` first) |
-| `pnpm db:seed` | create/repair the local database + demo accounts |
+| `pnpm db:seed` | create/repair the local database + demo accounts |   
 | `pnpm db:reset` | delete the local database (then run `pnpm db:seed`) |
 
 ---

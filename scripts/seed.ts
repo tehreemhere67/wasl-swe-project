@@ -299,6 +299,48 @@ async function adminQueueNotification(db: Awaited<ReturnType<typeof connect>>): 
   );
 }
 
+//Member 2 Sprint 1: A-04 campaign review
+
+async function ensureCampaign(db: Awaited<ReturnType<typeof connect>>): Promise<void> {
+  const org = await db.query<{ id: string }>(
+    "SELECT id FROM organizations WHERE lower(official_email) = 'organizer@demo.wasl' LIMIT 1",
+  );
+  const organizationId = org.rows[0]?.id;
+  if (!organizationId) return;
+
+  const existing = await db.query<{ id: string }>(
+    "SELECT id FROM campaigns WHERE organization_id = $1 LIMIT 1",
+    [organizationId],
+  );
+  if (existing.rows.length > 0) {
+    console.log("  = campaign already exists");
+    return;
+  }
+
+  const startsAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+  const endsAt = new Date(startsAt.getTime() + 4 * 60 * 60 * 1000);
+
+  await db.query(
+    `INSERT INTO campaigns
+       (organization_id, title_en, title_ur, description_en, description_ur,
+        starts_at, ends_at, venue, area, target_groups, status)
+     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10::text[], 'pending_approval')`,
+    [
+      organizationId,
+      "Clifton Community Blood Drive",
+      "کلفٹن کمیونٹی بلڈ ڈرائیو",
+      "A community donation drive open to walk-in donors.",
+      "عطیہ دہندگان کے لیے کھلی کمیونٹی ڈرائیو۔",
+      startsAt.toISOString(),
+      endsAt.toISOString(),
+      "Clifton Community Hall",
+      "Clifton",
+      '{"O+","O-","B+"}',
+    ],
+  );
+  console.log("  + campaign awaiting review (A-04)");
+}
+
 async function main() {
   const db = await connect();
   try {
@@ -312,6 +354,7 @@ async function main() {
     for (const org of ORGANIZATIONS) {
       await ensureOrganization(db, org, passwordHash);
     }
+    await ensureCampaign(db); //Member 2 Sprint 1: A-04 campaign review
     await ensureDonor(db, passwordHash);
     await adminQueueNotification(db);
 

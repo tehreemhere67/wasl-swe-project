@@ -17,4 +17,5 @@ import "./password.test.ts";
 import "./rules.test.ts";
 import "./format.test.ts";
 import "./csrf.test.ts";
+import "./admin.test.ts"; //Member 2 Sprint 1: A-03 account management
 import "./i18n.test.ts";
