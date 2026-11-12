@@ -21,7 +21,7 @@ import {
   formatTime,
   relativeTimeParts,
   waitingTimeParts,
-} from "../src/lib/format.ts";
+} from "../../../src/lib/format.ts";
 
 // 18:00 in Karachi on 12 November 2026.
 const EVENING_IN_PKT = new Date("2026-11-12T18:00:00+05:00");

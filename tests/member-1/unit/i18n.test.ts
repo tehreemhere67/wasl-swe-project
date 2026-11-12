@@ -20,7 +20,7 @@ import { register } from "node:module";
 import assert from "node:assert/strict";
 import { before, describe, test } from "node:test";
 
-register("./ts-loader.mjs", import.meta.url);
+register("../../ts-loader.mjs", import.meta.url);
 
 // Registered after the resolver hook so the extensionless imports resolve.
 let dictionaries: Record<"en" | "ur", Record<string, string>>;
@@ -37,13 +37,13 @@ let types: {
 };
 
 before(async () => {
-  const index = await import("../src/lib/i18n/index.ts");
+  const index = await import("../../../src/lib/i18n/index.ts");
   dictionaries = index.DICTIONARIES as typeof dictionaries;
   translate = index.translate as typeof translate;
   allKeys = index.allKeys as typeof allKeys;
   missingTranslations = index.missingTranslations as typeof missingTranslations;
   createTranslator = index.createTranslator as typeof createTranslator;
-  types = (await import("../src/lib/i18n/types.ts")) as unknown as typeof types;
+  types = (await import("../../../src/lib/i18n/types.ts")) as unknown as typeof types;
 });
 
 const PLACEHOLDER = /\{(\w+)\}/g;
@@ -90,16 +90,16 @@ describe("dictionary completeness (NFR-LOC-01)", () => {
   test("each shared key has exactly one owning dictionary part (NFR-MAIN-02)", async () => {
     // Guards against one module silently hiding another module's wording.
     const parts = await Promise.all([
-      import("../src/lib/i18n/parts/common.ts"),
-      import("../src/lib/i18n/parts/nav.ts"),
-      import("../src/lib/i18n/parts/auth.ts"),
-      import("../src/lib/i18n/parts/notifications.ts"),
-      import("../src/lib/i18n/parts/stub.ts"),
-      import("../src/lib/i18n/parts/hospital.ts"),
-      import("../src/lib/i18n/parts/bloodbank.ts"),
-      import("../src/lib/i18n/parts/donor.ts"),
-      import("../src/lib/i18n/parts/organizer.ts"),
-      import("../src/lib/i18n/parts/admin.ts"),
+      import("../../../src/lib/i18n/parts/common.ts"),
+      import("../../../src/lib/i18n/parts/nav.ts"),
+      import("../../../src/lib/i18n/parts/auth.ts"),
+      import("../../../src/lib/i18n/parts/notifications.ts"),
+      import("../../../src/lib/i18n/parts/stub.ts"),
+      import("../../../src/lib/i18n/parts/hospital.ts"),
+      import("../../../src/lib/i18n/parts/bloodbank.ts"),
+      import("../../../src/lib/i18n/parts/donor.ts"),
+      import("../../../src/lib/i18n/parts/organizer.ts"),
+      import("../../../src/lib/i18n/parts/admin.ts"),
     ]);
     const owner = new Map<string, string>();
     const duplicated: string[] = [];

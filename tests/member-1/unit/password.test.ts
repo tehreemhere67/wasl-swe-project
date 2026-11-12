@@ -14,7 +14,7 @@
 import assert from "node:assert/strict";
 import { describe, test } from "node:test";
 
-import { hashPassword, randomToken, verifyPassword } from "../src/lib/auth/password.ts";
+import { hashPassword, randomToken, verifyPassword } from "../../../src/lib/auth/password.ts";
 
 const PASSWORD = "Wasl-Test-Password-1";
 

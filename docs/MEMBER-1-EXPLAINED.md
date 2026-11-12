@@ -163,6 +163,10 @@ integration work (headers, navigation, language strings) for the new modules.
    Member 1 to review anything touching shared code.
 9. **Demo data**: `pnpm db:seed` gives everyone the same accounts. Member 3/4 add their demo
    rows there (or in their own seed file) so the team demo is not empty.
+10. **User Manual (group deliverable).** After all Sprint 1 module work is merged, the whole group
+    writes one end-user manual covering the current sprint's features. It is tracked on the board as
+    one card under **All members** — no single member owns it. Member 3/4 add their demo
+   rows there (or in their own seed file) so the team demo is not empty.
 
 ---
 

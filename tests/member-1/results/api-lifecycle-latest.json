@@ -1,0 +1,145 @@
+{
+  "baseUrl": "http://127.0.0.1:3000",
+  "startedAt": "2026-11-12T13:02:54.346Z",
+  "finishedAt": "2026-11-12T13:04:30.511Z",
+  "total": 27,
+  "passed": 27,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "OTP send returns a development code (IR-07)",
+      "ok": true,
+      "detail": "{\"ok\":true,\"resendAfterSeconds\":60,\"delivery\":\"dev_outbox\",\"devCode\":\"725573\"}"
+    },
+    {
+      "name": "donor signup creates an account and a session",
+      "ok": true,
+      "detail": "{\"ok\":true,\"redirect\":\"/donor\"}"
+    },
+    {
+      "name": "donor can log in with the signup password",
+      "ok": true,
+      "detail": "{\"ok\":true,\"redirect\":\"/donor\"}"
+    },
+    {
+      "name": "donor area renders for the new donor",
+      "ok": true,
+      "detail": "200"
+    },
+    {
+      "name": "signup without consent is refused (DR-03)",
+      "ok": true,
+      "detail": "{\"ok\":false,\"errors\":[{\"field\":\"consent\",\"message\":\"required\"}]}"
+    },
+    {
+      "name": "wrong OTP is rejected",
+      "ok": true,
+      "detail": "{\"ok\":false,\"error\":{\"code\":\"otp\",\"reason\":\"wrong\"}}"
+    },
+    {
+      "name": "forgot password returns a development code",
+      "ok": true,
+      "detail": "{\"ok\":true,\"resendAfterSeconds\":60,\"devCode\":\"229154\"}"
+    },
+    {
+      "name": "password reset succeeds",
+      "ok": true,
+      "detail": "{\"ok\":true,\"redirect\":\"/?reset=1\"}"
+    },
+    {
+      "name": "old password no longer works",
+      "ok": true,
+      "detail": "{\"ok\":false,\"error\":{\"code\":\"invalid\",\"attemptsLeft\":4}}"
+    },
+    {
+      "name": "new password works",
+      "ok": true,
+      "detail": "{\"ok\":true,\"redirect\":\"/donor\"}"
+    },
+    {
+      "name": "account locks on the 5th failed login (NFR-SEC-02)",
+      "ok": true,
+      "detail": "[401,401,401,401,429]"
+    },
+    {
+      "name": "even the correct password is refused while locked",
+      "ok": true,
+      "detail": "429"
+    },
+    {
+      "name": "organisation registration with a document succeeds",
+      "ok": true,
+      "detail": "{\"ok\":true,\"redirect\":\"/status\"}"
+    },
+    {
+      "name": "new organisation sees the Pending status screen (G-04)",
+      "ok": true,
+      "detail": "200"
+    },
+    {
+      "name": "Pending organisation is blocked from operational screens (FR-VER-03)",
+      "ok": true,
+      "detail": "307 /status"
+    },
+    {
+      "name": "registration without a supporting document is refused (FR-VER-01)",
+      "ok": true,
+      "detail": "400"
+    },
+    {
+      "name": "seeded administrator logs in and lands on /admin",
+      "ok": true,
+      "detail": "{\"ok\":true,\"redirect\":\"/admin\"}"
+    },
+    {
+      "name": "new registration appears in the administrator queue (A-02)",
+      "ok": true,
+      "detail": "398564b0-a89a-4b26-9d46-3102a487e0fe"
+    },
+    {
+      "name": "administrator approves the registration (FR-VER-02)",
+      "ok": true,
+      "detail": "{\"ok\":true}"
+    },
+    {
+      "name": "approved organisation is routed to its area",
+      "ok": true,
+      "detail": "{\"ok\":true,\"redirect\":\"/hospital\"}"
+    },
+    {
+      "name": "approved organisation can open its operational area",
+      "ok": true,
+      "detail": "200"
+    },
+    {
+      "name": "administrator suspends the organisation (FR-VER-04)",
+      "ok": true,
+      "detail": "{\"ok\":true}"
+    },
+    {
+      "name": "suspended organisation loses operational access (FR-VER-04)",
+      "ok": true,
+      "detail": "307 /status"
+    },
+    {
+      "name": "seeded rejected organisation sees the status screen",
+      "ok": true,
+      "detail": "{\"ok\":true,\"redirect\":\"/status\"}"
+    },
+    {
+      "name": "status screen shows the rejection",
+      "ok": true,
+      "detail": "200"
+    },
+    {
+      "name": "rejected organisation can re-apply (A-04)",
+      "ok": true,
+      "detail": "303"
+    },
+    {
+      "name": "after re-applying the status returns to Pending",
+      "ok": true,
+      "detail": "200"
+    }
+  ]
+}

@@ -13,8 +13,13 @@ with qualified medical staff at the time of donation (SRS §1.3, BR-3, BR-4, BR-
 - **New teammate?** Read [`docs/MEMBER-1-EXPLAINED.md`](docs/MEMBER-1-EXPLAINED.md) first: it explains
   what is built in plain words and what each member does next. Then read
   [`docs/HANDOFF.md`](docs/HANDOFF.md) for the exact technical recipe.
+- **Sprint 1 backlog:** [`docs/SPRINT-BACKLOG.md`](docs/SPRINT-BACKLOG.md) — module breakdown, member
+  responsibilities, and the To Do / In Progress / Done lists. Import [`docs/trello-board.json`](docs/trello-board.json)
+  into Trello to create the matching board.
+- **Tests:** [`tests/README.md`](tests/README.md) (how to run/add tests) and Member 1's
+  [`tests/member-1/TEST-RESULTS.md`](tests/member-1/TEST-RESULTS.md).
 - Full requirements: [`docs/`](docs/) — start with [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md),
-  [`docs/TRACEABILITY.md`](docs/TRACEABILITY.md) and [`docs/SPRINT-PLAN.md`](docs/SPRINT-PLAN.md).
+  [`docs/TRACEABILITY.md`](docs/TRACEABILITY.md) and [`docs/SPRINT-BACKLOG.md`](docs/SPRINT-BACKLOG.md).
 - Source documents: [`docs/source/`](docs/source/) — the Wasl SRS v1.0 (18 October 2026), the project
   proposal, and the wireframe sheets (as originally submitted).
 
@@ -125,36 +130,38 @@ Urdu switch sets `<html lang="ur" dir="rtl">` on the whole app.
 
 ## Tests
 
-The suite covers the framework-free modules — validation rules, password hashing, lockout and
-landing rules, localization dictionaries, PKT date/time formatting and the CSRF same-origin check.
-Modules that import `server-only` (database, sessions, guards, messaging, notifications, audit)
-need the Next.js runtime and are **not** unit-tested here; they are verified manually and recorded
-in [`docs/TRACEABILITY.md`](docs/TRACEABILITY.md).
+Tests are grouped **by team member**: Member 1's are in `tests/member-1/`, and Members 2–5 add theirs
+under `tests/member-N/`. `pnpm test` discovers every `*.test.ts` file automatically. Full instructions,
+conventions and per-member templates: [`tests/README.md`](tests/README.md).
 
 ```bash
-pnpm test              # node tests/run-all.ts — the whole suite in one process
-node tests/run-all.ts  # the same without pnpm
-node --test tests/*.test.ts   # per-file runner; needs child processes (blocked in some sandboxes)
+pnpm test          # unit suite, no server needed (157 tests for Member 1)
+pnpm verify:api    # 27-check end-to-end API lifecycle; run `pnpm dev` in another window first
+pnpm typecheck     # strict TypeScript check
+pnpm build         # production build
 ```
 
-The package script runs `tests/run-all.ts` because some sandboxed environments block the
-child-process spawn that `node --test` uses. `run-all.ts` imports the same test files, so the results
-are identical; passing the files to `node --test` works too on a normal machine.
+Member 1's evidence: [TEST-RESULTS.md](tests/member-1/TEST-RESULTS.md),
+[MANUAL-TEST-CASES.md](tests/member-1/MANUAL-TEST-CASES.md) and raw output in
+`tests/member-1/results/`.
 
-Current status: **189 tests, 189 passing** across 7 files.
+**Current Member 1 status:** 157/157 unit tests, 27/27 API lifecycle checks, 60/64 manual cases
+(4 time-based deferred), clean typecheck and production build.
 
-| File | Covers |
+| File (under `tests/member-1/unit/`) | Covers |
 | --- | --- |
-| `tests/validation.test.ts` | `src/lib/validation.ts` — mobile/email/password/OTP rules, **FR-VER-01** registration fields, **FR-DON-01** + **DR-03** donor signup |
-| `tests/password.test.ts` | `src/lib/auth/password.ts` — scrypt hashing, verification, malformed hashes (**NFR-SEC-01**) |
-| `tests/rules.test.ts` | `src/lib/auth/rules.ts` — landing paths, **FR-VER-03**, **NFR-SEC-02** lockout |
-| `tests/i18n.test.ts` | `src/lib/i18n/*` — EN/UR key parity and RTL (**NFR-LOC-01**, **NFR-LOC-03**) |
-| `tests/format.test.ts` | `src/lib/format.ts` — PKT dates, relative time, file sizes (**NFR-LOC-05**) |
-| `tests/csrf.test.ts` | `src/lib/csrf.ts` — same-origin check (**NFR-SEC-04**) |
-| `tests/admin.test.ts` | `src/lib/admin/rules.ts` — account actions, campaign decisions, admin search (**FR-ADM-02**, **FR-ADM-03/04**) |
+| `validation.test.ts` | `src/lib/validation.ts` — mobile/email/password/OTP rules, **FR-VER-01** registration fields, **FR-DON-01** + **DR-03** donor signup |
+| `password.test.ts` | `src/lib/auth/password.ts` — scrypt hashing, verification, malformed hashes (**NFR-SEC-01**) |
+| `rules.test.ts` | `src/lib/auth/rules.ts` — landing paths, **FR-VER-03**, **NFR-SEC-02** lockout |
+| `i18n.test.ts` | `src/lib/i18n/*` — EN/UR key parity and RTL (**NFR-LOC-01**, **NFR-LOC-03**) |
+| `format.test.ts` | `src/lib/format.ts` — PKT dates, relative time, file sizes (**NFR-LOC-05**) |
+| `csrf.test.ts` | `src/lib/csrf.ts` — same-origin check (**NFR-SEC-04**) |
 
 `tests/ts-loader.mjs` is a test-only resolver shim: the i18n module imports its dictionary parts
 without file extensions (correct for Next.js/TypeScript, but plain Node needs the extension).
+`tests/run-all.ts` imports every discovered test file in one process because some sandboxed
+environments block the child-process spawn that `node --test` uses; the tests themselves are plain
+`node:test`, so `node --test` works too on a normal machine.
 
 ## Project structure
 
@@ -187,8 +194,8 @@ wasl/
 │     ├─ db/                   driver abstraction + migrations
 │     └─ i18n/                 dictionaries per module + server locale resolution
 ├─ scripts/                    connect, migrate, seed, reset (plain Node)
-├─ tests/                      node:test suite + run-all
-├─ docs/                       architecture, traceability, security, handoff, sprint plan
+├─ tests/                      tests by member (member-1/ … member-5/) + runner
+├─ docs/                       architecture, traceability, sprint backlog, trello import, handoff
 └─ .data/                      local PGlite data (git-ignored)
 ```
 
@@ -215,4 +222,4 @@ built yet. These are the **other four members' Sprint 1 targets** (H-01, H-02, B
 D-03…D-06, O-01…O-03) plus the screens reserved for Sprint 2 (H-03…H-07, B-06, D-01,
 D-02, A-01, A-05…A-08); they are not part of Member 1's delivery. See
 [`docs/WIREFRAMES.md`](docs/WIREFRAMES.md) for the exact status of every wireframe screen and
-[`docs/TRACEABILITY.md`](docs/TRACEABILITY.md) for the requirement-by-requirement status.
+[`docs/TRACEABILITY.md`](docs/TRACEABILITY.md) for the requirement-by-requirement status. Sprint work breakdown and ownership: [`docs/SPRINT-BACKLOG.md`](docs/SPRINT-BACKLOG.md).
