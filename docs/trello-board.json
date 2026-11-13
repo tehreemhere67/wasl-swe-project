@@ -108,7 +108,7 @@
     },
     {
       "id": "card-13",
-      "name": "[Member 1] Tests and results for Modules 1 and 9 (157 unit tests, 27 API lifecycle checks, 64 manual cases)",
+      "name": "[Member 1] Tests and results for Modules 1 and 9 (157 unit tests, 29 API lifecycle checks, 65 manual cases)",
       "closed": false,
       "idList": "list-done",
       "pos": 13312

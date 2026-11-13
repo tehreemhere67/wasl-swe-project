@@ -1,15 +1,15 @@
 {
   "baseUrl": "http://127.0.0.1:3000",
-  "startedAt": "2026-11-12T13:02:54.346Z",
-  "finishedAt": "2026-11-12T13:04:30.511Z",
-  "total": 27,
-  "passed": 27,
+  "startedAt": "2026-11-13T08:18:46.524Z",
+  "finishedAt": "2026-11-13T08:19:46.390Z",
+  "total": 29,
+  "passed": 29,
   "failed": 0,
   "checks": [
     {
       "name": "OTP send returns a development code (IR-07)",
       "ok": true,
-      "detail": "{\"ok\":true,\"resendAfterSeconds\":60,\"delivery\":\"dev_outbox\",\"devCode\":\"725573\"}"
+      "detail": "{\"ok\":true,\"resendAfterSeconds\":60,\"delivery\":\"dev_outbox\",\"devCode\":\"862986\"}"
     },
     {
       "name": "donor signup creates an account and a session",
@@ -39,7 +39,7 @@
     {
       "name": "forgot password returns a development code",
       "ok": true,
-      "detail": "{\"ok\":true,\"resendAfterSeconds\":60,\"devCode\":\"229154\"}"
+      "detail": "{\"ok\":true,\"resendAfterSeconds\":60,\"devCode\":\"409870\"}"
     },
     {
       "name": "password reset succeeds",
@@ -77,6 +77,11 @@
       "detail": "200"
     },
     {
+      "name": "signed-in status page shows the authenticated header with a logout control",
+      "ok": true,
+      "detail": "200"
+    },
+    {
       "name": "Pending organisation is blocked from operational screens (FR-VER-03)",
       "ok": true,
       "detail": "307 /status"
@@ -92,9 +97,14 @@
       "detail": "{\"ok\":true,\"redirect\":\"/admin\"}"
     },
     {
+      "name": "signed-in notification centre shows the authenticated header with a logout control",
+      "ok": true,
+      "detail": "200"
+    },
+    {
       "name": "new registration appears in the administrator queue (A-02)",
       "ok": true,
-      "detail": "398564b0-a89a-4b26-9d46-3102a487e0fe"
+      "detail": "ad5ff8a3-45f6-44cc-84ae-973bccc6dea2"
     },
     {
       "name": "administrator approves the registration (FR-VER-02)",

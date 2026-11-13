@@ -30,7 +30,7 @@ tests/
 | --- | --- | --- |
 | `pnpm test` | runs **every** `tests/**/*.test.ts` in one process | no |
 | `pnpm typecheck` | TypeScript check of the whole project | no |
-| `pnpm verify:api` | 27-check end-to-end HTTP lifecycle (accounts, OTP, verification, RBAC) | **yes** (`pnpm dev` first) |
+| `pnpm verify:api` | 29-check end-to-end HTTP lifecycle (accounts, OTP, verification, RBAC, authenticated header) | **yes** (`pnpm dev` first) |
 | `pnpm build` | production build must compile | no |
 
 `pnpm test` prints the list of files it loaded, then the node:test summary

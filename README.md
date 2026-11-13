@@ -136,7 +136,7 @@ conventions and per-member templates: [`tests/README.md`](tests/README.md).
 
 ```bash
 pnpm test          # unit suite, no server needed (157 tests for Member 1)
-pnpm verify:api    # 27-check end-to-end API lifecycle; run `pnpm dev` in another window first
+pnpm verify:api    # 29-check end-to-end API lifecycle; run `pnpm dev` in another window first
 pnpm typecheck     # strict TypeScript check
 pnpm build         # production build
 ```
@@ -145,7 +145,7 @@ Member 1's evidence: [TEST-RESULTS.md](tests/member-1/TEST-RESULTS.md),
 [MANUAL-TEST-CASES.md](tests/member-1/MANUAL-TEST-CASES.md) and raw output in
 `tests/member-1/results/`.
 
-**Current Member 1 status:** 157/157 unit tests, 27/27 API lifecycle checks, 60/64 manual cases
+**Current Member 1 status:** 157/157 unit tests, 29/29 API lifecycle checks, 61/65 manual cases
 (4 time-based deferred), clean typecheck and production build.
 
 | File (under `tests/member-1/unit/`) | Covers |

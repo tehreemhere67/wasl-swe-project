@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PublicShell } from "@/components/shell/app-shell";
+import { AppShell } from "@/components/shell/app-shell";
 import { Alert, Button, Card, EmptyState, PageHeader } from "@/components/ui";
 import { requireUser } from "@/lib/auth/guards";
 import { listNotifications, unreadNotificationCount } from "@/lib/notifications";
@@ -38,7 +38,7 @@ export default async function NotificationsPage() {
   }
 
   return (
-    <PublicShell locale={locale}>
+    <AppShell user={session.user} locale={locale} areaLabel={t("notif.title")} nav={[]}>
       <div className="mx-auto w-full max-w-2xl">
         <PageHeader
           title={t("notif.title")}
@@ -118,6 +118,6 @@ export default async function NotificationsPage() {
           <Alert tone="info">{t("notice.devMode")}</Alert>
         </div>
       </div>
-    </PublicShell>
+    </AppShell>
   );
 }

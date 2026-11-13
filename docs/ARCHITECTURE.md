@@ -210,7 +210,9 @@ same `{ ok: true }` shape whether or not the number is registered.
   appearance identical everywhere (IR-02). Labels come from `status.pending|verified|rejected|
   suspended` and are always short words.
 - `src/components/shell/app-shell.tsx` provides `AppShell` (header + role navigation + content +
-  footer) for signed-in areas and `PublicShell` (header + content + footer) for public screens.
+  footer) for signed-in areas and for standalone signed-in screens (account status, notification
+  centre — they pass an empty navigation), and `PublicShell` (header + content + footer) for
+  public screens.
 - The header (`header-bar.tsx`) carries the organisation name and verification badge, the
   notification bell with unread count, the language switch and the profile menu — on **every screen**
   (wireframe sheet 15).

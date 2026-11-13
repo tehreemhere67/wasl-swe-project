@@ -20,6 +20,8 @@
  *   8. administrator approves -> organisation can operate (FR-VER-02)
  *   9. administrator suspends -> access lost (FR-VER-04)
  *  10. rejected organisation sees the reason and can re-apply (A-04)
+ *  11. every signed-in standalone page (account status, notification centre) has the
+ *      authenticated header with the profile menu and Log out
  *
  * WARNING: this script creates test accounts/organisations and re-applies the seeded
  * "rejected" organisation in the local development database. To get back to the clean
@@ -266,6 +268,11 @@ async function main() {
 
   const pendingStatus = await orgSession.get("/status");
   check("new organisation sees the Pending status screen (G-04)", pendingStatus.status === 200 && pendingStatus.text.includes("Pending"), pendingStatus.status);
+  check(
+    "signed-in status page shows the authenticated header with a logout control",
+    pendingStatus.text.includes("Log out") && pendingStatus.text.includes("Pending"),
+    pendingStatus.status,
+  );
 
   const blocked = await orgSession.get("/hospital");
   check("Pending organisation is blocked from operational screens (FR-VER-03)", blocked.status === 307 && (blocked.location ?? "").endsWith("/status"), `${blocked.status} ${blocked.location}`);
@@ -288,6 +295,13 @@ async function main() {
   const admin = new Session("admin");
   const adminLogin = await admin.postJson("/api/auth/login", { identifier: "admin@wasl.pk", password: "WaslAdmin#2026" });
   check("seeded administrator logs in and lands on /admin", adminLogin.data?.ok && adminLogin.data?.redirect === "/admin", JSON.stringify(adminLogin.data));
+
+  const adminNotifications = await admin.get("/notifications");
+  check(
+    "signed-in notification centre shows the authenticated header with a logout control",
+    adminNotifications.status === 200 && adminNotifications.text.includes("Log out"),
+    adminNotifications.status,
+  );
 
   const queue = await admin.get("/admin/verifications?tab=all");
   const namePosition = queue.text.indexOf("E2E Test Hospital");

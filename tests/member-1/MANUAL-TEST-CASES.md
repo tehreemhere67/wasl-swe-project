@@ -2,7 +2,7 @@
 
 These are the manually/end-to-end verified cases for the part built by Member 1. Automated coverage for the same behaviour lives in `tests/member-1/unit/` and `scripts/verify-api-lifecycle.mjs`; this document covers what a browser/administrator must confirm.
 
-**Total:** 64 cases — **60 Pass**, **4 Deferred** (time-based or browser-visual checks that cannot be asserted by the API script).
+**Total:** 65 cases — **61 Pass**, **4 Deferred** (time-based or browser-visual checks that cannot be asserted by the API script).
 
 > Status values: **Pass** = executed and observed on 12 Nov 2026 against the running app; **Deferred** = requires a 5–30 minute wait or a visual/browser judgement and is recorded as a follow-up. Nothing in this table is claimed as passing without evidence.
 
@@ -13,7 +13,7 @@ cd wasl
 pnpm db:seed        # clean demo data
 pnpm dev            # then open http://localhost:3000
 pnpm test           # automated unit suite (157 tests)
-pnpm verify:api     # automated API lifecycle (27 checks, needs the server running)
+pnpm verify:api     # automated API lifecycle (29 checks, needs the server running)
 ```
 
 Demo accounts are listed in the README. OTP codes are not texted: read them in the form's development notice, at `/dev/outbox`, or in the `[sms:dev]` line of the server window.
@@ -121,6 +121,7 @@ Demo accounts are listed in the README. OTP codes are not texted: read them in t
 | TC-UI-02 | FR-NOT-04 | Open the notification bell, then press 'Mark all as read'. | Unread count badge clears and items are marked read. | Pass | Screenshot: 05-G-05-notification-centre.png |
 | TC-UI-03 | NFR-USA-01 / IR-01 | View landing, registration and status pages at 390 px (and 360 px). | No horizontal scrolling; tap targets and 16 px text remain usable. | Pass | Mobile screenshots: G-01, G-02, G-03, G-04 |
 | TC-UI-04 | NFR-USA-04 | Submit invalid input on each form. | Plain-language error next to the field, in the user's language, saying what to fix. | Pass | — |
+| TC-UI-06 | FR-ADM-01 / Module 9.3 | Sign in as a Pending/Rejected organization and open `/status`; sign in as an administrator and open `/notifications`. | Both pages show the authenticated header (organisation name and badge, language switch, notification bell, profile menu) and the profile menu contains a working Log out. | Pass | API lifecycle: 'signed-in status page shows the authenticated header with a logout control' and 'signed-in notification centre shows the authenticated header with a logout control' |
 | TC-UI-05 | NFR-MAIN-02 | Change one English and one Urdu string in `src/lib/i18n/parts/`. | The UI updates without touching component code; keys are shared by both languages. | Pass | — |
 
 ---

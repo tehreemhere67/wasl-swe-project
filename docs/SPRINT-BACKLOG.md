@@ -269,7 +269,7 @@ Member 1's complete Sprint 1 delivery.
 - [x] **Member 1** — Module 9 — 9.3 Navigation
 - [x] **Member 1** — Module 9 — 9.4 Responsive design
 - [x] **Member 1** — Module 9 — 9.5 Common validation and error handling
-- [x] **Member 1** — Tests and results for Modules 1 and 9 (157 unit tests, 27 API lifecycle checks, 64 manual cases)
+- [x] **Member 1** — Tests and results for Modules 1 and 9 (157 unit tests, 29 API lifecycle checks, 65 manual cases)
 - [x] **Member 1** — Documentation for Modules 1 and 9 (README, architecture, traceability, wireframe map, handoff)
 
 ---

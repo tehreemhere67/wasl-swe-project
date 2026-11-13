@@ -11,10 +11,10 @@
 | # | Test activity | Command | Result | Raw evidence |
 | --- | --- | --- | --- | --- |
 | 1 | Unit tests (6 files, 31 suites) | `pnpm test` | **157 / 157 pass, 0 fail** | [`results/unit-tests-latest.txt`](results/unit-tests-latest.txt) |
-| 2 | End-to-end API lifecycle (27 checks) | `pnpm verify:api` (server running) | **27 / 27 pass, 0 fail** | [`results/api-lifecycle-latest.txt`](results/api-lifecycle-latest.txt) · [`results/api-lifecycle-latest.json`](results/api-lifecycle-latest.json) |
+| 2 | End-to-end API lifecycle (29 checks) | `pnpm verify:api` (server running) | **29 / 29 pass, 0 fail** | [`results/api-lifecycle-latest.txt`](results/api-lifecycle-latest.txt) · [`results/api-lifecycle-latest.json`](results/api-lifecycle-latest.json) |
 | 3 | TypeScript strict check | `pnpm typecheck` | **exit 0, no errors** | [`results/typecheck-latest.txt`](results/typecheck-latest.txt) |
 | 4 | Production build | `pnpm build` | **compiled successfully, 38 routes** | [`results/production-build-latest.txt`](results/production-build-latest.txt) |
-| 5 | Manual/system cases | see [`MANUAL-TEST-CASES.md`](MANUAL-TEST-CASES.md) | **60 pass / 64 executed, 4 deferred** | screenshots in [`docs/screenshots/`](../../docs/screenshots/) |
+| 5 | Manual/system cases | see [`MANUAL-TEST-CASES.md`](MANUAL-TEST-CASES.md) | **61 pass / 65 executed, 4 deferred** | screenshots in [`docs/screenshots/`](../../docs/screenshots/) |
 | 6 | Browser route smoke pass | Playwright (1,280 px + 390 px) | **33 pages HTTP 200**, RBAC redirects correct, Urdu RTL verified | [`docs/screenshots/`](../../docs/screenshots/) |
 
 **Overall: PASS.** No critical or major defect remains open in Member 1's scope.
@@ -35,7 +35,7 @@
 
 ---
 
-## 3. API lifecycle — 27 / 27 (real server, real cookies, real database)
+## 3. API lifecycle — 29 / 29 (real server, real cookies, real database)
 
 These checks cover the code that cannot be unit-tested in plain Node (`server-only`, database, sessions, guards, notifications).
 
@@ -49,7 +49,8 @@ These checks cover the code that cannot be unit-tested in plain Node (`server-on
 | Administrator verification | admin login → `/admin`; new registration in queue; approve → can operate; suspend → access lost | 5 / 5 |
 | Rejected organisation | status screen shows rejection; re-apply accepted; status returns to Pending | 3 / 3 |
 | Queue/notification side-effects | registration appears in A-02 queue; approval/suspension notifications recorded (verified via response + Dev Outbox) | 2 / 2 |
-| **Total** | | **27 / 27** |
+| Authenticated header | `/status` (pending organization) and `/notifications` (administrator) show the signed-in header with the profile menu and Log out | 2 / 2 |
+| **Total** | | **29 / 29** |
 
 > Running `pnpm verify:api` mutates the local development database (it creates test accounts and
 > re-applies the seeded rejected organisation). Restore clean demo data afterwards with
@@ -57,7 +58,7 @@ These checks cover the code that cannot be unit-tested in plain Node (`server-on
 
 ---
 
-## 4. Manual cases — 60 pass / 64 executed, 4 deferred
+## 4. Manual cases — 61 pass / 65 executed, 4 deferred
 
 | Group | Cases | Pass | Deferred |
 | --- | --- | --- | --- |
@@ -68,8 +69,8 @@ These checks cover the code that cannot be unit-tested in plain Node (`server-on
 | E. Password reset | 6 | 6 | — |
 | F. Role-based access (RBAC) | 7 | 6 | TC-RBAC-07 (blood bank → organizer area, browser check pending) |
 | G. Language and localization | 7 | 7 | — |
-| H. Shared interface, mobile and errors | 5 | 5 | — |
-| **Total** | **64** | **60** | **4** |
+| H. Shared interface, mobile and errors | 6 | 6 | — |
+| **Total** | **65** | **61** | **4** |
 
 The four deferred cases need a 5–30 minute wait or a pending browser judgement; they are enforced in
 code (`src/lib/auth/rules.ts`, `src/lib/auth/otp.ts`, `src/app/organizer/layout.tsx`) and tracked in
@@ -87,6 +88,7 @@ the manual cases document rather than claimed as passing.
 | D4 | Minor | API lifecycle | Registration posted as `application/x-www-form-urlencoded` without a file returned a generic `invalid_request` instead of the document error | Route now parses urlencoded fields and returns the specific document error | `TC-ORG-02` pass |
 | D5 | Minor | Manual check | Status page showed "Registered" as a row label/value swapped with the date | Dedicated `status.registered` key and correct label/value | `G-04` screenshot pass |
 | D6 | Minor | Code review | `access_refused` was declared but never written (NFR-SEC-05) | Guards write `access_refused` with requested path and reason before redirecting | Code review; audit rows created on RBAC tests |
+| D7 | Major | Teammate review | A signed-in organization on `/status` (and any user on `/notifications`) had no profile menu or **Log out**, because those pages rendered the public shell | Both pages now render the authenticated shell (`AppShell`), so the header carries the organisation badge, language switch, bell and profile menu with Log out | API lifecycle: two new logout-control checks pass; `TC-UI-06` pass |
 
 ---
 
@@ -131,7 +133,7 @@ pnpm test                        # 157 unit tests
 pnpm dev                         # leave running in this window
 
 # in a second PowerShell window:
-pnpm verify:api                  # 27 API lifecycle checks
+pnpm verify:api                  # 29 API lifecycle checks
 pnpm typecheck
 pnpm build
 
@@ -141,7 +143,7 @@ pnpm db:reset; pnpm db:seed
 
 ## 9. Sign-off
 
-- Member 1 scope: **PASS** — 157 unit, 27 API lifecycle, 60/64 manual (4 time-based deferred), clean typecheck and production build.
+- Member 1 scope: **PASS** — 157 unit, 29 API lifecycle, 61/65 manual (4 time-based deferred), clean typecheck and production build.
 - No known SRS contradiction in the delivered scope.
 - Handover: the same structure is ready for Members 2–5 under `tests/member-2/` … `tests/member-5/`;
   they add their cases and results without touching Member 1's files.

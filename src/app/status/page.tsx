@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import { PublicShell } from "@/components/shell/app-shell";
+import { AppShell } from "@/components/shell/app-shell";
 import {
   Alert,
   Button,
@@ -78,7 +78,7 @@ export default async function StatusPage() {
   };
 
   return (
-    <PublicShell locale={locale}>
+    <AppShell user={session.user} locale={locale} areaLabel={t("status.title")} nav={[]}>
       <div className="mx-auto w-full max-w-xl">
         <PageHeader title={t("status.title")} subtitle={t("app.tagline")} />
 
@@ -177,6 +177,6 @@ export default async function StatusPage() {
           </Card>
         ) : null}
       </div>
-    </PublicShell>
+    </AppShell>
   );
 }
