@@ -23,7 +23,7 @@ The wireframe sheets and their content:
 | 14 | Administrator menu flow |
 | 15 | Organization registration flow + note: *"Menus (language switch, alerts bell, profile) are on every screen"* |
 
-**Total: 38 wireframe screens** — 6 delivered, 17 Sprint 1 targets owned by other modules (present as
+**Total: 38 wireframe screens** — 8 delivered, 15 Sprint 1 targets owned by other modules (present as
 placeholders), 13 reserved for Sprint 2, and 2 cross-cutting items (G-06, G-07) that are not separate
 routes.
 
@@ -103,8 +103,8 @@ coming. That keeps the demo walkable and fixes the integration points for the ow
 | --- | --- | --- | --- | --- | --- |
 | **A-01** | Inventory dashboard (all banks) | `/admin` | Sprint 2 reserved | M8 | Group / component / available / expiring table, "click row → bank drill-down" |
 | **A-02** | Verification queue + review | `/admin/verifications` | **Delivered** (baseline) | M1 (M2 extends) | Pending queue with waiting time and document count, details + documents, history, Approve / Reject + reason / Suspend / Reinstate; `?tab=all`, `?org=<id>` |
-| **A-03** | Account management | `/admin/accounts` | Sprint 1 target | M2 | Search, account/status rows, Deactivate / Reactivate |
-| **A-04** | Campaign review | `/admin/campaigns` | Sprint 1 target | M2 | Campaign details, Approve / Reject + reason / Return for changes |
+| **A-03** | Account management | `/admin/accounts` | **Delivered** | M2 | Search, account/status rows, Deactivate / Reactivate |
+| **A-04** | Campaign review | `/admin/campaigns` | **Delivered** | M2 | Campaign details, Approve / Reject + reason / Return for changes; organizer notified |
 | **A-05** | Flags + hide content | `/admin/flags` | Sprint 2 reserved | M2 | Flag queue with reason, Hide/cancel + reason, Dismiss, "org notified" |
 | **A-06** | Audit log | `/admin/audit` | Sprint 2 reserved | M2 | Time / user / action / details table with filter. The audit **data** is already recorded by M1; only the viewer is pending |
 | **A-07** | Reports | `/admin/reports` | Sprint 2 reserved | M8 | Date range, Requests / Donation activity / Inventory tabs, aggregate-only privacy note |

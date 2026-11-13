@@ -6,7 +6,7 @@ their owner module and honest status.
 
 Evidence types used below:
 
-- **Unit test** — an automated `node:test` file in `tests/` (157 tests, all passing).
+- **Unit test** — an automated `node:test` file in `tests/` (189 tests, all passing).
 - **Code review** — the implementation is present; it imports `server-only`/the database, so it is
   excluded from the plain-Node suite (see [`README.md`](../README.md#tests)).
 - **Manual** — a scripted click-through using the seeded accounts; steps are in §3.
@@ -84,14 +84,14 @@ Status legend:
 | ID | Requirement (summary) | Owner module (member) | Status |
 | --- | --- | --- | --- |
 | FR-ADM-01 | Login required, role-scoped access | M1 (Member 1) | **Implemented** |
-| FR-ADM-02 | Administrator views/searches/deactivates/reactivates accounts; each action recorded | M2 (Member 2) | **Placeholder** — A-03 account management (`/admin/accounts`) is a Sprint 1 target; behaviour not implemented |
-| FR-ADM-03 | Administrator cancels/hides false or harmful content, notifies organization | M2 (Member 2) | **Placeholder** — A-05 flags/hide content is Sprint 2 reserved |
-| FR-ADM-04 | Users flag suspicious content; administrator flag queue | M2 (Member 2) | **Placeholder** — A-05 is Sprint 2 reserved |
-| FR-ADM-05 | Audit log of significant actions, viewable by administrators | M2 + M8 (Member 2) | **Partial** — entries are written by Member 1 (login, verification, registration, password, language); the A-06 viewer is a Sprint 2 placeholder |
+| FR-ADM-02 | Administrator views/searches/deactivates/reactivates accounts; each action recorded | M2 (Member 2) | **Implemented** — A-03/admin/accounts: search, deactivate/reactivate with session invalidation, changes audited; self- and last-admin protection |
+| FR-ADM-03 | Administrator cancels/hides false or harmful content, notifies organization | M2 (Member 2) | **Partial** — A-04 rejects/returns a campaign with a reason and notifies the organizer; the A-05 flags/hide queue is Sprint 2 |
+| FR-ADM-04 | Users flag suspicious content; administrator flag queue | M2 (Member 2) | **Placeholder** — the A-05 flag queue is Sprint 2 reserved; users cannot flag content yet |
+| FR-ADM-05 | Audit log of significant actions, viewable by administrators | M2 + M8 (Member 2) | **Partial** — Member 1 writes login/verification/registration/password/language entries; Member 2 adds account and campaign decisions; the A-06 viewer is a Sprint 2 placeholder |
 | FR-ADM-06 | Inventory dashboard across verified blood banks | M8 (Member 2) | **Placeholder** — A-01 is Sprint 2 reserved |
 | FR-ADM-07 | Request report by date range | M8 (Member 2) | **Placeholder** — A-07 is Sprint 2 reserved |
 | FR-ADM-08 | Donation activity report, aggregate only | M8 (Member 2) | **Placeholder** — A-07 is Sprint 2 reserved |
-| FR-ADM-09 | Administrators see pending registrations, campaigns and unreviewed flags with waiting time | M2 + M8 (Member 2) | **Partial** — pending registrations + waiting time delivered as A-02 (Member 1 baseline); campaigns/flags Sprint 2 |
+| FR-ADM-09 | Administrators see pending registrations, campaigns and unreviewed flags with waiting time | M2 + M8 (Member 2) | **Partial** — pending registrations (A-02) and pending campaigns (A-04) with waiting time; unreviewed flags remain Sprint 2 |
 | FR-ADM-10 | Administrator-maintained values changeable without software changes | M8 (Member 2) | **Partial** — values seeded in the `settings` table (matching distances, expiry windows, Karachi areas); the A-08 editor is a Sprint 2 placeholder |
 | FR-INV-01..03 | Record/update inventory batches with testing status and movements | M4 (Member 3) | **Placeholder** — B-02/B-03/B-04 are Sprint 1 targets; behaviour and tables Sprint 2 |
 | FR-INV-04..09 | Reservations, issuance, transfers, cross-bank search and exclusions | M4 (Member 3) | **Placeholder** — B-04 actions and cross-bank search are Sprint 2 reserved |

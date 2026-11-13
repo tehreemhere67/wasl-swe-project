@@ -99,7 +99,60 @@ export const admin: DictionaryPart = {
     "admin.settings.distances": "Distances 30/15 km · weights 60/40",
     "admin.settings.hold": "Hold period · escalation timings",
     "admin.settings.areas": "Karachi area (English / Urdu)",
+
+    // ---------------------------------------------------------------------
+    // A-03 Account management (Member 2, Sprint 1)
+    // ---------------------------------------------------------------------
+    "admin.accounts.subtitle":
+      "Search every account on the platform. Deactivating an account signs it out and blocks its next login.",
+    "admin.accounts.searchPlaceholder": "Search by name, email, phone or organization",
+    "admin.accounts.filterAll": "All",
+    "admin.accounts.filterOrgs": "Organizations",
+    "admin.accounts.filterDonors": "Donors",
+    "admin.accounts.count": "{count} accounts",
+    "admin.accounts.joined": "Joined {when}",
+    "admin.accounts.empty": "No account matches this search.",
+    "admin.accounts.you": "This is your own account",
+    "admin.accounts.updated": "Account updated.",
+    "admin.accounts.selfBlocked": "You cannot deactivate your own account.",
+    "admin.accounts.lastAdmin": "The last active administrator cannot be deactivated.",
+
+    // ---------------------------------------------------------------------
+    // A-04 Campaign review (Member 2, Sprint 1)
+    // ---------------------------------------------------------------------
+    "admin.campaignReview.subtitle":
+      "Review campaigns submitted by verified organizers before they are shown to donors.",
+    "admin.campaignReview.queue": "Pending approval",
+    "admin.campaignReview.empty": "No campaign is waiting for review.",
+    "admin.campaignReview.organizer": "Organizer",
+    "admin.campaignReview.submitted": "Submitted {when}",
+    "admin.campaignReview.starts": "Starts",
+    "admin.campaignReview.ends": "Ends",
+    "admin.campaignReview.venue": "Venue",
+    "admin.campaignReview.area": "Area",
+    "admin.campaignReview.groups": "Target groups",
+    "admin.campaignReview.reasonPlaceholder": "Reason (required to reject or return)",
+    "admin.campaignReview.reasonRequired": "Give a reason of at least 3 characters.",
+    "admin.campaignReview.reviewed": "Decision recorded and the organizer notified.",
+    "admin.campaignReview.notified": "The organizer is notified in the platform in both languages.",
+    "admin.campaignReview.notPending": "This campaign has already been reviewed.",
+    "admin.campaignReview.waitingDays": "{days} days",
+    "admin.campaignReview.waitingHours": "{hours} h",
+    "admin.campaignReview.statusDraft": "Draft",
+    "admin.campaignReview.statusPendingApproval": "Pending approval",
+    "admin.campaignReview.statusApproved": "Approved",
+    "admin.campaignReview.statusRejected": "Rejected",
+    "admin.campaignReview.statusCancelled": "Cancelled",
+    "admin.campaignReview.statusCompleted": "Completed",
+
+    // ---------------------------------------------------------------------
+    // A-02 queue search (Member 2, Sprint 1)
+    // ---------------------------------------------------------------------
+    "admin.verify.searchPlaceholder": "Search by name, licence or representative",
+    "admin.verify.filterType": "Organization type",
+    "admin.verify.allTypes": "All types",
   },
+
   ur: {
     "admin.ph.wireframe": "وائرفریم {id}",
     "admin.ph.sprint1": "سپرنٹ 1 — ماڈیول کا ذمہ دار یہ بناتا ہے",
@@ -164,5 +217,48 @@ export const admin: DictionaryPart = {
     "admin.settings.distances": "فاصلے 30/15 کلومیٹر · وزن 60/40",
     "admin.settings.hold": "ہولڈ کی مدت · ایسکلیشن کے اوقات",
     "admin.settings.areas": "کراچی کا علاقہ (انگریزی / اردو)",
+    
+    "admin.accounts.subtitle":
+      "پلیٹ فارم کے تمام اکاؤنٹس تلاش کریں۔ اکاؤنٹ غیر فعال کرنے سے وہ سائن آؤٹ ہو جاتا ہے اور اگلا لاگ ان بلاک ہو جاتا ہے۔",
+    "admin.accounts.searchPlaceholder": "نام، ای میل، فون یا تنظیم سے تلاش کریں",
+    "admin.accounts.filterAll": "تمام",
+    "admin.accounts.filterOrgs": "تنظیمیں",
+    "admin.accounts.filterDonors": "عطیہ دہندگان",
+    "admin.accounts.count": "{count} اکاؤنٹس",
+    "admin.accounts.joined": "شمولیت {when}",
+    "admin.accounts.empty": "اس تلاش سے کوئی اکاؤنٹ نہیں ملا۔",
+    "admin.accounts.you": "یہ آپ کا اپنا اکاؤنٹ ہے",
+    "admin.accounts.updated": "اکاؤنٹ اپ ڈیٹ ہو گیا۔",
+    "admin.accounts.selfBlocked": "آپ اپنا اکاؤنٹ غیر فعال نہیں کر سکتے۔",
+    "admin.accounts.lastAdmin": "آخری فعال منتظم کو غیر فعال نہیں کیا جا سکتا۔",
+
+    "admin.campaignReview.subtitle":
+      "عطیہ دہندگان کو دکھانے سے پہلے تصدیق شدہ منتظمین کی جمع کردہ مہموں کا جائزہ لیں۔",
+    "admin.campaignReview.queue": "منظوری کے منتظر",
+    "admin.campaignReview.empty": "کوئی مہم جائزے کے انتظار میں نہیں۔",
+    "admin.campaignReview.organizer": "منتظم",
+    "admin.campaignReview.submitted": "جمع کردہ {when}",
+    "admin.campaignReview.starts": "آغاز",
+    "admin.campaignReview.ends": "اختتام",
+    "admin.campaignReview.venue": "مقام",
+    "admin.campaignReview.area": "علاقہ",
+    "admin.campaignReview.groups": "ہدف گروپس",
+    "admin.campaignReview.reasonPlaceholder": "وجہ (مسترد کرنے یا واپس کرنے کے لیے لازمی)",
+    "admin.campaignReview.reasonRequired": "کم از کم 3 حروف کی وجہ درج کریں۔",
+    "admin.campaignReview.reviewed": "فیصلہ ریکارڈ ہو گیا اور منتظم کو اطلاع دے دی گئی۔",
+    "admin.campaignReview.notified": "منتظم کو پلیٹ فارم پر دونوں زبانوں میں اطلاع دی جاتی ہے۔",
+    "admin.campaignReview.notPending": "اس مہم کا جائزہ پہلے ہی لیا جا چکا ہے۔",
+    "admin.campaignReview.waitingDays": "{days} دن",
+    "admin.campaignReview.waitingHours": "{hours} گھنٹے",
+    "admin.campaignReview.statusDraft": "ڈرافٹ",
+    "admin.campaignReview.statusPendingApproval": "منظوری کے منتظر",
+    "admin.campaignReview.statusApproved": "منظور",
+    "admin.campaignReview.statusRejected": "مسترد",
+    "admin.campaignReview.statusCancelled": "منسوخ",
+    "admin.campaignReview.statusCompleted": "مکمل",
+
+    "admin.verify.searchPlaceholder": "نام، لائسنس یا نمائندے سے تلاش کریں",
+    "admin.verify.filterType": "تنظیم کی قسم",
+    "admin.verify.allTypes": "تمام اقسام",
   },
 };

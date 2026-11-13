@@ -1,10 +1,13 @@
 import Link from "next/link";
 import {
+  Button,
   Card,
   DetailRow,
   EmptyState,
   PageHeader,
+  SelectInput,
   StatusBadge,
+  TextInput,
   type VerificationStatus,
 } from "@/components/ui";
 import { AdminVerifyPanel } from "@/components/forms/admin-verify-panel";
@@ -55,20 +58,37 @@ interface DocumentRow {
   uploaded_at: string;
 }
 
+//Modified by Member 2 Sprint 1: A-03 account management and A-04 campaign review
 export default async function AdminVerificationsPage(props: {
-  searchParams: Promise<{ tab?: string; org?: string }>;
+  searchParams: Promise<{ tab?: string; org?: string; q?: string; type?: string }>;
 }) {
   await requireAdmin();
   const locale = await getLocale();
   const t = createTranslator(locale);
   const params = await props.searchParams;
   const tab = params.tab === "all" ? "all" : "pending";
+  const q = (params.q ?? "").trim();
+  const search = q ? `%${q}%` : "";
+  const rawType = params.type ?? "all";
+  const type = ["hospital", "blood_bank", "donation_org"].includes(rawType) ? rawType : "all";
+
+  const queueHref = (values: Record<string, string | undefined>): string => {
+    const sp = new URLSearchParams();
+    for (const [key, value] of Object.entries(values)) {
+      if (value) sp.set(key, value);
+    }
+    const suffix = sp.toString();
+    return `/admin/verifications${suffix ? `?${suffix}` : ""}`;
+  };
 
   const { rows: queue } = await query<QueueRow>(
     `SELECT o.id, o.type, o.name, o.verification_status, o.created_at,
             (SELECT count(*)::text FROM organization_documents d WHERE d.organization_id = o.id) AS doc_count
        FROM organizations o
       WHERE ($1 = 'all' OR o.verification_status = 'pending')
+        AND ($2 = '' OR o.name ILIKE $2 OR o.licence_number ILIKE $2
+             OR o.representative_name ILIKE $2 OR o.official_email ILIKE $2)
+        AND ($3 = 'all' OR o.type = $3)
       ORDER BY
         CASE o.verification_status
           WHEN 'pending' THEN 0
@@ -78,7 +98,7 @@ export default async function AdminVerificationsPage(props: {
         END,
         o.created_at ASC
       LIMIT 100`,
-    [tab],
+    [tab, search, type],
   );
 
   const selectedId = params.org && queue.some((row) => row.id === params.org) ? params.org : queue[0]?.id;
@@ -140,20 +160,54 @@ export default async function AdminVerificationsPage(props: {
       <PageHeader
         title={t("adminVerify.title")}
         subtitle={t("adminVerify.subtitle")}
+        //Modified by Member 2 Sprint 1: A-03 account management and A-04 campaign review
         actions={
-          <div className="flex gap-1 rounded-full border border-ink-200 bg-white p-1">
-            <Link
-              href="/admin/verifications"
-              className={`rounded-full px-3 py-1.5 text-sm font-medium ${tab === "pending" ? "bg-wasl-600 text-white" : "text-ink-600 hover:bg-ink-100"}`}
+          <div className="flex flex-col items-stretch gap-2 sm:items-end">
+            <form
+              method="get"
+              action="/admin/verifications"
+              className="flex flex-wrap items-center gap-2"
             >
-              {t("adminVerify.tabPending")}
-            </Link>
-            <Link
-              href="/admin/verifications?tab=all"
-              className={`rounded-full px-3 py-1.5 text-sm font-medium ${tab === "all" ? "bg-wasl-600 text-white" : "text-ink-600 hover:bg-ink-100"}`}
-            >
-              {t("adminVerify.tabAll")}
-            </Link>
+              {tab === "all" ? <input type="hidden" name="tab" value="all" /> : null}
+              <TextInput
+                id="queueSearch"
+                name="q"
+                type="search"
+                defaultValue={q}
+                placeholder={t("admin.verify.searchPlaceholder")}
+                aria-label={t("admin.verify.searchPlaceholder")}
+                className="w-full sm:w-64"
+              />
+              <SelectInput
+                name="type"
+                defaultValue={type}
+                aria-label={t("admin.verify.filterType")}
+                className="w-full sm:w-44"
+              >
+                <option value="all">{t("admin.verify.allTypes")}</option>
+                <option value="hospital">{t("role.hospital")}</option>
+                <option value="blood_bank">{t("role.blood_bank")}</option>
+                <option value="donation_org">{t("role.donation_org")}</option>
+              </SelectInput>
+              <Button type="submit" variant="secondary" size="sm">
+                {t("action.search")}
+              </Button>
+            </form>
+
+            <div className="flex gap-1 rounded-full border border-ink-200 bg-white p-1">
+              <Link
+                href={queueHref({ q, type: type === "all" ? undefined : type })}
+                className={`rounded-full px-3 py-1.5 text-sm font-medium ${tab === "pending" ? "bg-wasl-600 text-white" : "text-ink-600 hover:bg-ink-100"}`}
+              >
+                {t("adminVerify.tabPending")}
+              </Link>
+              <Link
+                href={queueHref({ tab: "all", q, type: type === "all" ? undefined : type })}
+                className={`rounded-full px-3 py-1.5 text-sm font-medium ${tab === "all" ? "bg-wasl-600 text-white" : "text-ink-600 hover:bg-ink-100"}`}
+              >
+                {t("adminVerify.tabAll")}
+              </Link>
+            </div>
           </div>
         }
       />
@@ -180,7 +234,13 @@ export default async function AdminVerificationsPage(props: {
                 return (
                   <li key={row.id}>
                     <Link
-                      href={`/admin/verifications?${tab === "all" ? "tab=all&" : ""}org=${row.id}`}
+                    //Modified by Member 2 Sprint 1: A-03 account management and A-04 campaign review
+                      href={queueHref({
+                        tab: tab === "all" ? "all" : undefined,
+                        q,
+                        type: type === "all" ? undefined : type,
+                        org: row.id,
+                      })}
                       className={`block px-4 py-3 transition-colors ${isSelected ? "bg-wasl-50" : "hover:bg-ink-50"}`}
                     >
                       <div className="flex items-center justify-between gap-2">

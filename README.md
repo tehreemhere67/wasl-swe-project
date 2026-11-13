@@ -148,6 +148,9 @@ Member 1's evidence: [TEST-RESULTS.md](tests/member-1/TEST-RESULTS.md),
 **Current Member 1 status:** 157/157 unit tests, 29/29 API lifecycle checks, 61/65 manual cases
 (4 time-based deferred), clean typecheck and production build.
 
+**Suite total: 189/189 passing** — Member 1's 157 (six files under `tests/member-1/unit/`) plus
+Member 2's 32 admin tests in `tests/admin.test.ts`.
+
 | File (under `tests/member-1/unit/`) | Covers |
 | --- | --- |
 | `validation.test.ts` | `src/lib/validation.ts` — mobile/email/password/OTP rules, **FR-VER-01** registration fields, **FR-DON-01** + **DR-03** donor signup |
@@ -156,6 +159,7 @@ Member 1's evidence: [TEST-RESULTS.md](tests/member-1/TEST-RESULTS.md),
 | `i18n.test.ts` | `src/lib/i18n/*` — EN/UR key parity and RTL (**NFR-LOC-01**, **NFR-LOC-03**) |
 | `format.test.ts` | `src/lib/format.ts` — PKT dates, relative time, file sizes (**NFR-LOC-05**) |
 | `csrf.test.ts` | `src/lib/csrf.ts` — same-origin check (**NFR-SEC-04**) |
+| `tests/admin.test.ts` (Member 2) | `src/lib/admin/rules.ts` — account actions, campaign decisions, admin search (**FR-ADM-02**, **FR-ADM-03/04**) |
 
 `tests/ts-loader.mjs` is a test-only resolver shim: the i18n module imports its dictionary parts
 without file extensions (correct for Next.js/TypeScript, but plain Node needs the extension).
@@ -210,11 +214,16 @@ password / reset password, the notification centre shell with unread count, Engl
 the global header (language switch, notification bell, profile menu), role-based access and route
 guards, and the audit log.
 
+**Implemented (Member 2 — Modules 2 and 8, Sprint 1 slice):** administrator account management
+(A-03) with search, deactivate/reactivate and audited changes, and campaign review (A-04) with
+approve / reject-with-reason / return-for-changes and an organizer notification. The A-02 queue
+gained a text search and an organisation-type filter.
+
 **Placeholders for the other modules:** the role areas exist with their shell, navigation and
 correct access guards, but their operational screens are wireframe-faithful placeholders — they show
 the wireframe structure, name the wireframe ID and owning module, and disable actions that are not
 built yet. These are the **other four members' Sprint 1 targets** (H-01, H-02, B-01…B-05, B-07,
-D-03…D-06, O-01…O-03, A-03, A-04) plus the screens reserved for Sprint 2 (H-03…H-07, B-06, D-01,
+D-03…D-06, O-01…O-03) plus the screens reserved for Sprint 2 (H-03…H-07, B-06, D-01,
 D-02, A-01, A-05…A-08); they are not part of Member 1's delivery. See
 [`docs/WIREFRAMES.md`](docs/WIREFRAMES.md) for the exact status of every wireframe screen and
 [`docs/TRACEABILITY.md`](docs/TRACEABILITY.md) for the requirement-by-requirement status. Sprint work breakdown and ownership: [`docs/SPRINT-BACKLOG.md`](docs/SPRINT-BACKLOG.md).

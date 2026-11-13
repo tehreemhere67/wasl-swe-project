@@ -84,9 +84,9 @@ database with the same driver choice.
   invalid status cannot be stored even if a code path is wrong.
 - Timestamps are `timestamptz`, stored in UTC and rendered in PKT by `src/lib/format.ts`.
 
-Delivered schema (migrations `001_initial_schema`, `002_default_settings`): `organizations`,
+Delivered schema (migrations `001_initial_schema`, `002_default_settings`, `003_campaigns`): `organizations`,
 `organization_documents`, `verification_history`, `users`, `donors`, `sessions`, `otp_codes`,
-`audit_log`, `notifications`, `settings`, `dev_outbox`. Module-owned tables (inventory, requests,
+`audit_log`, `notifications`, `settings`, `dev_outbox`, `campaigns`. Module-owned tables (inventory, requests,
 campaigns, donor history, …) are added by the owning modules in later migrations.
 
 ## 4. Authentication and sessions
@@ -242,8 +242,9 @@ same `{ ok: true }` shape whether or not the number is registered.
 - `recordAudit()` is **best effort**: a failed audit insert is logged and never breaks the user's
   action.
 - Recorded actions in the delivered code: `login_success`, `login_failed`, `login_locked`, `logout`,
-  `organization_registered`, `organization_reapply`, `organization_approved|rejected|suspended|
-  reinstated`, `donor_signup_completed`, `password_reset_completed`, `language_changed`.
+  `organization_registered`, `organization_reapply`, `organization_approved|rejected|suspended|reinstated`,
+  `account_deactivated`, `account_reactivated`, `campaign_approved|rejected|returned`,
+  `donor_signup_completed`, `password_reset_completed`, `language_changed`.
   The remaining action names are already declared in the `AuditAction` union for other modules.
 - Failed logins and refused actions are recorded (NFR-SEC-05). Administrators read the log on the
   A-06 screen, which is owned by the administrator module and is a placeholder in Sprint 1 — the
@@ -274,11 +275,11 @@ The administrator decision path is `POST /api/admin/verify`: same-origin check �
 
 Recorded here so nobody mistakes them for finished work:
 
-1. The schema contains only the Module 1/9 tables; operational tables arrive with their modules.
+1. The schema contains the Module 1/9 tables plus `campaigns` (migration 003); other operational tables arrive with their modules.
 2. `/admin/verifications` is the only administrator screen delivered by Member 1 (A-02 baseline).
-   A-01, A-03–A-08 are placeholders owned by the administrator module.
+   A-01, A-05–A-08 are placeholders owned by the administrator module.
 3. `/dev/outbox` contains hard-coded English strings; it is a development-only page, but it is the
-   one screen that does not yet meet NFR-LOC-01.
+   one screen that does not yet meet NFR-LOC-01.  
 4. Session-expiry handling is enforced on the next request rather than by a background job; an
    expired row is deleted lazily.
 5. The audit log is written but has no viewer until A-06 is delivered.

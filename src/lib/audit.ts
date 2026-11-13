@@ -31,6 +31,9 @@ export type AuditAction =
   | "organization_reinstated"
   | "account_deactivated"
   | "account_reactivated"
+  | "campaign_approved" //34-36 added by Member 2 Sprint 1: A-04 campaign review
+  | "campaign_rejected"
+  | "campaign_returned"
   | "access_refused";
 
 export interface AuditEntry {
