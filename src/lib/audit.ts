@@ -34,6 +34,13 @@ export type AuditAction =
   | "campaign_approved" //34-36 added by Member 2 Sprint 1: A-04 campaign review
   | "campaign_rejected"
   | "campaign_returned"
+  // Member 3 Sprint 1: M4 inventory / M7 monitoring. Additive only.
+  | "inventory_batch_created"
+  | "inventory_batch_updated"
+  | "inventory_batch_archived"
+  | "inventory_movement_recorded"
+  | "inventory_settings_updated"
+  | "inventory_alert_acknowledged"
   | "access_refused";
 
 export interface AuditEntry {

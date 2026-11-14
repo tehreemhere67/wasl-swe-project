@@ -194,22 +194,22 @@ The remaining Sprint 1 work, grouped by member, plus the group-level User Manual
 
 ### Member 3
 
-- [ ] Module 4 — 4.1 Add inventory
-- [ ] Module 4 — 4.2 View inventory
-- [ ] Module 4 — 4.3 Update inventory
-- [ ] Module 4 — 4.4 Remove or reduce inventory
-- [ ] Module 4 — 4.5 Inventory movement history
-- [ ] Module 4 — 4.6 Inventory reservations
-- [ ] Module 4 — 4.7 Inventory transfers
-- [ ] Module 4 — 4.8 Inventory availability rules
-- [ ] Module 7 — 7.1 Expiry monitoring
-- [ ] Module 7 — 7.2 Expired inventory
-- [ ] Module 7 — 7.3 Low-stock monitoring
-- [ ] Module 7 — 7.4 Alert display
-- [ ] Module 7 — 7.5 Optional SMS alerts
-- [ ] Module 7 — 7.6 Monitoring frequency
-- [ ] Tests and results for Modules 4 and 7
-- [ ] Documentation update for Modules 4 and 7
+- [x] Module 4 — 4.1 Add inventory
+- [x] Module 4 — 4.2 View inventory
+- [x] Module 4 — 4.3 Update inventory
+- [x] Module 4 — 4.4 Remove or reduce inventory
+- [x] Module 4 — 4.5 Inventory movement history
+- [x] Module 4 — 4.6 Inventory reservations
+- [x] Module 4 — 4.7 Inventory transfers
+- [x] Module 4 — 4.8 Inventory availability rules
+- [x] Module 7 — 7.1 Expiry monitoring
+- [x] Module 7 — 7.2 Expired inventory
+- [x] Module 7 — 7.3 Low-stock monitoring
+- [x] Module 7 — 7.4 Alert display
+- [x] Module 7 — 7.5 Optional SMS alerts
+- [x] Module 7 — 7.6 Monitoring frequency
+- [x] Tests and results for Modules 4 and 7
+- [x] Documentation update for Modules 4 and 7
 
 ### Member 4
 

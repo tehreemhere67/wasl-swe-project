@@ -5,6 +5,11 @@
  *  - the one administrator account (Module 1.6: no public administrator signup)
  *  - one verified hospital, one verified blood bank, one verified donation
  *    organization (so every role can log in and see its own area)
+ *  - a SECOND verified blood bank ("Clifton Community Blood Bank", bank2@demo.wasl)
+ *    purely as demo/test data for Module 4.7 transfers: a transfer needs a
+ *    receiving verified bank, and the demo previously had only one. It is a
+ *    test bank, not a real Karachi blood bank; later sprints can reuse it for
+ *    request offers and for multi-bank hospital search results.
  *  - one Pending hospital and one Rejected organization with reasons, so the
  *    administrator verification queue (A-02) and the status screen (G-04) are
  *    not empty
@@ -61,6 +66,23 @@ const ORGANIZATIONS: SeedOrganization[] = [
     email: "bank@demo.wasl",
     licence: "BB-KHI-2002",
     representative: "Mr. Bilal Khan",
+    designation: "Blood Bank Manager",
+    status: "verified",
+  },
+  {
+    // DEMO / TEST DATA - Member 3, Module 4.7.
+    // A transfer is recorded by the sending bank and again by the receiving bank,
+    // so the demo needs a second VERIFIED blood bank to transfer to. This is not a
+    // real Karachi blood bank; keep it for demos and later sprints (request offers,
+    // multi-bank search results).
+    type: "blood_bank",
+    name: "Clifton Community Blood Bank",
+    area: "Clifton",
+    address: "Khayaban-e-Roomi, Clifton, Karachi",
+    phone: "+923001111006",
+    email: "bank2@demo.wasl",
+    licence: "BB-KHI-2006",
+    representative: "Ms. Ayesha Siddiqui",
     designation: "Blood Bank Manager",
     status: "verified",
   },
@@ -363,6 +385,7 @@ async function main() {
     console.log(`  Administrator : ${(process.env.ADMIN_EMAIL || "admin@wasl.pk")} / ${process.env.ADMIN_PASSWORD || "WaslAdmin#2026"}`);
     console.log(`  Hospital      : hospital@demo.wasl / ${DEMO_PASSWORD}`);
     console.log(`  Blood bank    : bank@demo.wasl / ${DEMO_PASSWORD}`);
+    console.log(`  Blood bank 2  : bank2@demo.wasl / ${DEMO_PASSWORD}  (TEST bank, for 4.7 transfers)`);
     console.log(`  Organizer     : organizer@demo.wasl / ${DEMO_PASSWORD}`);
     console.log(`  Pending org   : pending@demo.wasl / ${DEMO_PASSWORD}   (stays on G-04)`);
     console.log(`  Rejected org  : rejected@demo.wasl / ${DEMO_PASSWORD}  (stays on G-04)`);
