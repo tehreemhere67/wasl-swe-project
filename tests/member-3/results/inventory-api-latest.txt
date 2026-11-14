@@ -1,0 +1,42 @@
+Wasl inventory verification against http://127.0.0.1:3000
+PASS  administrator can log in
+PASS  verified blood bank can log in
+PASS  hospital can log in
+PASS  second verified blood bank is available for transfers  :: 9653b955-13d0-4bac-bad8-64650febdcbf
+PASS  4.1 creates a batch  :: 03119f9d-c980-4e8c-ac48-a25c742cda8e
+PASS  4.1 rejects negative units (DR-01)  :: {"ok":false,"errors":[{"field":"units","message":"inventory.error.units"}]}
+PASS  4.1 rejects a past expiry  :: {"ok":false,"errors":[{"field":"expiresAt","message":"inventory.error.expiryPast"}]}
+PASS  4.1 rejects an unknown blood group (SRS 4.2)
+PASS  4.2 inventory page loads
+PASS  4.2 list shows the new batch
+PASS  4.2 list has the Batch reference column
+PASS  4.3 edits a batch  :: {"ok":true,"changed":true,"redirect":"/bank/inventory/03119f9d-c980-4e8c-ac48-a25c742cda8e"}
+PASS  4.3 records a Correction movement
+PASS  4.3 records the status change
+PASS  4.3 shows the corrected quantity
+PASS  4.4 issues units to a hospital
+PASS  4.4 refuses to issue more than the batch holds
+PASS  4.4 records Issued and reduces stock
+PASS  4.6 reserves units
+PASS  4.6 shows the active hold with its end time
+PASS  4.6 releases the hold
+PASS  4.6 records Reservation released
+PASS  4.7 transfers units out  :: {"ok":true,"redirect":"/bank/inventory/03119f9d-c980-4e8c-ac48-a25c742cda8e"}
+PASS  4.7 refuses an unknown receiving bank
+PASS  4.7 shows where the units went
+PASS  4.4 refuses to archive a batch that still holds units
+PASS  4.4 marks the batch expired
+PASS  4.4 writes an Expired movement
+PASS  4.4 archives an empty batch
+PASS  4.4 archived batch leaves the list
+PASS  4.4 archived history stays reachable
+PASS  7.3 saves the threshold and windows
+PASS  7.3 low-stock alert appears on the dashboard
+PASS  7.4 alert has an id  :: 97d2f452-8e51-481d-9817-93aba815273f
+PASS  7.4 acknowledge succeeds
+PASS  7.4 acknowledged alert leaves the dashboard
+PASS  hospital cannot change blood-bank inventory (FR-ADM-01)
+PASS  hospital is redirected away from the blood-bank area (FR-VER-03)  :: status 307 -> /hospital
+
+38/38 checks passed
+Results written to tests/member-3/results/inventory-api-latest.json

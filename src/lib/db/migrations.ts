@@ -332,5 +332,181 @@ CREATE INDEX IF NOT EXISTS idx_campaigns_status ON campaigns (status, created_at
 CREATE INDEX IF NOT EXISTS idx_campaigns_org ON campaigns (organization_id);
 `,
   },
+
+  // Member 3, Sprint 1: Module 4 (inventory) + Module 7 (expiry / low-stock monitoring).
+  // One row per batch, never per bag (A-08). Available quantity is
+  // `units` minus the units held by active reservations - see src/lib/inventory/rules.ts.
+  {
+    id: "004_inventory",
+    name: "Inventory batches, movements, reservations, thresholds, alerts and per-bank monitoring settings (M4/M7)",
+    sql: `
+-- M4 FR-INV-01/02: a batch of blood owned by one blood bank.
+CREATE TABLE IF NOT EXISTS inventory_batches (
+  id               UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  organization_id  UUID NOT NULL REFERENCES organizations (id) ON DELETE CASCADE,
+  blood_group      TEXT NOT NULL
+                   CHECK (blood_group IN ('A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-')),
+  component        TEXT NOT NULL
+                   CHECK (component IN ('Whole blood', 'Red blood cells', 'Platelets', 'Plasma')),
+  -- Units physically held. Never negative (DR-01); a batch may reach 0 and stays
+  -- in the table so its movement history is preserved (FR-INV-03).
+  units            INTEGER NOT NULL DEFAULT 0 CHECK (units >= 0),
+  -- Testing and approval status entered by staff; Wasl never tests blood (A-09).
+  status           TEXT NOT NULL DEFAULT 'awaiting_testing'
+                   CHECK (status IN ('awaiting_testing', 'approved', 'rejected')),
+  expires_at       TIMESTAMPTZ NOT NULL,
+  created_by       UUID REFERENCES users (id) ON DELETE SET NULL,
+  created_at       TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at       TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idx_inventory_batches_org
+  ON inventory_batches (organization_id, blood_group, component);
+CREATE INDEX IF NOT EXISTS idx_inventory_batches_status
+  ON inventory_batches (status, expires_at);
+CREATE INDEX IF NOT EXISTS idx_inventory_batches_expiry
+  ON inventory_batches (expires_at);
+
+-- M4 FR-INV-03/05/06 + A-08: the permanent log of every change to a batch.
+-- The quantity column is a SIGNED delta so the movement rows explain the units:
+--   added +, issued -, transferred_out -, expired -, discarded -,
+--   reserved -, reservation_released +, correction either sign.
+CREATE TABLE IF NOT EXISTS inventory_movements (
+  id                      UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  batch_id                UUID NOT NULL REFERENCES inventory_batches (id) ON DELETE CASCADE,
+  organization_id         UUID NOT NULL REFERENCES organizations (id) ON DELETE CASCADE,
+  movement_type           TEXT NOT NULL
+                          CHECK (movement_type IN ('added', 'reserved', 'reservation_released',
+                                                   'issued', 'transferred_out', 'expired',
+                                                   'discarded', 'correction')),
+  quantity                INTEGER NOT NULL CHECK (quantity <> 0),
+  note                    TEXT,
+  -- Sprint 2 links this to a hospital blood request. Kept as TEXT for now so the
+  -- inventory module does not depend on a requests table that does not exist yet.
+  related_request_id      TEXT,
+  -- FR-INV-06 / A-11: the receiving blood bank of a transfer out.
+  related_organization_id UUID REFERENCES organizations (id) ON DELETE SET NULL,
+  actor_user_id           UUID REFERENCES users (id) ON DELETE SET NULL,
+  created_at              TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idx_inventory_movements_batch
+  ON inventory_movements (batch_id, created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_inventory_movements_org
+  ON inventory_movements (organization_id, created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_inventory_movements_type
+  ON inventory_movements (movement_type);
+
+-- M4 FR-INV-04 / A-10: units set aside for a hospital, released by the bank or
+-- automatically after the hold period (default 6 hours).
+CREATE TABLE IF NOT EXISTS inventory_reservations (
+  id               UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  batch_id         UUID NOT NULL REFERENCES inventory_batches (id) ON DELETE CASCADE,
+  organization_id  UUID NOT NULL REFERENCES organizations (id) ON DELETE CASCADE,
+  units            INTEGER NOT NULL CHECK (units > 0),
+  request_id       TEXT,
+  hold_until       TIMESTAMPTZ NOT NULL,
+  status           TEXT NOT NULL DEFAULT 'active'
+                   CHECK (status IN ('active', 'released', 'consumed')),
+  created_by       UUID REFERENCES users (id) ON DELETE SET NULL,
+  created_at       TIMESTAMPTZ NOT NULL DEFAULT now(),
+  released_at      TIMESTAMPTZ
+);
+
+CREATE INDEX IF NOT EXISTS idx_inventory_reservations_batch
+  ON inventory_reservations (batch_id, status);
+CREATE INDEX IF NOT EXISTS idx_inventory_reservations_hold
+  ON inventory_reservations (status, hold_until);
+
+-- M7 FR-MON-03/04 / A-05: each bank's own low-stock threshold per group + component.
+-- No row means "use the default of 5 units".
+CREATE TABLE IF NOT EXISTS stock_thresholds (
+  id               UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  organization_id  UUID NOT NULL REFERENCES organizations (id) ON DELETE CASCADE,
+  blood_group      TEXT NOT NULL
+                   CHECK (blood_group IN ('A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-')),
+  component        TEXT NOT NULL
+                   CHECK (component IN ('Whole blood', 'Red blood cells', 'Platelets', 'Plasma')),
+  threshold_units  INTEGER NOT NULL CHECK (threshold_units >= 0),
+  updated_by       UUID REFERENCES users (id) ON DELETE SET NULL,
+  updated_at       TIMESTAMPTZ NOT NULL DEFAULT now(),
+  UNIQUE (organization_id, blood_group, component)
+);
+
+-- M7 FR-MON-05 / A-32: alerts raised for a bank, with acknowledgement and the
+-- 24-hour no-repeat rule. The dedupe_key column identifies the condition (e.g. expiry of
+-- batch X, or low stock of O- red cells) so the same condition is not re-raised.
+CREATE TABLE IF NOT EXISTS stock_alerts (
+  id               UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  organization_id  UUID NOT NULL REFERENCES organizations (id) ON DELETE CASCADE,
+  alert_type       TEXT NOT NULL CHECK (alert_type IN ('expiry', 'low_stock')),
+  batch_id         UUID REFERENCES inventory_batches (id) ON DELETE SET NULL,
+  blood_group      TEXT NOT NULL
+                   CHECK (blood_group IN ('A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-')),
+  component        TEXT NOT NULL
+                   CHECK (component IN ('Whole blood', 'Red blood cells', 'Platelets', 'Plasma')),
+  quantity         INTEGER NOT NULL,
+  expires_at       TIMESTAMPTZ,
+  dedupe_key       TEXT NOT NULL,
+  status           TEXT NOT NULL DEFAULT 'active'
+                   CHECK (status IN ('active', 'acknowledged', 'resolved')),
+  raised_at        TIMESTAMPTZ NOT NULL DEFAULT now(),
+  last_raised_at   TIMESTAMPTZ NOT NULL DEFAULT now(),
+  acknowledged_by  UUID REFERENCES users (id) ON DELETE SET NULL,
+  acknowledged_at  TIMESTAMPTZ
+);
+
+-- At most one ACTIVE alert per condition per bank.
+CREATE UNIQUE INDEX IF NOT EXISTS uq_stock_alerts_active
+  ON stock_alerts (organization_id, dedupe_key) WHERE status = 'active';
+CREATE INDEX IF NOT EXISTS idx_stock_alerts_org
+  ON stock_alerts (organization_id, status, raised_at DESC);
+CREATE INDEX IF NOT EXISTS idx_stock_alerts_batch
+  ON stock_alerts (batch_id);
+
+-- M7 FR-MON-01/05: this bank's warning windows and SMS preference (B-05), plus
+-- the timestamp of the last monitoring sweep for the hourly guard (FR-MON-06).
+CREATE TABLE IF NOT EXISTS bank_monitoring_settings (
+  organization_id     UUID PRIMARY KEY REFERENCES organizations (id) ON DELETE CASCADE,
+  expiry_warning_days JSONB NOT NULL DEFAULT '{"Platelets": 2, "Whole blood": 7, "Red blood cells": 7, "Plasma": 30}'::jsonb,
+  sms_alerts          BOOLEAN NOT NULL DEFAULT false,
+  last_sweep_at       TIMESTAMPTZ,
+  updated_by          UUID REFERENCES users (id) ON DELETE SET NULL,
+  updated_at          TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+`,
+  },
+
+  // Member 3, Sprint 1: 4.3 needs to record a status-only change as a movement.
+  // A correction that changes no units carries quantity 0; every other movement
+  // type must still move at least one unit (FR-INV-03, DR-01).
+  {
+    id: "005_inventory_correction_zero",
+    name: "Allow a correction movement with quantity 0 (status-only edits)",
+    sql: `
+ALTER TABLE inventory_movements
+  DROP CONSTRAINT IF EXISTS inventory_movements_quantity_check;
+
+ALTER TABLE inventory_movements
+  ADD CONSTRAINT inventory_movements_quantity_check
+  CHECK (quantity <> 0 OR movement_type = 'correction');
+`,
+  },
+
+  // Member 3, Sprint 1: hide an empty batch from the list without deleting it.
+  // 4.4 keeps every record (DR-05), so removal is a soft archive: the row and its
+  // full movement history stay and remain reachable by direct link.
+  {
+    id: "006_inventory_archive",
+    name: "Archive empty inventory batches instead of deleting them",
+    sql: `
+ALTER TABLE inventory_batches
+  ADD COLUMN IF NOT EXISTS archived_at TIMESTAMPTZ;
+
+CREATE INDEX IF NOT EXISTS idx_inventory_batches_active
+  ON inventory_batches (organization_id, expires_at)
+  WHERE archived_at IS NULL;
+`,
+  },
   
 ];

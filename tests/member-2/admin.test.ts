@@ -6,7 +6,7 @@
  *   FR-ADM-03/04 - administrator reviews and hides/rejects content with a reason
  *   FR-ADM-05 - every administrator action is recorded
  *
- * Run directly:  node tests/admin.test.ts
+ * Run directly:  node tests/member-2/admin.test.ts
  * Run the suite: node tests/run-all.ts
  */
 
@@ -29,7 +29,7 @@ import {
   validateCampaignDecision,
   type AccountChangeInput,
   type RuleResult,
-} from "../src/lib/admin/rules.ts";
+} from "../../src/lib/admin/rules.ts";
 
 function codes(result: RuleResult, field: string): string[] {
   return result.errors.filter((error) => error.field === field).map((error) => error.message);

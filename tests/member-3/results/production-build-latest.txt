@@ -1,0 +1,92 @@
+npm warn Unknown project config "node-linker". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown project config "auto-install-peers". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown project config "strict-peer-dependencies". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> wasl@1.0.0 build
+> next build
+
+   ▲ Next.js 15.5.29
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 15.9s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/49) ...
+   Generating static pages (12/49) 
+   Generating static pages (24/49) 
+   Generating static pages (36/49) 
+ ✓ Generating static pages (49/49)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                      Size  First Load JS
+┌ ƒ /                                         2.09 kB         108 kB
+├ ƒ /_not-found                                 996 B         104 kB
+├ ƒ /admin                                      238 B         103 kB
+├ ƒ /admin/accounts                            1.6 kB         108 kB
+├ ƒ /admin/audit                                238 B         103 kB
+├ ƒ /admin/campaigns                          1.71 kB         108 kB
+├ ƒ /admin/flags                                238 B         103 kB
+├ ƒ /admin/reports                              238 B         103 kB
+├ ƒ /admin/settings                             238 B         103 kB
+├ ƒ /admin/verifications                      1.72 kB         108 kB
+├ ƒ /api/admin/accounts/status                  238 B         103 kB
+├ ƒ /api/admin/campaigns/decision               238 B         103 kB
+├ ƒ /api/admin/verify                           238 B         103 kB
+├ ƒ /api/auth/donor/signup                      238 B         103 kB
+├ ƒ /api/auth/login                             238 B         103 kB
+├ ƒ /api/auth/logout                            238 B         103 kB
+├ ƒ /api/auth/org/register                      238 B         103 kB
+├ ƒ /api/auth/otp/send                          238 B         103 kB
+├ ƒ /api/auth/password/forgot                   238 B         103 kB
+├ ƒ /api/auth/password/reset                    238 B         103 kB
+├ ƒ /api/documents/[id]                         238 B         103 kB
+├ ƒ /api/inventory/alerts/[id]/acknowledge      238 B         103 kB
+├ ƒ /api/inventory/batches                      238 B         103 kB
+├ ƒ /api/inventory/batches/[id]                 238 B         103 kB
+├ ƒ /api/inventory/batches/[id]/archive         238 B         103 kB
+├ ƒ /api/inventory/batches/[id]/movements       238 B         103 kB
+├ ƒ /api/inventory/batches/[id]/reservations    238 B         103 kB
+├ ƒ /api/inventory/batches/[id]/transfers       238 B         103 kB
+├ ƒ /api/inventory/reservations/[id]/release    238 B         103 kB
+├ ƒ /api/inventory/settings                     238 B         103 kB
+├ ƒ /api/language                               238 B         103 kB
+├ ƒ /api/notifications/read                     238 B         103 kB
+├ ƒ /api/organization/reapply                   238 B         103 kB
+├ ƒ /bank                                     1.36 kB         104 kB
+├ ƒ /bank/inventory                             238 B         103 kB
+├ ƒ /bank/inventory/[id]                      2.91 kB         106 kB
+├ ƒ /bank/inventory/[id]/edit                 1.38 kB         105 kB
+├ ƒ /bank/inventory/new                       1.38 kB         105 kB
+├ ƒ /bank/record-donation                       238 B         103 kB
+├ ƒ /bank/requests                              238 B         103 kB
+├ ƒ /bank/settings                            1.41 kB         105 kB
+├ ƒ /dev/outbox                                 667 B         103 kB
+├ ƒ /donor                                      176 B         106 kB
+├ ƒ /donor/campaigns                            176 B         106 kB
+├ ƒ /donor/campaigns/[id]                       238 B         103 kB
+├ ƒ /donor/history                              238 B         103 kB
+├ ƒ /donor/profile                              238 B         103 kB
+├ ƒ /donor/requests/[id]                        238 B         103 kB
+├ ƒ /forgot-password                          2.74 kB         109 kB
+├ ƒ /hospital                                   176 B         106 kB
+├ ƒ /hospital/requests                          238 B         103 kB
+├ ƒ /hospital/requests/[id]                     238 B         103 kB
+├ ƒ /hospital/requests/[id]/edit                238 B         103 kB
+├ ƒ /hospital/requests/[id]/match               238 B         103 kB
+├ ƒ /hospital/requests/new                      238 B         103 kB
+├ ƒ /hospital/search                            238 B         103 kB
+├ ƒ /notifications                              665 B         107 kB
+├ ƒ /organizer/campaigns                        176 B         106 kB
+├ ƒ /organizer/campaigns/[id]/complete          238 B         103 kB
+├ ƒ /organizer/campaigns/new                    238 B         103 kB
+├ ƒ /register/donor                           3.16 kB         109 kB
+├ ƒ /register/organization                    2.89 kB         109 kB
+└ ƒ /status                                     665 B         107 kB
++ First Load JS shared by all                  103 kB
+  ├ chunks/1255-b84741b894bb9354.js           46.6 kB
+  ├ chunks/4bd1b696-f785427dddbba9fb.js       54.2 kB
+  └ other shared chunks (total)                  2 kB
+
+
+ƒ  (Dynamic)  server-rendered on demand

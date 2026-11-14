@@ -1,98 +1,118 @@
-import { Card, LinkButton, PageHeader } from "@/components/ui";
-import { Placeholder } from "@/components/ui/placeholder";
-import { getLocale } from "@/lib/i18n/server";
+import { formatDate } from "@/lib/format";
+import { Badge, Card, EmptyState, LinkButton, PageHeader } from "@/components/ui";
+import { requireVerifiedOrganization } from "@/lib/auth/guards";
 import { createTranslator } from "@/lib/i18n";
+import { getLocale } from "@/lib/i18n/server";
+import { listBatches } from "@/lib/inventory/data";
+import {
+  COMPONENT_LABEL_KEY,
+  TESTING_STATUS_LABEL_KEY,
+  TESTING_STATUS_TONE,
+} from "@/lib/inventory/labels";
 
 /**
- * B-02 - Inventory list.
+ * B-02 - Inventory list (FR-INV-02, FR-INV-04, FR-INV-08).
  *
- * Wireframe: the Group / component / units / status / expiry table with the
- * "O- RBC 6 Approved 12 Nov" and "A+ Platelets 3 Awaiting 14 Oct" rows, and
- * the "+ Add Batch" action. Inventory belongs to Module 4 (Sprint 1).
+ * Wireframe: the Group / Component / Units / Status / Expiry table with
+ * "+ Add Batch". Module 4.2 also requires the reserved quantity, so the table
+ * shows Available and Reserved next to each other - the one deliberate
+ * addition to the drawing. Mobile keeps the same information as cards at 360 px.
  */
 export default async function BloodBankInventoryPage() {
+  const session = await requireVerifiedOrganization("/bank/inventory");
   const locale = await getLocale();
   const t = createTranslator(locale);
-
-  const rows = [
-    {
-      id: "batch-1",
-      group: "O-",
-      component: "redCells",
-      units: 6,
-      status: "approved",
-      expiry: t("bank.date.12Nov"),
-    },
-    {
-      id: "batch-2",
-      group: "A+",
-      component: "platelets",
-      units: 3,
-      status: "awaiting",
-      expiry: t("bank.date.14Oct"),
-    },
-  ];
+  const batches = await listBatches(session.user.organization.id);
 
   return (
     <div>
-      <PageHeader title={t("nav.bank.inventory")} />
+      <PageHeader title={t("inventory.title")} subtitle={t("inventory.subtitle")} />
 
-      <Card className="overflow-hidden">
-        {/* Desktop table */}
-        <div className="hidden overflow-x-auto sm:block">
-          <table className="table-base">
-            <thead>
-              <tr>
-                <th>{t("field.bloodGroup")}</th>
-                <th>{t("field.component")}</th>
-                <th>{t("field.units")}</th>
-                <th>{t("field.status")}</th>
-                <th>{t("bank.expiry")}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map((row) => (
-                <tr key={row.id}>
-                  <td className="font-semibold">{t(`blood.${row.group}`)}</td>
-                  <td>{t(`component.${row.component}`)}</td>
-                  <td>{row.units}</td>
-                  <td>{t(`bank.status.${row.status}`)}</td>
-                  <td>{row.expiry}</td>
+      {batches.length === 0 ? (
+        <EmptyState
+          title={t("inventory.empty.title")}
+          description={t("inventory.empty.description")}
+        />
+      ) : (
+        <Card className="overflow-hidden">
+          {/* Desktop table */}
+          <div className="hidden overflow-x-auto sm:block">
+            <table className="table-base">
+              <thead>
+                <tr>
+                  <th>{t("inventory.col.group")}</th>
+                  <th>{t("inventory.col.batch")}</th>
+                  <th>{t("inventory.col.component")}</th>
+                  <th>{t("inventory.col.available")}</th>
+                  <th>{t("inventory.col.reserved")}</th>
+                  <th>{t("inventory.col.status")}</th>
+                  <th>{t("inventory.col.expiry")}</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                {batches.map((batch) => (
+                  <tr key={batch.id}>
+                    <td className="font-semibold">
+                      <a
+                        href={`/bank/inventory/${batch.id}`}
+                        className="text-wasl-700 underline-offset-2 hover:underline"
+                      >
+                        {t(`blood.${batch.bloodGroup}`)}
+                      </a>
+                    </td>
+                    <td className="font-mono text-xs text-ink-500">
+                      #{batch.id.slice(0, 8).toUpperCase()}
+                    </td>
+                    <td>{t(COMPONENT_LABEL_KEY[batch.component])}</td>
+                    <td className="font-semibold">{batch.availableUnits}</td>
+                    <td className="text-ink-600">{batch.reservedUnits}</td>
+                    <td>
+                      <Badge tone={TESTING_STATUS_TONE[batch.status]}>
+                        {t(TESTING_STATUS_LABEL_KEY[batch.status])}
+                      </Badge>
+                    </td>
+                    <td className="whitespace-nowrap">{formatDate(batch.expiresAt, locale)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
 
-        {/* Mobile cards - keeps the same columns readable at 360 px */}
-        <ul className="divide-y divide-ink-100 sm:hidden">
-          {rows.map((row) => (
-            <li key={row.id} className="space-y-1 px-4 py-3 text-sm">
-              <div className="flex items-center justify-between gap-2">
-                <span className="font-semibold text-ink-900">
-                  {t(`blood.${row.group}`)} · {t(`component.${row.component}`)}
-                </span>
-                <span className="text-ink-500">{t(`bank.status.${row.status}`)}</span>
-              </div>
-              <p className="text-ink-600">
-                {t("field.units")}: {row.units} · {t("bank.expiry")}: {row.expiry}
-              </p>
-            </li>
-          ))}
-        </ul>
-      </Card>
+          {/* Mobile cards - same information, readable at 360 px */}
+          <ul className="divide-y divide-ink-100 sm:hidden">
+            {batches.map((batch) => (
+              <li key={batch.id} className="space-y-1 px-4 py-3 text-sm">
+                <div className="flex items-center justify-between gap-2">
+                  <a
+                    href={`/bank/inventory/${batch.id}`}
+                    className="font-semibold text-ink-900 underline-offset-2 hover:underline"
+                  >
+                    {t(`blood.${batch.bloodGroup}`)} · {t(COMPONENT_LABEL_KEY[batch.component])}
+                  </a>
+                  <Badge tone={TESTING_STATUS_TONE[batch.status]}>
+                    {t(TESTING_STATUS_LABEL_KEY[batch.status])}
+                  </Badge>
+                </div>
+                <p className="text-ink-600">
+                  {t("inventory.col.available")}: {batch.availableUnits} ·{" "}
+                  {t("inventory.col.reserved")}: {batch.reservedUnits} ·{" "}
+                  {t("inventory.col.expiry")}: {formatDate(batch.expiresAt, locale)} ·{" "}
+                  <span className="font-mono text-xs">
+                    #{batch.id.slice(0, 8).toUpperCase()}
+                  </span>
+                </p>
+              </li>
+            ))}
+          </ul>
+        </Card>
+      )}
 
+      {/* The wireframe draws "+ Add Batch" as a full-width row under the table. */}
       <div className="mt-4">
-        <LinkButton href="/bank/inventory/new">{t("nav.bank.addBatch")}</LinkButton>
+        <LinkButton href="/bank/inventory/new" block>
+          <span aria-hidden="true">+</span> {t("inventory.addBatch")}
+        </LinkButton>
       </div>
-
-      <Placeholder
-        wireframe={t("bloodbank.ph.wireframe", { id: "B-02" })}
-        description={t("bloodbank.ph.b02")}
-        owner={t("bloodbank.owner.inventory")}
-        sprint={t("bloodbank.ph.sprint1")}
-        tone="sprint1"
-      />
     </div>
   );
 }

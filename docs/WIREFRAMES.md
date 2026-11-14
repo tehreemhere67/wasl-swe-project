@@ -70,11 +70,11 @@ coming. That keeps the demo walkable and fixes the integration points for the ow
 
 | ID | Screen | Route | Status | Owner | Notes |
 | --- | --- | --- | --- | --- | --- |
-| **B-01** | Dashboard + alerts | `/bank` | Sprint 1 target | M4/M7 | Bank name + verified badge, "Alerts (3)", expiry and low-stock alert rows, Add batch / Inventory / Open req / Settings, last-updated line |
-| **B-02** | Inventory list | `/bank/inventory` | Sprint 1 target | M4 | Group / component / units / status / expiry table with the two example rows and "+ Add Batch" (desktop table + mobile cards at 360 px) |
-| **B-03** | Add / edit batch | `/bank/inventory/new` | Sprint 1 target | M4 | Group, component, units, status, expiry with the inline expiry error line, Save |
-| **B-04** | Batch detail + movements | `/bank/inventory/[id]` | Sprint 1 target | M4 | Added/Reserved/Issued movements with who-and-when, Reserve / Issue / Transfer / Correct actions |
-| **B-05** | Settings | `/bank/settings` | Sprint 1 target | M7 | Low-stock threshold note, expiry warning windows (platelets 2 d, RBC/whole blood 7 d, plasma 30 d — A-31), SMS alerts checkbox, Save |
+| **B-01** | Dashboard + alerts | `/bank` | **Delivered** | M4/M7 | Bank name + verified badge, real alert count, live expiry and low-stock rows with Acknowledge + batch link, Add batch / Inventory / Open req / Settings, last-updated line (Member 3) |
+| **B-02** | Inventory list | `/bank/inventory` | **Delivered** | M4 | Group / **Batch** / Component / **Available / Reserved** / status / expiry table, "+ Add Batch" as a full-width row, desktop table + mobile cards at 360 px (Member 3) |
+| **B-03** | Add / edit batch | `/bank/inventory/new` and `/bank/inventory/[id]/edit` | **Delivered** | M4 | Group, component, units, status, expiry with the inline expiry error line, Save; the same form edits and approves an existing batch (Member 3) |
+| **B-04** | Batch detail + movements | `/bank/inventory/[id]` | **Delivered** | M4 | Summary line (Added/Reserved/Issued totals), full movement history with who-and-when, Issue / Discard / Mark expired / Transfer / Correct actions, reservations card, "Remove from list" when empty (Member 3) |
+| **B-05** | Settings | `/bank/settings` | **Delivered** | M7 | Low-stock thresholds per blood group **and** component (default 5), expiry warning windows (platelets 2 d, whole blood/RBC 7 d, plasma 30 d — A-31), SMS alerts checkbox, Save (Member 3) |
 | **B-06** | Open requests + offer | `/bank/requests` | Sprint 2 reserved | M5 | Request row with hospital verified mark and urgency, "Offers Units (+ reserve)", "Matches my stock" |
 | **B-07** | Record donation | `/bank/record-donation` | Sprint 1 target | M3 | Donor phone, date, "only that a donation took place" note, Save |
 
