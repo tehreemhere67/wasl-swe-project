@@ -219,6 +219,13 @@ guards, and the audit log.
 approve / reject-with-reason / return-for-changes and an organizer notification. The A-02 queue
 gained a text search and an organisation-type filter.
 
+**Member 5 — Module 5 (hospital blood availability search) is implemented:** H-02 `/hospital/search`
+with required blood group and component, results per verified blood bank (quantity, earliest expiry,
+area, phone, e-mail, last updated), exclusion of expired / unapproved / reserved stock and unverified
+banks, the "as reported by the blood bank" statement, and a no-results state with a create-request
+option. Hospital-only (A-12). Docs: [`docs/member-5/`](docs/member-5/IMPLEMENTATION-NOTES.md) ·
+tests: [`tests/member-5/`](tests/member-5/MANUAL-TEST-CASES.md) · live check: `node scripts/verify-search.mjs`.
+
 **Placeholders for the other modules:** the role areas exist with their shell, navigation and
 correct access guards, but their operational screens are wireframe-faithful placeholders — they show
 the wireframe structure, name the wireframe ID and owning module, and disable actions that are not

@@ -1,0 +1,37 @@
+Wasl search verification against http://127.0.0.1:3000
+PASS  hospital can log in  :: 200
+PASS  blood bank can log in  :: 200
+PASS  pending hospital can log in  :: 200
+PASS  donor session attempted  :: 200
+PASS  5.3 no session -> 401
+PASS  5.3 blood bank -> 403
+PASS  5.3 donor -> 403 (A-12)
+PASS  5.3 unverified hospital refused (FR-VER-03)  :: 403
+PASS  5.3 unverified hospital page is not served  :: 307
+PASS  5.3 donor cannot open the search page  :: 307
+PASS  5.3 anonymous page redirects to login  :: /?next=%2Fhospital
+PASS  5.1 missing both -> 400
+PASS  5.1 missing group -> 400
+PASS  5.1 missing component -> 400
+PASS  5.1 unknown values -> 400
+PASS  5.1 injection-looking value -> 400
+PASS  search returns ok JSON  :: 200
+PASS  setup: approved batch created  :: {"ok":true,"batchId":"72d964a8-0724-4d01-a382-ff1517e05524","redirect":"/bank/inventory"}
+PASS  setup: awaiting-testing batch created
+PASS  5.2 results include the bank with a verified status  :: {"organizationId":"0597e381-c878-4157-9eb0-fdba6b894b91","name":"Karachi Blood Bank","verificationStatus":"verified","availableUnits":14,"batchCount":3,"earliestExpiry":"2026-11-28T18:59:59.999Z","area":"Saddar","phone":"+923001111002","ema
+PASS  5.2 result has quantity, expiry, area, phone, last updated
+PASS  5.3 awaiting-testing units are not counted  :: 14
+PASS  5.2 sorted by quantity, largest first
+PASS  setup: 2 units reserved  :: {"ok":true,"redirect":"/bank/inventory/72d964a8-0724-4d01-a382-ff1517e05524"}
+PASS  5.3 reserved units drop out of availability  :: 14 -> 12
+PASS  5.5 a combination with no stock returns an empty list
+PASS  H-02 page shows the form with both dropdowns
+PASS  5.1 page shows validation messages on an empty submit
+PASS  H-02 page lists the bank result
+PASS  5.4 page shows the availability disclaimer
+PASS  FR-INV-09 page shows last-updated time
+PASS  5.2 page has a tel: link
+PASS  5.5 empty state offers to create a request (or stock exists)
+PASS  NFR-PERF-03 search answers within 2 s  :: 20 ms
+
+34/34 checks passed

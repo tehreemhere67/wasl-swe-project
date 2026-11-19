@@ -1,0 +1,4 @@
+
+> wasl@1.0.0 typecheck /home/claude/wasl-swe-project
+> tsc --noEmit
+

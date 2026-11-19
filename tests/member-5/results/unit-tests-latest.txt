@@ -1,0 +1,1983 @@
+
+> wasl@1.0.0 test /home/claude/wasl-swe-project
+> node tests/run-all.ts
+
+(node:905) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/claude/wasl-swe-project/tests/run-all.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/claude/wasl-swe-project/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Wasl test suite — loading 10 test files from tests/
+  • member-1/unit/csrf.test.ts
+  • member-1/unit/format.test.ts
+  • member-1/unit/i18n.test.ts
+  • member-1/unit/password.test.ts
+TAP version 13
+# Subtest: isSameOrigin
+    # Subtest: allows a same-origin request (Origin host equals Host)
+    ok 1 - allows a same-origin request (Origin host equals Host)
+      ---
+      duration_ms: 22.613125
+      type: 'test'
+      ...
+    # Subtest: allows a proxied request using x-forwarded-host
+    ok 2 - allows a proxied request using x-forwarded-host
+      ---
+      duration_ms: 0.227845
+      type: 'test'
+      ...
+    # Subtest: rejects a request from another origin
+    ok 3 - rejects a request from another origin
+      ---
+      duration_ms: 1.335517
+      type: 'test'
+      ...
+    # Subtest: rejects a request whose Origin does not match the forwarded host
+    ok 4 - rejects a request whose Origin does not match the forwarded host
+      ---
+      duration_ms: 4.913315
+      type: 'test'
+      ...
+    # Subtest: rejects an unparseable Origin value
+    ok 5 - rejects an unparseable Origin value
+      ---
+      duration_ms: 0.272174
+      type: 'test'
+      ...
+    # Subtest: rejects a request with an Origin but no host to compare against
+    ok 6 - rejects a request with an Origin but no host to compare against
+      ---
+      duration_ms: 28.23378
+      type: 'test'
+      ...
+    # Subtest: allows a request with no Origin header (same-site cookie is the primary defence)
+    ok 7 - allows a request with no Origin header (same-site cookie is the primary defence)
+      ---
+      duration_ms: 0.434544
+      type: 'test'
+      ...
+    # Subtest: the host comparison is case-insensitive, as HTTP hosts are
+    ok 8 - the host comparison is case-insensitive, as HTTP hosts are
+      ---
+      duration_ms: 0.208657
+      type: 'test'
+      ...
+    1..8
+ok 1 - isSameOrigin
+  ---
+  duration_ms: 60.702743
+  type: 'suite'
+  ...
+(node:905) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/claude/wasl-swe-project/src/lib/i18n/index.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/claude/wasl-swe-project/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: PKT time zone
+    # Subtest: Asia/Karachi is the single configured zone
+    ok 1 - Asia/Karachi is the single configured zone
+      ---
+      duration_ms: 0.187956
+      type: 'test'
+      ...
+    # Subtest: a UTC instant is rendered in PKT, not UTC
+    ok 2 - a UTC instant is rendered in PKT, not UTC
+      ---
+      duration_ms: 10.124448
+      type: 'test'
+      ...
+    1..2
+ok 2 - PKT time zone
+  ---
+  duration_ms: 62.619889
+  type: 'suite'
+  ...
+# Subtest: formatDate
+    # Subtest: renders the day, short month and year
+    ok 1 - renders the day, short month and year
+      ---
+      duration_ms: 0.201113
+      type: 'test'
+      ...
+    # Subtest: accepts an ISO string
+    ok 2 - accepts an ISO string
+      ---
+      duration_ms: 0.11048
+      type: 'test'
+      ...
+    # Subtest: renders Urdu dates in Urdu while keeping the Gregorian year
+    ok 3 - renders Urdu dates in Urdu while keeping the Gregorian year
+      ---
+      duration_ms: 0.578803
+      type: 'test'
+      ...
+    # Subtest: returns an em dash for empty or invalid input
+    ok 4 - returns an em dash for empty or invalid input
+      ---
+      duration_ms: 0.120435
+      type: 'test'
+      ...
+    1..4
+ok 3 - formatDate
+  ---
+  duration_ms: 1.167291
+  type: 'suite'
+  ...
+# Subtest: formatDateTime
+    # Subtest: renders date and 24-hour time in PKT
+    ok 1 - renders date and 24-hour time in PKT
+      ---
+      duration_ms: 0.161375
+      type: 'test'
+      ...
+    # Subtest: uses a 24-hour clock, never AM/PM
+    ok 2 - uses a 24-hour clock, never AM/PM
+      ---
+      duration_ms: 0.155359
+      type: 'test'
+      ...
+    # Subtest: returns an em dash for empty or invalid input
+    ok 3 - returns an em dash for empty or invalid input
+      ---
+      duration_ms: 0.039558
+      type: 'test'
+      ...
+    1..3
+ok 4 - formatDateTime
+  ---
+  duration_ms: 0.421343
+  type: 'suite'
+  ...
+# Subtest: formatTime
+    # Subtest: renders the time only
+    ok 1 - renders the time only
+      ---
+      duration_ms: 0.151282
+      type: 'test'
+      ...
+    # Subtest: renders midnight as 00:00
+    ok 2 - renders midnight as 00:00
+      ---
+      duration_ms: 0.083736
+      type: 'test'
+      ...
+    # Subtest: returns an em dash for empty input
+    ok 3 - returns an em dash for empty input
+      ---
+      duration_ms: 0.089951
+      type: 'test'
+      ...
+    1..3
+ok 5 - formatTime
+  ---
+  duration_ms: 0.393019
+  type: 'suite'
+  ...
+# Subtest: relativeTimeParts
+    # Subtest: anything under a minute is 'now'
+    ok 1 - anything under a minute is 'now'
+      ---
+      duration_ms: 0.564166
+      type: 'test'
+      ...
+    # Subtest: minutes bucket for under an hour
+    ok 2 - minutes bucket for under an hour
+      ---
+      duration_ms: 0.105379
+      type: 'test'
+      ...
+    # Subtest: hours bucket from 60 minutes to under 24 hours
+    ok 3 - hours bucket from 60 minutes to under 24 hours
+      ---
+      duration_ms: 0.137634
+      type: 'test'
+      ...
+    # Subtest: days bucket from 24 hours
+    ok 4 - days bucket from 24 hours
+      ---
+      duration_ms: 0.125024
+      type: 'test'
+      ...
+    # Subtest: a future timestamp is treated as now, never a negative age
+    ok 5 - a future timestamp is treated as now, never a negative age
+      ---
+      duration_ms: 0.060532
+      type: 'test'
+      ...
+    # Subtest: empty input is now
+    ok 6 - empty input is now
+      ---
+      duration_ms: 0.040514
+      type: 'test'
+      ...
+    1..6
+ok 6 - relativeTimeParts
+  ---
+  duration_ms: 1.139863
+  type: 'suite'
+  ...
+# Subtest: waitingTimeParts (FR-ADM-09)
+    # Subtest: splits the wait into whole days and remaining hours
+    ok 1 - splits the wait into whole days and remaining hours
+      ---
+      duration_ms: 0.091299
+      type: 'test'
+      ...
+    # Subtest: a registration that just arrived has waited no whole hours
+    ok 2 - a registration that just arrived has waited no whole hours
+      ---
+      duration_ms: 0.033687
+      type: 'test'
+      ...
+    # Subtest: a future timestamp never produces a negative wait
+    ok 3 - a future timestamp never produces a negative wait
+      ---
+      duration_ms: 0.028634
+      type: 'test'
+      ...
+    # Subtest: accepts an ISO string
+    ok 4 - accepts an ISO string
+      ---
+      duration_ms: 0.174295
+      type: 'test'
+      ...
+    1..4
+ok 7 - waitingTimeParts (FR-ADM-09)
+  ---
+  duration_ms: 0.385176
+  type: 'suite'
+  ...
+# Subtest: formatFileSize
+    # Subtest: bytes below 1 KB
+    ok 1 - bytes below 1 KB
+      ---
+      duration_ms: 0.0671
+      type: 'test'
+      ...
+    # Subtest: kilobytes
+    ok 2 - kilobytes
+      ---
+      duration_ms: 0.031511
+      type: 'test'
+      ...
+    # Subtest: megabytes with one decimal place
+    ok 3 - megabytes with one decimal place
+      ---
+      duration_ms: 0.028466
+      type: 'test'
+      ...
+    # Subtest: zero, negative and non-numeric input is 0 KB
+    ok 4 - zero, negative and non-numeric input is 0 KB
+      ---
+      duration_ms: 0.027602
+      type: 'test'
+      ...
+    1..4
+ok 8 - formatFileSize
+  ---
+  duration_ms: 0.206018
+  type: 'suite'
+  ...
+# Subtest: dictionary completeness (NFR-LOC-01)
+    # Subtest: English and Urdu define exactly the same keys
+    ok 1 - English and Urdu define exactly the same keys
+      ---
+      duration_ms: 1.728743
+      type: 'test'
+      ...
+    # Subtest: no value is empty in either language
+    ok 2 - no value is empty in either language
+      ---
+      duration_ms: 0.314391
+      type: 'test'
+      ...
+    # Subtest: allKeys is sorted and unique
+    ok 3 - allKeys is sorted and unique
+      ---
+      duration_ms: 0.35047
+      type: 'test'
+      ...
+    # Subtest: every key is used in both languages with the same placeholders
+    ok 4 - every key is used in both languages with the same placeholders
+      ---
+      duration_ms: 0.846394
+      type: 'test'
+      ...
+    # Subtest: each shared key has exactly one owning dictionary part (NFR-MAIN-02)
+    ok 5 - each shared key has exactly one owning dictionary part (NFR-MAIN-02)
+      ---
+      duration_ms: 17.007697
+      type: 'test'
+      ...
+    # Subtest: the four verification statuses keep their short labels (SRS 4.2, IR-02)
+    ok 6 - the four verification statuses keep their short labels (SRS 4.2, IR-02)
+      ---
+      duration_ms: 0.135684
+      type: 'test'
+      ...
+    # Subtest: Urdu screens use Urdu script, not leftover English
+    ok 7 - Urdu screens use Urdu script, not leftover English
+      ---
+      duration_ms: 0.08868
+      type: 'test'
+      ...
+    1..7
+ok 9 - dictionary completeness (NFR-LOC-01)
+  ---
+  duration_ms: 21.649015
+  type: 'suite'
+  ...
+# Subtest: translate
+    # Subtest: returns the English string
+    ok 1 - returns the English string
+      ---
+      duration_ms: 0.551489
+      type: 'test'
+      ...
+    # Subtest: returns the Urdu string
+    ok 2 - returns the Urdu string
+      ---
+      duration_ms: 0.069198
+      type: 'test'
+      ...
+    # Subtest: falls back to English for a key that only English defines
+    ok 3 - falls back to English for a key that only English defines
+      ---
+      duration_ms: 0.058993
+      type: 'test'
+      ...
+    # Subtest: falls back to the key itself when no dictionary defines it
+    ok 4 - falls back to the key itself when no dictionary defines it
+      ---
+      duration_ms: 0.034202
+      type: 'test'
+      ...
+    # Subtest: interpolates values into the translated string
+    ok 5 - interpolates values into the translated string
+      ---
+      duration_ms: 0.07143
+      type: 'test'
+      ...
+    # Subtest: interpolates numbers
+    ok 6 - interpolates numbers
+      ---
+      duration_ms: 0.124555
+      type: 'test'
+      ...
+    # Subtest: leaves a placeholder untouched when no value is supplied
+    ok 7 - leaves a placeholder untouched when no value is supplied
+      ---
+      duration_ms: 0.03703
+      type: 'test'
+      ...
+    # Subtest: ignores extra values that the template does not use
+    ok 8 - ignores extra values that the template does not use
+      ---
+      duration_ms: 0.0363
+      type: 'test'
+      ...
+    # Subtest: createTranslator binds a language and interpolates
+    ok 9 - createTranslator binds a language and interpolates
+      ---
+      duration_ms: 0.057176
+      type: 'test'
+      ...
+    1..9
+ok 10 - translate
+  ---
+  duration_ms: 1.336788
+  type: 'suite'
+  ...
+# Subtest: interpolate
+    # Subtest: replaces every placeholder occurrence
+    ok 1 - replaces every placeholder occurrence
+      ---
+      duration_ms: 0.07785
+      type: 'test'
+      ...
+    # Subtest: replaces several different placeholders
+    ok 2 - replaces several different placeholders
+      ---
+      duration_ms: 0.039152
+      type: 'test'
+      ...
+    # Subtest: returns the template unchanged when no values are given
+    ok 3 - returns the template unchanged when no values are given
+      ---
+      duration_ms: 0.0703
+      type: 'test'
+      ...
+    # Subtest: keeps an unknown placeholder as written
+    ok 4 - keeps an unknown placeholder as written
+      ---
+      duration_ms: 0.033332
+      type: 'test'
+      ...
+    # Subtest: a value is inserted literally, not re-interpreted
+    ok 5 - a value is inserted literally, not re-interpreted
+      ---
+      duration_ms: 0.029099
+      type: 'test'
+      ...
+    1..5
+ok 11 - interpolate
+  ---
+  duration_ms: 0.321172
+  type: 'suite'
+  ...
+# Subtest: direction (NFR-LOC-03)
+    # Subtest: Urdu is right-to-left and English is left-to-right
+    ok 1 - Urdu is right-to-left and English is left-to-right
+      ---
+      duration_ms: 0.063784
+      type: 'test'
+      ...
+    # Subtest: exactly two supported languages
+    ok 2 - exactly two supported languages
+      ---
+      duration_ms: 0.033808
+      type: 'test'
+      ...
+    # Subtest: isLocale accepts only en and ur
+    ok 3 - isLocale accepts only en and ur
+      ---
+      duration_ms: 0.035751
+      type: 'test'
+      ...
+    1..3
+ok 12 - direction (NFR-LOC-03)
+  ---
+  duration_ms: 0.212186
+  type: 'suite'
+  ...
+  • member-1/unit/rules.test.ts
+  • member-1/unit/validation.test.ts
+# Subtest: hashPassword
+    # Subtest: never returns the password itself (NFR-SEC-01)
+    ok 1 - never returns the password itself (NFR-SEC-01)
+      ---
+      duration_ms: 49.332167
+      type: 'test'
+      ...
+  • member-2/admin.test.ts
+  • member-3/unit/inventory-rules.test.ts
+  • member-3/unit/monitoring-rules.test.ts
+  • member-5/unit/search-rules.test.ts
+    # Subtest: stores a scrypt record with its own parameters
+    ok 2 - stores a scrypt record with its own parameters
+      ---
+      duration_ms: 47.438323
+      type: 'test'
+      ...
+    # Subtest: uses a different salt (and therefore a different hash) every time
+    ok 3 - uses a different salt (and therefore a different hash) every time
+      ---
+      duration_ms: 62.052428
+      type: 'test'
+      ...
+    1..3
+ok 13 - hashPassword
+  ---
+  duration_ms: 159.11705
+  type: 'suite'
+  ...
+# Subtest: verifyPassword
+    # Subtest: accepts the correct password
+    ok 1 - accepts the correct password
+      ---
+      duration_ms: 57.343924
+      type: 'test'
+      ...
+    # Subtest: rejects a wrong password
+    ok 2 - rejects a wrong password
+      ---
+      duration_ms: 119.513882
+      type: 'test'
+      ...
+    # Subtest: rejects a hash that has been tampered with
+    ok 3 - rejects a hash that has been tampered with
+      ---
+      duration_ms: 57.165594
+      type: 'test'
+      ...
+    # Subtest: rejects a malformed stored value instead of throwing
+    ok 4 - rejects a malformed stored value instead of throwing
+      ---
+      duration_ms: 0.273524
+      type: 'test'
+      ...
+    # Subtest: rejects null and undefined stored values
+    ok 5 - rejects null and undefined stored values
+      ---
+      duration_ms: 0.056629
+      type: 'test'
+      ...
+    # Subtest: two hashes of the same password both verify
+    ok 6 - two hashes of the same password both verify
+      ---
+      duration_ms: 115.13956
+      type: 'test'
+      ...
+    # Subtest: a hash does not verify against a different password
+    ok 7 - a hash does not verify against a different password
+      ---
+      duration_ms: 56.710364
+      type: 'test'
+      ...
+    1..7
+ok 14 - verifyPassword
+  ---
+  duration_ms: 406.70844
+  type: 'suite'
+  ...
+# Subtest: randomToken
+    # Subtest: returns a URL-safe token of the requested size
+    ok 1 - returns a URL-safe token of the requested size
+      ---
+      duration_ms: 0.287973
+      type: 'test'
+      ...
+    # Subtest: tokens are unique
+    ok 2 - tokens are unique
+      ---
+      duration_ms: 0.156363
+      type: 'test'
+      ...
+    # Subtest: honours a custom byte length
+    ok 3 - honours a custom byte length
+      ---
+      duration_ms: 0.035035
+      type: 'test'
+      ...
+    1..3
+ok 15 - randomToken
+  ---
+  duration_ms: 0.561302
+  type: 'suite'
+  ...
+# Subtest: ROLE_HOME
+    # Subtest: every role has exactly one home
+    ok 1 - every role has exactly one home
+      ---
+      duration_ms: 0.069382
+      type: 'test'
+      ...
+    1..1
+ok 16 - ROLE_HOME
+  ---
+  duration_ms: 0.096803
+  type: 'suite'
+  ...
+# Subtest: landingPath
+    # Subtest: a verified organization goes to its own home
+    ok 1 - a verified organization goes to its own home
+      ---
+      duration_ms: 0.074938
+      type: 'test'
+      ...
+    # Subtest: pending, rejected and suspended organizations go to the status screen (G-04)
+    ok 2 - pending, rejected and suspended organizations go to the status screen (G-04)
+      ---
+      duration_ms: 0.055254
+      type: 'test'
+      ...
+    # Subtest: admin and donor have no organization and go to their own home
+    ok 3 - admin and donor have no organization and go to their own home
+      ---
+      duration_ms: 0.037629
+      type: 'test'
+      ...
+    1..3
+ok 17 - landingPath
+  ---
+  duration_ms: 0.210545
+  type: 'suite'
+  ...
+# Subtest: canOperate (FR-VER-03)
+    # Subtest: only a Verified organization may use operational features
+    ok 1 - only a Verified organization may use operational features
+      ---
+      duration_ms: 0.056848
+      type: 'test'
+      ...
+    # Subtest: pending, rejected and suspended organizations are blocked
+    ok 2 - pending, rejected and suspended organizations are blocked
+      ---
+      duration_ms: 0.045821
+      type: 'test'
+      ...
+    # Subtest: a missing organization status blocks an organization user
+    ok 3 - a missing organization status blocks an organization user
+      ---
+      duration_ms: 0.023613
+      type: 'test'
+      ...
+    # Subtest: admin and donor are not organization users and are not blocked
+    ok 4 - admin and donor are not organization users and are not blocked
+      ---
+      duration_ms: 0.021599
+      type: 'test'
+      ...
+    1..4
+ok 18 - canOperate (FR-VER-03)
+  ---
+  duration_ms: 0.186579
+  type: 'suite'
+  ...
+# Subtest: login lockout thresholds (NFR-SEC-02)
+    # Subtest: 5 failed attempts and a 15-minute lock are the documented defaults
+    ok 1 - 5 failed attempts and a 15-minute lock are the documented defaults
+      ---
+      duration_ms: 0.073919
+      type: 'test'
+      ...
+    # Subtest: an account is locked after exactly 5 failed attempts
+    ok 2 - an account is locked after exactly 5 failed attempts
+      ---
+      duration_ms: 0.100566
+      type: 'test'
+      ...
+    # Subtest: the lock lasts exactly 15 minutes
+    ok 3 - the lock lasts exactly 15 minutes
+      ---
+      duration_ms: 0.035087
+      type: 'test'
+      ...
+    # Subtest: remaining attempts count down from 4 to 0
+    ok 4 - remaining attempts count down from 4 to 0
+      ---
+      duration_ms: 0.047037
+      type: 'test'
+      ...
+    # Subtest: a custom threshold and lock length are respected
+    ok 5 - a custom threshold and lock length are respected
+      ---
+      duration_ms: 0.032964
+      type: 'test'
+      ...
+    # Subtest: a negative or fractional previous count cannot produce a negative attempt count
+    ok 6 - a negative or fractional previous count cannot produce a negative attempt count
+      ---
+      duration_ms: 0.03187
+      type: 'test'
+      ...
+    1..6
+ok 19 - login lockout thresholds (NFR-SEC-02)
+  ---
+  duration_ms: 0.371293
+  type: 'suite'
+  ...
+# Subtest: isLocked
+    # Subtest: true while the lock has not expired
+    ok 1 - true while the lock has not expired
+      ---
+      duration_ms: 0.065035
+      type: 'test'
+      ...
+    # Subtest: false once the lock has expired
+    ok 2 - false once the lock has expired
+      ---
+      duration_ms: 0.025028
+      type: 'test'
+      ...
+    # Subtest: false when there is no lock
+    ok 3 - false when there is no lock
+      ---
+      duration_ms: 0.022606
+      type: 'test'
+      ...
+    # Subtest: false for an unparseable timestamp
+    ok 4 - false for an unparseable timestamp
+      ---
+      duration_ms: 0.081733
+      type: 'test'
+      ...
+    1..4
+ok 20 - isLocked
+  ---
+  duration_ms: 0.23832
+  type: 'suite'
+  ...
+# Subtest: minutesUntil
+    # Subtest: rounds a partial minute up
+    ok 1 - rounds a partial minute up
+      ---
+      duration_ms: 0.073413
+      type: 'test'
+      ...
+    # Subtest: reports 15 for a full 15-minute lock
+    ok 2 - reports 15 for a full 15-minute lock
+      ---
+      duration_ms: 0.024531
+      type: 'test'
+      ...
+    # Subtest: never reports less than 1 minute
+    ok 3 - never reports less than 1 minute
+      ---
+      duration_ms: 0.022068
+      type: 'test'
+      ...
+    # Subtest: accepts an ISO string
+    ok 4 - accepts an ISO string
+      ---
+      duration_ms: 0.02741
+      type: 'test'
+      ...
+    1..4
+ok 21 - minutesUntil
+  ---
+  duration_ms: 0.18936
+  type: 'suite'
+  ...
+# Subtest: normalizeMobile
+    # Subtest: normalises 0300-1234567 to E.164
+    ok 1 - normalises 0300-1234567 to E.164
+      ---
+      duration_ms: 0.192905
+      type: 'test'
+      ...
+    # Subtest: normalises +92 300 1234567 to E.164
+    ok 2 - normalises +92 300 1234567 to E.164
+      ---
+      duration_ms: 0.049691
+      type: 'test'
+      ...
+    # Subtest: normalises 923001234567 to E.164
+    ok 3 - normalises 923001234567 to E.164
+      ---
+      duration_ms: 0.028473
+      type: 'test'
+      ...
+    # Subtest: normalises the unpunctuated national form 03001234567
+    ok 4 - normalises the unpunctuated national form 03001234567
+      ---
+      duration_ms: 0.026048
+      type: 'test'
+      ...
+    # Subtest: normalises a bare 10-digit number
+    ok 5 - normalises a bare 10-digit number
+      ---
+      duration_ms: 0.027865
+      type: 'test'
+      ...
+    # Subtest: ignores dashes and spaces anywhere in the number
+    ok 6 - ignores dashes and spaces anywhere in the number
+      ---
+      duration_ms: 0.025188
+      type: 'test'
+      ...
+    # Subtest: accepts the new 4xx mobile range used from 2026
+    ok 7 - accepts the new 4xx mobile range used from 2026
+      ---
+      duration_ms: 0.021721
+      type: 'test'
+      ...
+    # Subtest: rejects 12345 (too short)
+    ok 8 - rejects 12345 (too short)
+      ---
+      duration_ms: 0.119649
+      type: 'test'
+      ...
+    # Subtest: rejects a Karachi landline such as 021-1234567
+    ok 9 - rejects a Karachi landline such as 021-1234567
+      ---
+      duration_ms: 0.034754
+      type: 'test'
+      ...
+    # Subtest: rejects a number with the wrong length
+    ok 10 - rejects a number with the wrong length
+      ---
+      duration_ms: 0.02706
+      type: 'test'
+      ...
+    # Subtest: rejects a non-Pakistani number
+    ok 11 - rejects a non-Pakistani number
+      ---
+      duration_ms: 0.02239
+      type: 'test'
+      ...
+    # Subtest: rejects empty and non-numeric input
+    ok 12 - rejects empty and non-numeric input
+      ---
+      duration_ms: 0.028869
+      type: 'test'
+      ...
+    # Subtest: isMobile agrees with normalizeMobile
+    ok 13 - isMobile agrees with normalizeMobile
+      ---
+      duration_ms: 0.075265
+      type: 'test'
+      ...
+    # Subtest: formatMobile shows the pretty +92 300 1234567 form
+    ok 14 - formatMobile shows the pretty +92 300 1234567 form
+      ---
+      duration_ms: 0.061769
+      type: 'test'
+      ...
+    # Subtest: formatMobile leaves an invalid number unchanged
+    ok 15 - formatMobile leaves an invalid number unchanged
+      ---
+      duration_ms: 0.0421
+      type: 'test'
+      ...
+    1..15
+ok 22 - normalizeMobile
+  ---
+  duration_ms: 0.910245
+  type: 'suite'
+  ...
+# Subtest: isEmail
+    # Subtest: accepts ordinary addresses
+    ok 1 - accepts ordinary addresses
+      ---
+      duration_ms: 0.127701
+      type: 'test'
+      ...
+    # Subtest: rejects addresses without a valid shape
+    ok 2 - rejects addresses without a valid shape
+      ---
+      duration_ms: 0.041501
+      type: 'test'
+      ...
+    # Subtest: rejects an address longer than 254 characters
+    ok 3 - rejects an address longer than 254 characters
+      ---
+      duration_ms: 0.033053
+      type: 'test'
+      ...
+    1..3
+ok 23 - isEmail
+  ---
+  duration_ms: 0.245409
+  type: 'suite'
+  ...
+# Subtest: isStrongEnoughPassword
+    # Subtest: accepts exactly 8 characters (the SRS minimum)
+    ok 1 - accepts exactly 8 characters (the SRS minimum)
+      ---
+      duration_ms: 0.054485
+      type: 'test'
+      ...
+    # Subtest: rejects 7 characters
+    ok 2 - rejects 7 characters
+      ---
+      duration_ms: 0.024831
+      type: 'test'
+      ...
+    # Subtest: accepts up to 200 characters and rejects more
+    ok 3 - accepts up to 200 characters and rejects more
+      ---
+      duration_ms: 0.024557
+      type: 'test'
+      ...
+    # Subtest: counts characters literally, without trimming spaces
+    ok 4 - counts characters literally, without trimming spaces
+      ---
+      duration_ms: 0.022146
+      type: 'test'
+      ...
+    1..4
+ok 24 - isStrongEnoughPassword
+  ---
+  duration_ms: 0.167337
+  type: 'suite'
+  ...
+# Subtest: isValidOtp
+    # Subtest: accepts exactly six digits
+    ok 1 - accepts exactly six digits
+      ---
+      duration_ms: 0.080689
+      type: 'test'
+      ...
+    # Subtest: rejects the wrong length
+    ok 2 - rejects the wrong length
+      ---
+      duration_ms: 0.026641
+      type: 'test'
+      ...
+    # Subtest: rejects non-digits and empty input
+    ok 3 - rejects non-digits and empty input
+      ---
+      duration_ms: 0.022322
+      type: 'test'
+      ...
+    1..3
+ok 25 - isValidOtp
+  ---
+  duration_ms: 0.208468
+  type: 'suite'
+  ...
+# Subtest: controlled values (SRS 4.2)
+    # Subtest: there are eight blood groups and O-negative is one of them
+    ok 1 - there are eight blood groups and O-negative is one of them
+      ---
+      duration_ms: 0.062977
+      type: 'test'
+      ...
+    # Subtest: there are four blood components
+    ok 2 - there are four blood components
+      ---
+      duration_ms: 0.073386
+      type: 'test'
+      ...
+    # Subtest: there are three organization types
+    ok 3 - there are three organization types
+      ---
+      duration_ms: 0.041981
+      type: 'test'
+      ...
+    # Subtest: there are five user roles
+    ok 4 - there are five user roles
+      ---
+      duration_ms: 0.033282
+      type: 'test'
+      ...
+    # Subtest: there are exactly two languages
+    ok 5 - there are exactly two languages
+      ---
+      duration_ms: 0.040426
+      type: 'test'
+      ...
+    # Subtest: there are four verification statuses (A-04)
+    ok 6 - there are four verification statuses (A-04)
+      ---
+      duration_ms: 0.03297
+      type: 'test'
+      ...
+    1..6
+ok 26 - controlled values (SRS 4.2)
+  ---
+  duration_ms: 1.888201
+  type: 'suite'
+  ...
+# Subtest: validateLogin
+    # Subtest: accepts an email identifier and a password
+    ok 1 - accepts an email identifier and a password
+      ---
+      duration_ms: 0.228454
+      type: 'test'
+      ...
+    # Subtest: accepts a mobile identifier in any common format
+    ok 2 - accepts a mobile identifier in any common format
+      ---
+      duration_ms: 0.073741
+      type: 'test'
+      ...
+    # Subtest: trims the identifier
+    ok 3 - trims the identifier
+      ---
+      duration_ms: 0.043266
+      type: 'test'
+      ...
+    # Subtest: rejects an identifier that is neither an email nor a mobile number
+    ok 4 - rejects an identifier that is neither an email nor a mobile number
+      ---
+      duration_ms: 0.069142
+      type: 'test'
+      ...
+    # Subtest: requires both identifier and password
+    ok 5 - requires both identifier and password
+      ---
+      duration_ms: 0.033742
+      type: 'test'
+      ...
+    # Subtest: treats non-string values as missing (NFR-SEC-04)
+    ok 6 - treats non-string values as missing (NFR-SEC-04)
+      ---
+      duration_ms: 0.039142
+      type: 'test'
+      ...
+    # Subtest: does not trim the password
+    ok 7 - does not trim the password
+      ---
+      duration_ms: 0.028841
+      type: 'test'
+      ...
+    1..7
+ok 27 - validateLogin
+  ---
+  duration_ms: 0.616239
+  type: 'suite'
+  ...
+# Subtest: validateOrganizationRegistration (FR-VER-01)
+    # Subtest: accepts a complete registration
+    ok 1 - accepts a complete registration
+      ---
+      duration_ms: 0.13302
+      type: 'test'
+      ...
+    # Subtest: accepts each organization type
+    ok 2 - accepts each organization type
+      ---
+      duration_ms: 0.052223
+      type: 'test'
+      ...
+    # Subtest: trims the submitted text values
+    ok 3 - trims the submitted text values
+      ---
+      duration_ms: 0.027898
+      type: 'test'
+      ...
+    # Subtest: requires the organization type and rejects an unknown one
+    ok 4 - requires the organization type and rejects an unknown one
+      ---
+      duration_ms: 0.039287
+      type: 'test'
+      ...
+    # Subtest: requires each of the nine SRS fields
+    ok 5 - requires each of the nine SRS fields
+      ---
+      duration_ms: 0.187279
+      type: 'test'
+      ...
+    # Subtest: rejects a too-short or too-long organization name
+    ok 6 - rejects a too-short or too-long organization name
+      ---
+      duration_ms: 0.040243
+      type: 'test'
+      ...
+    # Subtest: rejects a too-short address (it must be a Karachi address)
+    ok 7 - rejects a too-short address (it must be a Karachi address)
+      ---
+      duration_ms: 0.033221
+      type: 'test'
+      ...
+    # Subtest: rejects an invalid official phone number
+    ok 8 - rejects an invalid official phone number
+      ---
+      duration_ms: 0.080403
+      type: 'test'
+      ...
+    # Subtest: rejects an invalid official email address
+    ok 9 - rejects an invalid official email address
+      ---
+      duration_ms: 0.031854
+      type: 'test'
+      ...
+    # Subtest: rejects a too-short licence number
+    ok 10 - rejects a too-short licence number
+      ---
+      duration_ms: 0.030992
+      type: 'test'
+      ...
+    # Subtest: requires the representative name and designation
+    ok 11 - requires the representative name and designation
+      ---
+      duration_ms: 0.033071
+      type: 'test'
+      ...
+    # Subtest: rejects a password shorter than 8 characters (NFR-SEC-01)
+    ok 12 - rejects a password shorter than 8 characters (NFR-SEC-01)
+      ---
+      duration_ms: 0.026228
+      type: 'test'
+      ...
+    # Subtest: rejects a password confirmation that does not match
+    ok 13 - rejects a password confirmation that does not match
+      ---
+      duration_ms: 0.023332
+      type: 'test'
+      ...
+    1..13
+ok 28 - validateOrganizationRegistration (FR-VER-01)
+  ---
+  duration_ms: 0.844461
+  type: 'suite'
+  ...
+# Subtest: validateDonorSignup (FR-DON-01, DR-03)
+    # Subtest: accepts name, mobile, password and consent
+    ok 1 - accepts name, mobile, password and consent
+      ---
+      duration_ms: 0.158641
+      type: 'test'
+      ...
+    # Subtest: requires a name of at least two characters
+    ok 2 - requires a name of at least two characters
+      ---
+      duration_ms: 0.039568
+      type: 'test'
+      ...
+    # Subtest: requires a valid mobile number
+    ok 3 - requires a valid mobile number
+      ---
+      duration_ms: 0.028784
+      type: 'test'
+      ...
+    # Subtest: DR-03: registration is refused without explicit consent
+    ok 4 - DR-03: registration is refused without explicit consent
+      ---
+      duration_ms: 0.034437
+      type: 'test'
+      ...
+    # Subtest: DR-03: consent must be a real boolean, not the string 'true'
+    ok 5 - DR-03: consent must be a real boolean, not the string 'true'
+      ---
+      duration_ms: 0.021765
+      type: 'test'
+      ...
+    # Subtest: enforces the 8-character password rule (NFR-SEC-01)
+    ok 6 - enforces the 8-character password rule (NFR-SEC-01)
+      ---
+      duration_ms: 0.02658
+      type: 'test'
+      ...
+    # Subtest: rejects a confirmation that does not match
+    ok 7 - rejects a confirmation that does not match
+      ---
+      duration_ms: 0.029355
+      type: 'test'
+      ...
+    # Subtest: reports every missing field at once
+    ok 8 - reports every missing field at once
+      ---
+      duration_ms: 0.047861
+      type: 'test'
+      ...
+    1..8
+ok 29 - validateDonorSignup (FR-DON-01, DR-03)
+  ---
+  duration_ms: 0.515059
+  type: 'suite'
+  ...
+# Subtest: validatePasswordReset
+    # Subtest: accepts a matching new password
+    ok 1 - accepts a matching new password
+      ---
+      duration_ms: 0.067566
+      type: 'test'
+      ...
+    # Subtest: rejects a mismatch
+    ok 2 - rejects a mismatch
+      ---
+      duration_ms: 0.027776
+      type: 'test'
+      ...
+    # Subtest: rejects a short password
+    ok 3 - rejects a short password
+      ---
+      duration_ms: 0.020307
+      type: 'test'
+      ...
+    # Subtest: requires both entries
+    ok 4 - requires both entries
+      ---
+      duration_ms: 0.021734
+      type: 'test'
+      ...
+    1..4
+ok 30 - validatePasswordReset
+  ---
+  duration_ms: 0.175263
+  type: 'suite'
+  ...
+# Subtest: errorKey
+    # Subtest: maps a field error code to its dictionary key
+    ok 1 - maps a field error code to its dictionary key
+      ---
+      duration_ms: 0.074228
+      type: 'test'
+      ...
+    1..1
+ok 31 - errorKey
+  ---
+  duration_ms: 0.093007
+  type: 'suite'
+  ...
+# Subtest: normalizeQuery
+    # Subtest: trims, lower-cases and collapses whitespace
+    ok 1 - trims, lower-cases and collapses whitespace
+      ---
+      duration_ms: 0.084857
+      type: 'test'
+      ...
+    # Subtest: returns an empty string for non-strings
+    ok 2 - returns an empty string for non-strings
+      ---
+      duration_ms: 0.027496
+      type: 'test'
+      ...
+    1..2
+ok 32 - normalizeQuery
+  ---
+  duration_ms: 0.147229
+  type: 'suite'
+  ...
+# Subtest: matchesAccountQuery
+    # Subtest: matches a name case-insensitively
+    ok 1 - matches a name case-insensitively
+      ---
+      duration_ms: 0.093341
+      type: 'test'
+      ...
+    # Subtest: matches an email
+    ok 2 - matches an email
+      ---
+      duration_ms: 0.025289
+      type: 'test'
+      ...
+    # Subtest: matches a local and an international phone fragment
+    ok 3 - matches a local and an international phone fragment
+      ---
+      duration_ms: 0.071414
+      type: 'test'
+      ...
+    # Subtest: matches an organization name
+    ok 4 - matches an organization name
+      ---
+      duration_ms: 0.029684
+      type: 'test'
+      ...
+    # Subtest: an empty query matches every account
+    ok 5 - an empty query matches every account
+      ---
+      duration_ms: 0.030961
+      type: 'test'
+      ...
+    # Subtest: returns false when nothing matches
+    ok 6 - returns false when nothing matches
+      ---
+      duration_ms: 0.025905
+      type: 'test'
+      ...
+    # Subtest: treats regex and SQL wildcard characters as literal text
+    ok 7 - treats regex and SQL wildcard characters as literal text
+      ---
+      duration_ms: 0.02479
+      type: 'test'
+      ...
+    1..7
+ok 33 - matchesAccountQuery
+  ---
+  duration_ms: 0.372621
+  type: 'suite'
+  ...
+# Subtest: validateAccountAction
+    # Subtest: requires a user id
+    ok 1 - requires a user id
+      ---
+      duration_ms: 0.109487
+      type: 'test'
+      ...
+    # Subtest: requires an action
+    ok 2 - requires an action
+      ---
+      duration_ms: 0.031203
+      type: 'test'
+      ...
+    # Subtest: rejects an action outside the whitelist
+    ok 3 - rejects an action outside the whitelist
+      ---
+      duration_ms: 0.029704
+      type: 'test'
+      ...
+    # Subtest: accepts deactivate and reactivate
+    ok 4 - accepts deactivate and reactivate
+      ---
+      duration_ms: 0.039707
+      type: 'test'
+      ...
+    # Subtest: trims the user id
+    ok 5 - trims the user id
+      ---
+      duration_ms: 0.025907
+      type: 'test'
+      ...
+    1..5
+ok 34 - validateAccountAction
+  ---
+  duration_ms: 0.293798
+  type: 'suite'
+  ...
+# Subtest: canChangeAccountStatus
+    # Subtest: refuses to change your own account
+    ok 1 - refuses to change your own account
+      ---
+      duration_ms: 0.164121
+      type: 'test'
+      ...
+    # Subtest: refuses to deactivate the last active administrator
+    ok 2 - refuses to deactivate the last active administrator
+      ---
+      duration_ms: 0.043576
+      type: 'test'
+      ...
+    # Subtest: allows deactivating an administrator when another one stays active
+    ok 3 - allows deactivating an administrator when another one stays active
+      ---
+      duration_ms: 0.036296
+      type: 'test'
+      ...
+    # Subtest: allows deactivating a donor or an organization user
+    ok 4 - allows deactivating a donor or an organization user
+      ---
+      duration_ms: 0.034578
+      type: 'test'
+      ...
+    # Subtest: refuses to deactivate an already deactivated account
+    ok 5 - refuses to deactivate an already deactivated account
+      ---
+      duration_ms: 0.02739
+      type: 'test'
+      ...
+    # Subtest: allows reactivating a deactivated account
+    ok 6 - allows reactivating a deactivated account
+      ---
+      duration_ms: 0.023952
+      type: 'test'
+      ...
+    # Subtest: refuses to reactivate an account that is already active
+    ok 7 - refuses to reactivate an account that is already active
+      ---
+      duration_ms: 0.023561
+      type: 'test'
+      ...
+    1..7
+ok 35 - canChangeAccountStatus
+  ---
+  duration_ms: 0.427375
+  type: 'suite'
+  ...
+# Subtest: validateCampaignDecision
+    # Subtest: approving needs no reason
+    ok 1 - approving needs no reason
+      ---
+      duration_ms: 0.086161
+      type: 'test'
+      ...
+    # Subtest: requires a reason to reject or return
+    ok 2 - requires a reason to reject or return
+      ---
+      duration_ms: 0.059059
+      type: 'test'
+      ...
+    # Subtest: accepts a reason of three or more characters
+    ok 3 - accepts a reason of three or more characters
+      ---
+      duration_ms: 0.045224
+      type: 'test'
+      ...
+    # Subtest: rejects an unknown decision
+    ok 4 - rejects an unknown decision
+      ---
+      duration_ms: 0.041258
+      type: 'test'
+      ...
+    # Subtest: requires a campaign id
+    ok 5 - requires a campaign id
+      ---
+      duration_ms: 0.032147
+      type: 'test'
+      ...
+    1..5
+ok 36 - validateCampaignDecision
+  ---
+  duration_ms: 0.377558
+  type: 'suite'
+  ...
+# Subtest: campaign decision mapping
+    # Subtest: approve -> approved, reject -> rejected, return -> draft
+    ok 1 - approve -> approved, reject -> rejected, return -> draft
+      ---
+      duration_ms: 0.050719
+      type: 'test'
+      ...
+    # Subtest: only pending_approval is reviewable
+    ok 2 - only pending_approval is reviewable
+      ---
+      duration_ms: 0.044352
+      type: 'test'
+      ...
+    # Subtest: keeps the six SRS statuses
+    ok 3 - keeps the six SRS statuses
+      ---
+      duration_ms: 0.028264
+      type: 'test'
+      ...
+    # Subtest: maps statuses to badge tones
+    ok 4 - maps statuses to badge tones
+      ---
+      duration_ms: 0.037921
+      type: 'test'
+      ...
+    1..4
+ok 37 - campaign decision mapping
+  ---
+  duration_ms: 0.207734
+  type: 'suite'
+  ...
+# Subtest: type guards
+    # Subtest: isAccountAction accepts only deactivate/reactivate
+    ok 1 - isAccountAction accepts only deactivate/reactivate
+      ---
+      duration_ms: 0.07904
+      type: 'test'
+      ...
+    # Subtest: isCampaignDecision accepts only approve/reject/return
+    ok 2 - isCampaignDecision accepts only approve/reject/return
+      ---
+      duration_ms: 0.038757
+      type: 'test'
+      ...
+    1..2
+ok 38 - type guards
+  ---
+  duration_ms: 0.15207
+  type: 'suite'
+  ...
+# Subtest: validateBatchInput - FR-INV-01 / DR-01
+    # Subtest: accepts a complete batch and parses the date as end of day PKT
+    ok 1 - accepts a complete batch and parses the date as end of day PKT
+      ---
+      duration_ms: 0.22826
+      type: 'test'
+      ...
+    # Subtest: rejects a negative quantity
+    ok 2 - rejects a negative quantity
+      ---
+      duration_ms: 0.081221
+      type: 'test'
+      ...
+    # Subtest: rejects a fractional quantity
+    ok 3 - rejects a fractional quantity
+      ---
+      duration_ms: 0.032543
+      type: 'test'
+      ...
+    # Subtest: rejects a past expiry date
+    ok 4 - rejects a past expiry date
+      ---
+      duration_ms: 0.044819
+      type: 'test'
+      ...
+    # Subtest: rejects unknown controlled values (SRS 4.2)
+    ok 5 - rejects unknown controlled values (SRS 4.2)
+      ---
+      duration_ms: 0.048243
+      type: 'test'
+      ...
+    # Subtest: editing accepts an unchanged past expiry but not a newly typed one
+    ok 6 - editing accepts an unchanged past expiry but not a newly typed one
+      ---
+      duration_ms: 0.044771
+      type: 'test'
+      ...
+    1..6
+ok 39 - validateBatchInput - FR-INV-01 / DR-01
+  ---
+  duration_ms: 0.549762
+  type: 'suite'
+  ...
+# Subtest: availability - FR-INV-02 / FR-INV-04 / FR-INV-08 (4.8)
+    # Subtest: counts only active, unexpired holds
+    ok 1 - counts only active, unexpired holds
+      ---
+      duration_ms: 0.097891
+      type: 'test'
+      ...
+    # Subtest: available = units - active holds, never negative
+    ok 2 - available = units - active holds, never negative
+      ---
+      duration_ms: 0.046679
+      type: 'test'
+      ...
+    # Subtest: only approved, unexpired, unreserved stock of a verified bank counts
+    ok 3 - only approved, unexpired, unreserved stock of a verified bank counts
+      ---
+      duration_ms: 0.073911
+      type: 'test'
+      ...
+    1..3
+ok 40 - availability - FR-INV-02 / FR-INV-04 / FR-INV-08 (4.8)
+  ---
+  duration_ms: 0.260364
+  type: 'suite'
+  ...
+# Subtest: movements - FR-INV-03 / FR-INV-05 / FR-INV-06 / A-08
+    # Subtest: signs the quantity by movement type
+    ok 1 - signs the quantity by movement type
+      ---
+      duration_ms: 0.111206
+      type: 'test'
+      ...
+    # Subtest: reservations change availability, not physical units
+    ok 2 - reservations change availability, not physical units
+      ---
+      duration_ms: 0.079046
+      type: 'test'
+      ...
+    # Subtest: a movement can never drive the quantity below zero (DR-01)
+    ok 3 - a movement can never drive the quantity below zero (DR-01)
+      ---
+      duration_ms: 0.043244
+      type: 'test'
+      ...
+    # Subtest: formats the B-04 summary values
+    ok 4 - formats the B-04 summary values
+      ---
+      duration_ms: 0.045561
+      type: 'test'
+      ...
+    1..4
+ok 41 - movements - FR-INV-03 / FR-INV-05 / FR-INV-06 / A-08
+  ---
+  duration_ms: 0.331206
+  type: 'suite'
+  ...
+# Subtest: manual movements - 4.4
+    # Subtest: issue and discard are limited to the units held
+    ok 1 - issue and discard are limited to the units held
+      ---
+      duration_ms: 0.125474
+      type: 'test'
+      ...
+    # Subtest: zero units is not a removal
+    ok 2 - zero units is not a removal
+      ---
+      duration_ms: 0.029399
+      type: 'test'
+      ...
+    # Subtest: a correction needs a reason and sets an absolute total
+    ok 3 - a correction needs a reason and sets an absolute total
+      ---
+      duration_ms: 0.0611
+      type: 'test'
+      ...
+    # Subtest: expire clears the batch and refuses an empty one
+    ok 4 - expire clears the batch and refuses an empty one
+      ---
+      duration_ms: 0.036169
+      type: 'test'
+      ...
+    1..4
+ok 42 - manual movements - 4.4
+  ---
+  duration_ms: 0.303795
+  type: 'suite'
+  ...
+# Subtest: reservations - FR-INV-04 / A-10
+    # Subtest: cannot reserve more than is free
+    ok 1 - cannot reserve more than is free
+      ---
+      duration_ms: 0.140471
+      type: 'test'
+      ...
+    # Subtest: hold defaults to 6 hours and is limited to 1-72
+    ok 2 - hold defaults to 6 hours and is limited to 1-72
+      ---
+      duration_ms: 0.044869
+      type: 'test'
+      ...
+    # Subtest: hold end is exactly six hours later by default
+    ok 3 - hold end is exactly six hours later by default
+      ---
+      duration_ms: 0.039214
+      type: 'test'
+      ...
+    1..3
+ok 43 - reservations - FR-INV-04 / A-10
+  ---
+  duration_ms: 0.273286
+  type: 'suite'
+  ...
+# Subtest: transfers - FR-INV-06 / A-11
+    # Subtest: requires a receiving bank
+    ok 1 - requires a receiving bank
+      ---
+      duration_ms: 0.118034
+      type: 'test'
+      ...
+    # Subtest: cannot send more than the batch holds
+    ok 2 - cannot send more than the batch holds
+      ---
+      duration_ms: 0.038305
+      type: 'test'
+      ...
+    # Subtest: accepts a valid transfer
+    ok 3 - accepts a valid transfer
+      ---
+      duration_ms: 0.03933
+      type: 'test'
+      ...
+    1..3
+ok 44 - transfers - FR-INV-06 / A-11
+  ---
+  duration_ms: 0.235977
+  type: 'suite'
+  ...
+# Subtest: diffBatch - FR-INV-03
+    # Subtest: reports nothing when nothing changed
+    ok 1 - reports nothing when nothing changed
+      ---
+      duration_ms: 0.087428
+      type: 'test'
+      ...
+    # Subtest: reports units, status and expiry changes
+    ok 2 - reports units, status and expiry changes
+      ---
+      duration_ms: 0.045118
+      type: 'test'
+      ...
+    1..2
+ok 45 - diffBatch - FR-INV-03
+  ---
+  duration_ms: 0.163345
+  type: 'suite'
+  ...
+# Subtest: expiry warning windows - FR-MON-01 / A-31
+    # Subtest: uses the SRS defaults: platelets 2, whole blood 7, red cells 7, plasma 30
+    ok 1 - uses the SRS defaults: platelets 2, whole blood 7, red cells 7, plasma 30
+      ---
+      duration_ms: 0.048039
+      type: 'test'
+      ...
+    # Subtest: a bank can override one component without touching the others
+    ok 2 - a bank can override one component without touching the others
+      ---
+      duration_ms: 0.038149
+      type: 'test'
+      ...
+    # Subtest: platelets expiring tomorrow warn, red cells 20 days out do not
+    ok 3 - platelets expiring tomorrow warn, red cells 20 days out do not
+      ---
+      duration_ms: 0.050486
+      type: 'test'
+      ...
+    # Subtest: an already expired batch is not 'expiring soon'
+    ok 4 - an already expired batch is not 'expiring soon'
+      ---
+      duration_ms: 0.031384
+      type: 'test'
+      ...
+    # Subtest: an override widens the window
+    ok 5 - an override widens the window
+      ---
+      duration_ms: 0.030345
+      type: 'test'
+      ...
+    1..5
+ok 46 - expiry warning windows - FR-MON-01 / A-31
+  ---
+  duration_ms: 0.252148
+  type: 'suite'
+  ...
+# Subtest: low stock - FR-MON-03 / FR-MON-04 / A-05
+    # Subtest: defaults to 5 units where the bank set nothing
+    ok 1 - defaults to 5 units where the bank set nothing
+      ---
+      duration_ms: 0.053787
+      type: 'test'
+      ...
+    # Subtest: uses the bank's own threshold
+    ok 2 - uses the bank's own threshold
+      ---
+      duration_ms: 0.027587
+      type: 'test'
+      ...
+    # Subtest: alerts AT or BELOW the threshold, not only below
+    ok 3 - alerts AT or BELOW the threshold, not only below
+      ---
+      duration_ms: 0.028178
+      type: 'test'
+      ...
+    1..3
+ok 47 - low stock - FR-MON-03 / FR-MON-04 / A-05
+  ---
+  duration_ms: 0.155501
+  type: 'suite'
+  ...
+# Subtest: alert identity and the 24-hour rule - FR-MON-05 / A-32
+    # Subtest: expiry alerts are per batch; low-stock alerts are per group + component
+    ok 1 - expiry alerts are per batch; low-stock alerts are per group + component
+      ---
+      duration_ms: 0.062061
+      type: 'test'
+      ...
+    # Subtest: a first alert always raises
+    ok 2 - a first alert always raises
+      ---
+      duration_ms: 0.037793
+      type: 'test'
+      ...
+    # Subtest: the same alert does not repeat within 24 hours
+    ok 3 - the same alert does not repeat within 24 hours
+      ---
+      duration_ms: 0.032074
+      type: 'test'
+      ...
+    1..3
+ok 48 - alert identity and the 24-hour rule - FR-MON-05 / A-32
+  ---
+  duration_ms: 0.165431
+  type: 'suite'
+  ...
+# Subtest: sweep timing - FR-MON-06
+    # Subtest: sweeps when no sweep has run yet
+    ok 1 - sweeps when no sweep has run yet
+      ---
+      duration_ms: 0.091394
+      type: 'test'
+      ...
+    # Subtest: does not sweep again within the hour
+    ok 2 - does not sweep again within the hour
+      ---
+      duration_ms: 0.035196
+      type: 'test'
+      ...
+    # Subtest: sweeps once an hour has passed
+    ok 3 - sweeps once an hour has passed
+      ---
+      duration_ms: 0.027206
+      type: 'test'
+      ...
+    1..3
+ok 49 - sweep timing - FR-MON-06
+  ---
+  duration_ms: 0.190506
+  type: 'suite'
+  ...
+# Subtest: B-05 settings validation - FR-MON-01 / FR-MON-03
+    # Subtest: an empty threshold box means 'use the default'
+    ok 1 - an empty threshold box means 'use the default'
+      ---
+      duration_ms: 0.153552
+      type: 'test'
+      ...
+    # Subtest: fills the warning windows with the defaults when left empty
+    ok 2 - fills the warning windows with the defaults when left empty
+      ---
+      duration_ms: 0.041077
+      type: 'test'
+      ...
+    # Subtest: accepts a valid threshold and window
+    ok 3 - accepts a valid threshold and window
+      ---
+      duration_ms: 0.047367
+      type: 'test'
+      ...
+    # Subtest: rejects a negative threshold and an absurd window
+    ok 4 - rejects a negative threshold and an absurd window
+      ---
+      duration_ms: 0.104954
+      type: 'test'
+      ...
+    1..4
+ok 50 - B-05 settings validation - FR-MON-01 / FR-MON-03
+  ---
+  duration_ms: 0.399842
+  type: 'suite'
+  ...
+# Subtest: 5.1 validateSearchInput (FR-INV-07)
+    # Subtest: accepts every group x component combination
+    ok 1 - accepts every group x component combination
+      ---
+      duration_ms: 0.146954
+      type: 'test'
+      ...
+    # Subtest: both fields missing -> two required errors
+    ok 2 - both fields missing -> two required errors
+      ---
+      duration_ms: 0.05468
+      type: 'test'
+      ...
+    # Subtest: blank / whitespace counts as missing
+    ok 3 - blank / whitespace counts as missing
+      ---
+      duration_ms: 0.029224
+      type: 'test'
+      ...
+    # Subtest: only group missing
+    ok 4 - only group missing
+      ---
+      duration_ms: 0.030937
+      type: 'test'
+      ...
+    # Subtest: unknown values are invalid, not required
+    ok 5 - unknown values are invalid, not required
+      ---
+      duration_ms: 0.030908
+      type: 'test'
+      ...
+    # Subtest: SQL-looking input is rejected as invalid
+    ok 6 - SQL-looking input is rejected as invalid
+      ---
+      duration_ms: 0.023455
+      type: 'test'
+      ...
+    # Subtest: repeated query params use the first value
+    ok 7 - repeated query params use the first value
+      ---
+      duration_ms: 0.028182
+      type: 'test'
+      ...
+    # Subtest: hasSearchInput distinguishes first visit from submitted form
+    ok 8 - hasSearchInput distinguishes first visit from submitted form
+      ---
+      duration_ms: 0.084593
+      type: 'test'
+      ...
+    1..8
+ok 51 - 5.1 validateSearchInput (FR-INV-07)
+  ---
+  duration_ms: 0.518914
+  type: 'suite'
+  ...
+# Subtest: 5.2 grouping, quantity, expiry, ordering (FR-INV-07)
+    # Subtest: sums batches of one bank and keeps earliest expiry
+    ok 1 - sums batches of one bank and keeps earliest expiry
+      ---
+      duration_ms: 0.289974
+      type: 'test'
+      ...
+    # Subtest: sorted by quantity desc
+    ok 2 - sorted by quantity desc
+      ---
+      duration_ms: 0.09675
+      type: 'test'
+      ...
+    # Subtest: ties: sooner expiry first, then name
+    ok 3 - ties: sooner expiry first, then name
+      ---
+      duration_ms: 0.770565
+      type: 'test'
+      ...
+    # Subtest: result carries name, verified status, area, phone, email, last updated
+    ok 4 - result carries name, verified status, area, phone, email, last updated
+      ---
+      duration_ms: 0.097596
+      type: 'test'
+      ...
+    # Subtest: area falls back to address when blank
+    ok 5 - area falls back to address when blank
+      ---
+      duration_ms: 0.067181
+      type: 'test'
+      ...
+    # Subtest: null last-updated stays null (page shows 'not recorded')
+    ok 6 - null last-updated stays null (page shows 'not recorded')
+      ---
+      duration_ms: 0.038331
+      type: 'test'
+      ...
+    # Subtest: empty input -> empty list
+    ok 7 - empty input -> empty list
+      ---
+      duration_ms: 0.029855
+      type: 'test'
+      ...
+    1..7
+ok 52 - 5.2 grouping, quantity, expiry, ordering (FR-INV-07)
+  ---
+  duration_ms: 1.486819
+  type: 'suite'
+  ...
+# Subtest: 5.3 exclusions (FR-INV-08)
+    # Subtest: expired stock excluded
+    ok 1 - expired stock excluded
+      ---
+      duration_ms: 0.160954
+      type: 'test'
+      ...
+    # Subtest: expiring exactly now is excluded
+    ok 2 - expiring exactly now is excluded
+      ---
+      duration_ms: 0.039372
+      type: 'test'
+      ...
+    # Subtest: awaiting-testing excluded
+    ok 3 - awaiting-testing excluded
+      ---
+      duration_ms: 0.035421
+      type: 'test'
+      ...
+    # Subtest: rejected excluded
+    ok 4 - rejected excluded
+      ---
+      duration_ms: 0.025161
+      type: 'test'
+      ...
+    # Subtest: fully reserved excluded
+    ok 5 - fully reserved excluded
+      ---
+      duration_ms: 0.04232
+      type: 'test'
+      ...
+    # Subtest: partly reserved shows only the free units
+    ok 6 - partly reserved shows only the free units
+      ---
+      duration_ms: 0.079007
+      type: 'test'
+      ...
+    # Subtest: over-reserved never goes negative / appears
+    ok 7 - over-reserved never goes negative / appears
+      ---
+      duration_ms: 1.902268
+      type: 'test'
+      ...
+    # Subtest: zero units excluded
+    ok 8 - zero units excluded
+      ---
+      duration_ms: 0.130264
+      type: 'test'
+      ...
+    # Subtest: bank pending excluded
+    ok 9 - bank pending excluded
+      ---
+      duration_ms: 0.041327
+      type: 'test'
+      ...
+    # Subtest: bank rejected excluded
+    ok 10 - bank rejected excluded
+      ---
+      duration_ms: 0.020567
+      type: 'test'
+      ...
+    # Subtest: bank suspended excluded
+    ok 11 - bank suspended excluded
+      ---
+      duration_ms: 0.019123
+      type: 'test'
+      ...
+    # Subtest: bad batches are skipped, good batches of the same bank still count
+    ok 12 - bad batches are skipped, good batches of the same bank still count
+      ---
+      duration_ms: 0.066722
+      type: 'test'
+      ...
+    # Subtest: unparseable expiry skipped
+    ok 13 - unparseable expiry skipped
+      ---
+      duration_ms: 0.029656
+      type: 'test'
+      ...
+    1..13
+ok 53 - 5.3 exclusions (FR-INV-08)
+  ---
+  duration_ms: 2.742223
+  type: 'suite'
+  ...
+# Subtest: helpers
+    # Subtest: telHref strips spaces and punctuation
+    ok 1 - telHref strips spaces and punctuation
+      ---
+      duration_ms: 0.051978
+      type: 'test'
+      ...
+    # Subtest: 5.5 createRequestHref carries the search
+    ok 2 - 5.5 createRequestHref carries the search
+      ---
+      duration_ms: 0.129493
+      type: 'test'
+      ...
+    1..2
+ok 54 - helpers
+  ---
+  duration_ms: 0.215482
+  type: 'suite'
+  ...
+1..54
+# tests 262
+# suites 54
+# pass 262
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 772.539004

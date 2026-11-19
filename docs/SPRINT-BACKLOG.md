@@ -165,9 +165,9 @@ Every card comes from the module breakdown in section 3: **one card per numbered
 | Member 2 | 14 | 0 | 0 | 14 |
 | Member 3 | 16 | 0 | 0 | 16 |
 | Member 4 | 15 | 0 | 0 | 15 |
-| Member 5 | 13 | 0 | 0 | 13 |
+| Member 5 | 0 | 0 | 13 | 13 |
 | All members | 1 | 0 | 0 | 1 |
-| **Total** | **59** | **0** | **14** | **73** |
+| **Total** | **46** | **0** | **27** | **73** |
 
 > Member 1's part is complete: all of their cards are in the **Done** list and they have no remaining To Do or In Progress work.
 
@@ -231,17 +231,17 @@ The remaining Sprint 1 work, grouped by member, plus the group-level User Manual
 
 ### Member 5
 
-- [ ] Module 5 — 5.1 Form validation and hospital-only access guard
-- [ ] Module 5 — 5.1 Hospital availability search form (blood group and component)
-- [ ] Module 5 — 5.2 Results grouped per blood bank and sorted by quantity
-- [ ] Module 5 — 5.2 Results: available quantity, earliest expiry and last updated time
-- [ ] Module 5 — 5.2 Results: bank name, verification badge, area and contact details
-- [ ] Module 5 — 5.3 Donors and the general public cannot view inventory
-- [ ] Module 5 — 5.3 Exclusions: expired and unapproved stock
-- [ ] Module 5 — 5.3 Exclusions: reserved stock and suspended/unverified banks
-- [ ] Module 5 — 5.4 Availability disclaimer
-- [ ] Module 5 — 5.5 No-results message and create-request option
-- [ ] Module 5 — Availability query against Member 3's inventory tables
+- [x] Module 5 — 5.1 Form validation and hospital-only access guard
+- [x] Module 5 — 5.1 Hospital availability search form (blood group and component)
+- [x] Module 5 — 5.2 Results grouped per blood bank and sorted by quantity
+- [x] Module 5 — 5.2 Results: available quantity, earliest expiry and last updated time
+- [x] Module 5 — 5.2 Results: bank name, verification badge, area and contact details
+- [x] Module 5 — 5.3 Donors and the general public cannot view inventory
+- [x] Module 5 — 5.3 Exclusions: expired and unapproved stock
+- [x] Module 5 — 5.3 Exclusions: reserved stock and suspended/unverified banks
+- [x] Module 5 — 5.4 Availability disclaimer
+- [x] Module 5 — 5.5 No-results message and create-request option
+- [x] Module 5 — Availability query against Member 3's inventory tables
 - [ ] Tests and results for Module 5
 - [ ] Documentation update for Module 5
 

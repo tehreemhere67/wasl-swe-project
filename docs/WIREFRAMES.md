@@ -59,7 +59,7 @@ coming. That keeps the demo walkable and fixes the integration points for the ow
 | ID | Screen | Route | Status | Owner | Notes |
 | --- | --- | --- | --- | --- | --- |
 | **H-01** | Dashboard | `/hospital` | Sprint 1 target | M5 | Organization name + verified badge, "Search blood", "New request", active request rows, notifications button |
-| **H-02** | Inventory search | `/hospital/search` | Sprint 1 target | M5 | Blood group + component form, example result with verified mark, expiry/area/phone, "as reported by blood bank" statement, empty state |
+| **H-02** | Inventory search | `/hospital/search` | **Delivered (Sprint 1)** | M5 | Blood group + component form, example result with verified mark, expiry/area/phone, "as reported by blood bank" statement, empty state |
 | **H-03** | Create request | `/hospital/requests/new` | Sprint 2 reserved | M5 | Group, component, units, urgency, needed-by, contact person, collection bank, "no patient names" note; submit disabled |
 | **H-04** | Confirmation + matching banks | `/hospital/requests/[id]/match` | Sprint 2 reserved | M5 | Request number, matching banks with verified marks, potential-match count, "View request" |
 | **H-05** | Request detail | `/hospital/requests/[id]` | Sprint 2 reserved | M5 | Status, mark partial / fulfilled / cancel, willing donors with outcome buttons, bank offers |
