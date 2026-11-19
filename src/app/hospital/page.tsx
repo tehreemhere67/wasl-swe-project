@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { LinkButton, PageHeader, SectionTitle, StatusBadge } from "@/components/ui";
-import { Placeholder } from "@/components/ui/placeholder";
 import { requireVerifiedOrganization } from "@/lib/auth/guards";
 import { getLocale } from "@/lib/i18n/server";
 import { createTranslator } from "@/lib/i18n";
@@ -57,14 +56,6 @@ export default async function HospitalDashboardPage() {
           {t("nav.hospital.notifications")}
         </LinkButton>
       </div>
-
-      <Placeholder
-        wireframe={t("hospital.ph.wireframe", { id: "H-01" })}
-        description={t("hospital.ph.h01")}
-        owner={t("hospital.owner.search")}
-        sprint={t("hospital.ph.sprint1")}
-        tone="sprint1"
-      />
     </div>
   );
 }
