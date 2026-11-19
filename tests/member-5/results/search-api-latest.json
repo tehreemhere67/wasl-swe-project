@@ -1,0 +1,179 @@
+{
+  "baseUrl": "http://127.0.0.1:3000",
+  "startedAt": "2026-11-19T10:45:51.203Z",
+  "finishedAt": "2026-11-19T10:45:52.592Z",
+  "total": 34,
+  "failed": 0,
+  "results": [
+    {
+      "name": "hospital can log in",
+      "ok": true,
+      "detail": "200"
+    },
+    {
+      "name": "blood bank can log in",
+      "ok": true,
+      "detail": "200"
+    },
+    {
+      "name": "pending hospital can log in",
+      "ok": true,
+      "detail": "200"
+    },
+    {
+      "name": "donor session attempted",
+      "ok": true,
+      "detail": "200"
+    },
+    {
+      "name": "5.3 no session -> 401",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "5.3 blood bank -> 403",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "5.3 donor -> 403 (A-12)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "5.3 unverified hospital refused (FR-VER-03)",
+      "ok": true,
+      "detail": "403"
+    },
+    {
+      "name": "5.3 unverified hospital page is not served",
+      "ok": true,
+      "detail": "307"
+    },
+    {
+      "name": "5.3 donor cannot open the search page",
+      "ok": true,
+      "detail": "307"
+    },
+    {
+      "name": "5.3 anonymous page redirects to login",
+      "ok": true,
+      "detail": "/?next=%2Fhospital"
+    },
+    {
+      "name": "5.1 missing both -> 400",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "5.1 missing group -> 400",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "5.1 missing component -> 400",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "5.1 unknown values -> 400",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "5.1 injection-looking value -> 400",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "search returns ok JSON",
+      "ok": true,
+      "detail": "200"
+    },
+    {
+      "name": "setup: approved batch created",
+      "ok": true,
+      "detail": "{\"ok\":true,\"batchId\":\"99805de7-6299-4897-b95e-11474f668096\",\"redirect\":\"/bank/inventory\"}"
+    },
+    {
+      "name": "setup: awaiting-testing batch created",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "5.2 results include the bank with a verified status",
+      "ok": true,
+      "detail": "{\"organizationId\":\"0597e381-c878-4157-9eb0-fdba6b894b91\",\"name\":\"Karachi Blood Bank\",\"verificationStatus\":\"verified\",\"availableUnits\":10,\"batchCount\":2,\"earliestExpiry\":\"2026-11-28T18:59:59.999Z\",\"area\":\"Saddar\",\"phone\":\"+923001111002\",\"email\":\"bank@demo.wasl\",\"lastUpdatedAt\":\"2026-11-19T10:45:52.004Z\"}"
+    },
+    {
+      "name": "5.2 result has quantity, expiry, area, phone, last updated",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "5.3 awaiting-testing units are not counted",
+      "ok": true,
+      "detail": "10"
+    },
+    {
+      "name": "5.2 sorted by quantity, largest first",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "setup: 2 units reserved",
+      "ok": true,
+      "detail": "{\"ok\":true,\"redirect\":\"/bank/inventory/99805de7-6299-4897-b95e-11474f668096\"}"
+    },
+    {
+      "name": "5.3 reserved units drop out of availability",
+      "ok": true,
+      "detail": "10 -> 8"
+    },
+    {
+      "name": "5.5 a combination with no stock returns an empty list",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "H-02 page shows the form with both dropdowns",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "5.1 page shows validation messages on an empty submit",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "H-02 page lists the bank result",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "5.4 page shows the availability disclaimer",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "FR-INV-09 page shows last-updated time",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "5.2 page has a tel: link",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "5.5 empty state offers to create a request (or stock exists)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "NFR-PERF-03 search answers within 2 s",
+      "ok": true,
+      "detail": "18 ms"
+    }
+  ]
+}
