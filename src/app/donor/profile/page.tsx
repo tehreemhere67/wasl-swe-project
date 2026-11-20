@@ -1,100 +1,82 @@
-import {
-  Button,
-  Card,
-  Checkbox,
-  Field,
-  PageHeader,
-  SelectInput,
-  TextInput,
-} from "@/components/ui";
-import { Placeholder } from "@/components/ui/placeholder";
+import { redirect } from "next/navigation";
+import { PageHeader } from "@/components/ui";
+import { DonorProfileForm } from "@/components/forms/donor-profile-form";
+import { requireRole } from "@/lib/auth/guards";
+import { getDonorByUserId, loadAreas } from "@/lib/donor/data";
 import { getLocale } from "@/lib/i18n/server";
 import { createTranslator } from "@/lib/i18n";
+import { pickLabels } from "@/lib/i18n/labels";
 
 const BLOOD_GROUPS = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"] as const;
 
+const LABELS = [
+  "action.save",
+  "donor.availability.available",
+  "donor.availability.notAvailable",
+  "donor.channel.platform",
+  "donor.channel.sms",
+  "donor.channel.whatsapp",
+  "donor.pref.campaignNotices",
+  "donor.pref.urgent",
+  "donor.profile.availability",
+  "donor.profile.channels",
+  "donor.profile.chooseArea",
+  "donor.profile.deleteAccount",
+  "donor.profile.deleteConfirm",
+  "donor.profile.deleteHint",
+  "donor.profile.deleteKeep",
+  "donor.profile.deleteYes",
+  "donor.profile.deleting",
+  "donor.profile.errorGeneric",
+  "donor.profile.preferences",
+  "donor.profile.saved",
+  "donor.profile.saving",
+  "field.area",
+  "field.bloodGroup",
+  "field.language",
+  "nav.switchToEnglish",
+  "nav.switchToUrdu",
+  "donor.error.areaInvalid",
+  "donor.error.areaRequired",
+  "donor.error.availabilityInvalid",
+  "donor.error.bloodGroupInvalid",
+  "donor.error.bloodGroupRequired",
+  "donor.error.channelRequired",
+  "donor.error.languageInvalid",
+] as const;
+
 /**
- * D-03 - Donor profile.
+ * D-03 - Donor profile (Module 3: FR-DON-02, FR-DON-05).
  *
- * Wireframe: blood group, area (Karachi), the SMS / WhatsApp / Platform
- * notification channels, the Urgent / Campaign notices preferences, language,
- * Save and "Delete account". Donor profiles belong to Module 3 (Sprint 1); the
- * actions are rendered without submitting yet.
+ * Wireframe: blood group, area (Karachi), the SMS / WhatsApp / Platform channels, the Urgent / Campaign
+ * notices preferences, language, Save and "Delete account".
  */
 export default async function DonorProfilePage() {
+  const session = await requireRole(["donor"], "/donor/profile");
+  const donor = await getDonorByUserId(session.user.id);
+  if (!donor) redirect("/donor");
   const locale = await getLocale();
   const t = createTranslator(locale);
+  const areas = await loadAreas();
 
   return (
     <div>
       <PageHeader title={t("nav.donor.profile")} />
-
-      <Card className="card-pad">
-        <form className="space-y-5">
-          <Field label={t("field.bloodGroup")} htmlFor="bloodGroup">
-            <SelectInput id="bloodGroup" name="bloodGroup" defaultValue="O-">
-              {BLOOD_GROUPS.map((group) => (
-                <option key={group} value={group}>
-                  {t(`blood.${group}`)}
-                </option>
-              ))}
-            </SelectInput>
-          </Field>
-
-          <Field label={t("field.area")} htmlFor="area">
-            <TextInput
-              id="area"
-              name="area"
-              placeholder={t("donor.profile.areaPlaceholder")}
-            />
-          </Field>
-
-          <fieldset>
-            <legend className="label">{t("donor.profile.channels")}</legend>
-            <div className="flex flex-wrap gap-4">
-              <Checkbox label={t("donor.channel.sms")} name="channelSms" defaultChecked />
-              <Checkbox label={t("donor.channel.whatsapp")} name="channelWhatsapp" />
-              <Checkbox label={t("donor.channel.platform")} name="channelPlatform" defaultChecked />
-            </div>
-          </fieldset>
-
-          <fieldset>
-            <legend className="label">{t("donor.profile.preferences")}</legend>
-            <div className="flex flex-wrap gap-4">
-              <Checkbox label={t("donor.pref.urgent")} name="notifyUrgent" defaultChecked />
-              <Checkbox
-                label={t("donor.pref.campaignNotices")}
-                name="notifyCampaigns"
-                defaultChecked
-              />
-            </div>
-          </fieldset>
-
-          <Field label={t("field.language")} htmlFor="language">
-            <SelectInput id="language" name="language" defaultValue={locale}>
-              <option value="en">{t("nav.switchToEnglish")}</option>
-              <option value="ur">{t("nav.switchToUrdu")}</option>
-            </SelectInput>
-          </Field>
-
-          <Button type="button" block>
-            {t("action.save")}
-          </Button>
-        </form>
-      </Card>
-
-      <div className="mt-4">
-        <Button type="button" variant="danger">
-          {t("donor.profile.deleteAccount")}
-        </Button>
-      </div>
-
-      <Placeholder
-        wireframe={t("donor.ph.wireframe", { id: "D-03" })}
-        description={t("donor.ph.d03")}
-        owner={t("donor.owner.profile")}
-        sprint={t("donor.ph.sprint1")}
-        tone="sprint1"
+      <DonorProfileForm
+        labels={pickLabels(t, [...LABELS, ...BLOOD_GROUPS.map((g) => `blood.${g}`)])}
+        groups={BLOOD_GROUPS.map((g) => ({ value: g, label: t(`blood.${g}`) }))}
+        areas={areas.map((a) => ({ value: a.name, label: locale === "ur" ? a.nameUr : a.name }))}
+        initial={{
+          bloodGroup: donor.bloodGroup ?? "",
+          area: donor.area ?? "",
+          availability: donor.availability,
+          contactPlatform: donor.contactPlatform,
+          contactSms: donor.contactSms,
+          contactWhatsapp: donor.contactWhatsapp,
+          notifyUrgent: donor.notifyUrgent,
+          notifyCampaigns: donor.notifyCampaigns,
+          preferredLanguage: donor.preferredLanguage,
+        }}
       />
     </div>
   );

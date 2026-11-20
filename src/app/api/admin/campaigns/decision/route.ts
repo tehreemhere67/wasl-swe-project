@@ -4,6 +4,7 @@ import { isSameOrigin } from "@/lib/csrf";
 import { query, transaction } from "@/lib/db";
 import { badRequest, forbidden, json, readJson, unauthorized } from "@/lib/api";
 import { createNotification } from "@/lib/notifications";
+import { notifyDonorsOfApproval } from "@/lib/campaigns/data";
 import {
   campaignStatusFor,
   isReviewableCampaignStatus,
@@ -142,6 +143,16 @@ export async function POST(request: Request) {
   } catch (error) {
     // A notification failure must not undo a recorded decision.
     console.error("[admin/campaigns/decision] notification failed", error);
+  }
+
+  // Member 4 / FR-CAM-06: an approved campaign is announced to the donors who match (campaign notices on,
+  // within the notice distance of the venue, blood group targeted). Never undoes the decision.
+  if (decision === "approve") {
+    try {
+      await notifyDonorsOfApproval(campaignId);
+    } catch (error) {
+      console.error("[admin/campaigns/decision] donor notification failed", error);
+    }
   }
 
   return json({ ok: true, status: nextStatus });

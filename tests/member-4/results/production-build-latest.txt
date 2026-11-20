@@ -1,0 +1,101 @@
+
+> wasl@1.0.0 build /home/claude/wasl-swe-project
+> next build
+
+   ▲ Next.js 15.5.29
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 3.2s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/55) ...
+   Generating static pages (13/55) 
+   Generating static pages (27/55) 
+   Generating static pages (41/55) 
+ ✓ Generating static pages (55/55)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                      Size  First Load JS
+┌ ƒ /                                         2.26 kB         108 kB
+├ ƒ /_not-found                                  1 kB         104 kB
+├ ƒ /admin                                      249 B         103 kB
+├ ƒ /admin/accounts                           1.79 kB         108 kB
+├ ƒ /admin/audit                                249 B         103 kB
+├ ƒ /admin/campaigns                          1.89 kB         108 kB
+├ ƒ /admin/flags                                249 B         103 kB
+├ ƒ /admin/reports                              249 B         103 kB
+├ ƒ /admin/settings                             249 B         103 kB
+├ ƒ /admin/verifications                       1.9 kB         108 kB
+├ ƒ /api/admin/accounts/status                  249 B         103 kB
+├ ƒ /api/admin/campaigns/decision               249 B         103 kB
+├ ƒ /api/admin/verify                           249 B         103 kB
+├ ƒ /api/auth/donor/signup                      249 B         103 kB
+├ ƒ /api/auth/login                             249 B         103 kB
+├ ƒ /api/auth/logout                            249 B         103 kB
+├ ƒ /api/auth/org/register                      249 B         103 kB
+├ ƒ /api/auth/otp/send                          249 B         103 kB
+├ ƒ /api/auth/password/forgot                   249 B         103 kB
+├ ƒ /api/auth/password/reset                    249 B         103 kB
+├ ƒ /api/documents/[id]                         249 B         103 kB
+├ ƒ /api/donor/campaigns                        249 B         103 kB
+├ ƒ /api/donor/campaigns/[id]/interest          249 B         103 kB
+├ ƒ /api/donor/history                          249 B         103 kB
+├ ƒ /api/donor/profile                          249 B         103 kB
+├ ƒ /api/donor/reminder                         249 B         103 kB
+├ ƒ /api/hospital/search                        249 B         103 kB
+├ ƒ /api/inventory/alerts/[id]/acknowledge      249 B         103 kB
+├ ƒ /api/inventory/batches                      249 B         103 kB
+├ ƒ /api/inventory/batches/[id]                 249 B         103 kB
+├ ƒ /api/inventory/batches/[id]/archive         249 B         103 kB
+├ ƒ /api/inventory/batches/[id]/movements       249 B         103 kB
+├ ƒ /api/inventory/batches/[id]/reservations    249 B         103 kB
+├ ƒ /api/inventory/batches/[id]/transfers       249 B         103 kB
+├ ƒ /api/inventory/reservations/[id]/release    249 B         103 kB
+├ ƒ /api/inventory/settings                     249 B         103 kB
+├ ƒ /api/language                               249 B         103 kB
+├ ƒ /api/notifications/read                     249 B         103 kB
+├ ƒ /api/organization/reapply                   249 B         103 kB
+├ ƒ /api/organizer/campaigns                    249 B         103 kB
+├ ƒ /api/organizer/campaigns/[id]               249 B         103 kB
+├ ƒ /api/organizer/campaigns/[id]/cancel        249 B         103 kB
+├ ƒ /api/organizer/campaigns/[id]/outcome       249 B         103 kB
+├ ƒ /bank                                     1.54 kB         104 kB
+├ ƒ /bank/inventory                             249 B         103 kB
+├ ƒ /bank/inventory/[id]                      3.08 kB         106 kB
+├ ƒ /bank/inventory/[id]/edit                 1.38 kB         105 kB
+├ ƒ /bank/inventory/new                       1.38 kB         105 kB
+├ ƒ /bank/record-donation                       249 B         103 kB
+├ ƒ /bank/requests                              249 B         103 kB
+├ ƒ /bank/settings                            1.41 kB         105 kB
+├ ƒ /dev/outbox                                 666 B         103 kB
+├ ƒ /donor                                      172 B         106 kB
+├ ƒ /donor/campaigns                            172 B         106 kB
+├ ƒ /donor/campaigns/[id]                     1.89 kB         105 kB
+├ ƒ /donor/history                            2.57 kB         105 kB
+├ ƒ /donor/profile                            2.84 kB         106 kB
+├ ƒ /donor/requests/[id]                        249 B         103 kB
+├ ƒ /forgot-password                          2.91 kB         109 kB
+├ ƒ /hospital                                   172 B         106 kB
+├ ƒ /hospital/requests                          249 B         103 kB
+├ ƒ /hospital/requests/[id]                     249 B         103 kB
+├ ƒ /hospital/requests/[id]/edit                249 B         103 kB
+├ ƒ /hospital/requests/[id]/match               249 B         103 kB
+├ ƒ /hospital/requests/new                      249 B         103 kB
+├ ƒ /hospital/search                            249 B         103 kB
+├ ƒ /notifications                              667 B         107 kB
+├ ƒ /organizer/campaigns                      1.89 kB         108 kB
+├ ƒ /organizer/campaigns/[id]                   649 B         110 kB
+├ ƒ /organizer/campaigns/[id]/complete        2.34 kB         105 kB
+├ ƒ /organizer/campaigns/new                    162 B         106 kB
+├ ƒ /register/donor                           3.34 kB         109 kB
+├ ƒ /register/organization                    3.06 kB         109 kB
+└ ƒ /status                                     667 B         107 kB
++ First Load JS shared by all                  103 kB
+  ├ chunks/1255-b84741b894bb9354.js           46.6 kB
+  ├ chunks/4bd1b696-f785427dddbba9fb.js       54.2 kB
+  └ other shared chunks (total)               1.93 kB
+
+
+ƒ  (Dynamic)  server-rendered on demand
+

@@ -1,0 +1,112 @@
+Wasl donor + campaign verification against http://127.0.0.1:3000
+PASS  donor can log in  :: 200
+PASS  organizer can log in  :: 200
+PASS  blood bank can log in  :: 200
+PASS  hospital can log in  :: 200
+PASS  pending organization can log in  :: 200
+PASS  administrator can log in  :: 200
+PASS  anon: profile -> 401
+PASS  anon: campaigns list -> 401
+PASS  anon: organizer campaigns -> 401
+PASS  hospital: donor profile -> 403
+PASS  organizer: donor profile -> 403
+PASS  donor: organizer campaigns -> 403
+PASS  hospital: organizer campaigns -> 403
+PASS  unverified organization: organizer campaigns refused (FR-VER-03)  :: 403
+PASS  cross-origin write refused (CSRF)  :: 403
+PASS  page: anon /donor/profile redirects
+PASS  page: organizer cannot open /donor/profile
+PASS  page: donor cannot open /organizer/campaigns/new
+PASS  D-03 profile loads  :: {"ok":true,"profile":{"id":"d4dd6d4d-100e-49d4-965c-f796687bb577","userId":"5da173c9-62be-4394-a664-ead24f5675d3","name":"Ali Raza","mobile":"+923009876543","bl
+PASS  D-03 unknown blood group -> 400  :: donor.error.bloodGroupInvalid
+PASS  D-03 area outside the Karachi list -> 400 (A-18)  :: donor.error.areaInvalid
+PASS  D-03 no contact channel -> 400  :: donor.error.channelRequired
+PASS  D-03 unknown language -> 400  :: donor.error.languageInvalid
+PASS  D-03 valid save -> 200  :: {"ok":true,"language":"en","redirect":"/donor/profile"}
+PASS  D-03 saved values are returned
+PASS  D-03 page has the wireframe fields
+PASS  D-03 page has Save and Delete account
+PASS  D-03 page no longer shows the wireframe placeholder
+PASS  D-04 seeded history has 2 entries, one of each kind  :: {"ok":true,"total":2,"entries":[{"id":"3b7c1bdc-e6f9-42fd-b159-87a8af806410","donatedOn":"2026-06-03","place":"Community drive, Saddar","source":"recorded_by_org"},{"id":"44e26917-8045-4095-9ef6-816f9
+PASS  D-04 future date -> 400 (FR-DON-03)  :: donor.error.dateFuture
+PASS  D-04 impossible date -> 400  :: donor.error.dateInvalid
+PASS  D-04 empty place -> 400  :: donor.error.placeRequired
+PASS  D-04 add past donation -> 200  :: {"ok":true,"id":"afb4f00f-396c-4a91-859a-0edccc54968b"}
+PASS  D-04 total goes up by one (A-19)
+PASS  D-04 newest first
+PASS  D-04 page shows the total, both labels, add and reminder
+PASS  D-04 page no longer shows the wireframe placeholder
+PASS  D-04 reminder 0 -> 400  :: donor.error.reminderInvalid
+PASS  D-04 reminder text -> 400
+PASS  D-04 reminder 500 -> 400
+PASS  D-04 reminder 90 days saved (FR-DON-06)  :: {"ok":true,"remindDays":90}
+PASS  D-04 page shows the saved reminder value and next date
+PASS  D-04 empty reminder turns it off
+PASS  FR-DON-06 reminder reaches the notification centre  :: 200
+PASS  O-01 empty title -> 400  :: organizer.error.titleRequired
+PASS  O-01 past date -> 400  :: organizer.error.datePast
+PASS  O-01 unknown area -> 400  :: organizer.error.areaInvalid
+PASS  O-01 bad blood group -> 400
+PASS  O-01 bad time -> 400
+PASS  O-01 Save draft -> Draft  :: {"ok":true,"id":"1fd66682-66e7-470c-9e8a-7bfbaf709fdf","status":"draft","redirect":"/organizer/campaigns"}
+PASS  FR-CAM-03 a Draft is not visible to donors
+PASS  FR-CAM-03 a Draft detail page is a 404 for donors  :: 404
+PASS  FR-CAM-02 Submit for Approval -> Pending Approval  :: {"ok":true,"status":"pending_approval","needsApproval":false,"redirect":"/organizer/campaigns"}
+PASS  FR-CAM-03 a Pending campaign is not visible to donors
+PASS  O-02 organizer sees own campaigns with status
+PASS  O-02 other organization cannot read it
+PASS  a Pending campaign cannot be edited  :: 409
+PASS  A-04 administrator approves  :: {"ok":true,"status":"approved"}
+PASS  FR-CAM-03/04 approved campaign is visible with its verified organizer  :: {"id":"1fd66682-66e7-470c-9e8a-7bfbaf709fdf","organizationId":"de0b4783-feb7-48fe-8b77-cc91f56a4b63","organizationName":"Wasl Founding Initiative","organization
+PASS  FR-CAM-06 donor of a targeted group in range is notified
+PASS  approving twice is refused (no duplicate notice)  :: 409
+PASS  D-05 page lists the seeded drives and shows the filters
+PASS  D-05 page no longer shows the wireframe placeholder
+PASS  FR-CAM-05 filter by area  :: Saddar,Saddar
+PASS  FR-CAM-05 filter by blood group (O- only drives are left out for A+)
+PASS  FR-CAM-05 filter by blood group keeps matching drives
+PASS  FR-CAM-05 filter by date (on or after)
+PASS  FR-CAM-05 search by words
+PASS  D-05 empty state when nothing matches
+PASS  an already finished drive is not listed  :: Drive - Library is under way, so it may still be listed: true
+PASS  D-06 detail shows title, venue, organizer and the attend button
+PASS  D-06 detail no longer shows the wireframe placeholder
+PASS  FR-CAM-07 mark interest  :: {"ok":true,"interestedCount":1,"interested":true}
+PASS  marking twice does not double count
+PASS  organizer sees the interested donor  :: [{"name":"Ali Raza","bloodGroup":"O-","area":"Saddar","markedAt":"2026-11-19T22:31:34.788Z"}]
+PASS  organizer detail page lists interested donors
+PASS  interest in an unknown campaign -> 404
+PASS  an organizer cannot mark interest
+PASS  A-29 contact-only edit stays Approved  :: {"ok":true,"status":"approved","needsApproval":false,"redirect":"/organizer/campaigns"}
+PASS  A-29 changing the venue returns it to Pending Approval  :: {"ok":true,"status":"pending_approval","needsApproval":true,"redirect":"/organizer/campaigns"}
+PASS  A-29 donors keep seeing the previously approved version  :: Test Hall, Saddar
+PASS  A-29 administrator re-approves
+PASS  A-29 the new version is shown after approval  :: New Venue Hall
+PASS  another organization cannot cancel it  :: 404
+PASS  FR-CAM-08 organizer cancels  :: {"ok":true,"notified":1,"redirect":"/organizer/campaigns"}
+PASS  FR-CAM-08 cancelled campaign disappears for donors
+PASS  FR-CAM-08 interested donor is told it was cancelled
+PASS  cancelling twice is refused  :: 409
+PASS  seeded drives are present for the organizer
+PASS  outcomes cannot be recorded before the drive has started  :: 409
+PASS  O-03 page says outcomes come later for a future drive
+PASS  O-03 attendees not a number -> 400  :: organizer.error.attendeesInvalid
+PASS  O-03 donations above attendees -> 400  :: organizer.error.donationsTooMany
+PASS  O-03 bad phone -> 400
+PASS  O-03 phone of no registered donor -> 400  :: organizer.error.donorNotFound
+PASS  O-03 save with donor phone -> 200  :: {"ok":true,"recorded":"donor"}
+PASS  FR-DON-04 the donor's history gains a Recorded by org entry  :: {"id":"a5ceb296-cfa4-4961-a035-e052d3b325ea","donatedOn":"2026-11-20","place":"Wasl Founding Initiative - Drive - Library","source":"recorded_by_org"}
+PASS  the same donor cannot be recorded twice for one drive  :: organizer.error.donorAlreadyRecorded
+PASS  donations below the donors already recorded -> 400  :: organizer.error.donationsBelowRecorded
+PASS  O-03 counts can be corrected without a phone  :: {"ok":true,"recorded":"none"}
+PASS  O-03 page shows the title, attendees, donations and donor phone
+PASS  O-03 page no longer shows the wireframe placeholder
+PASS  FR-CAM-08/09 the drive is now Completed with the saved counts  :: {"id":"cc20a215-f158-4afb-ba71-97a2f8ddd33e","organizationId":"de0b4783-feb7-48fe-8b77-cc91f56a4b63","organizationName":"Wasl Founding Initiative","organizationVerified":true,"status":"completed","tit
+PASS  O-01 page has every wireframe field and both buttons
+PASS  O-01 page no longer shows the wireframe placeholder
+PASS  O-02 page lists campaigns with status badges
+PASS  O-02 page has the Cancel campaign action
+PASS  O-02 page no longer shows the wireframe placeholder
+PASS  Urdu: the browse page renders RTL Urdu text
+
+109/109 checks passed

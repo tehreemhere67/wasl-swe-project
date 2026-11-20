@@ -226,11 +226,21 @@ banks, the "as reported by the blood bank" statement, and a no-results state wit
 option. Hospital-only (A-12). Docs: [`docs/member-5/`](docs/member-5/IMPLEMENTATION-NOTES.md) ·
 tests: [`tests/member-5/`](tests/member-5/MANUAL-TEST-CASES.md) · live check: `node scripts/verify-search.mjs`.
 
+**Member 4 — Modules 3 and 6 (donor profile, history, reminders and donation campaigns) are implemented:**
+D-03 `/donor/profile` (blood group, Karachi area, availability, SMS / WhatsApp / Platform channels,
+urgent / campaign notices, language, Save, Delete account), D-04 `/donor/history` (total, Self reported /
+Recorded by org rows, "+ Add past donation", "Remind me after N days"), D-05 `/donor/campaigns` (Area / Date /
+Group filters, search, verified campaign cards), D-06 `/donor/campaigns/[id]` ("I plan to attend"),
+O-01 `/organizer/campaigns/new` (Save draft / Submit for approval), O-02 `/organizer/campaigns` (status rows,
+Cancel campaign), O-03 `/organizer/campaigns/[id]/complete` (attendees, donations, donor phone), plus an
+organizer detail/edit page. Edits to an approved campaign go back to the administrator while donors keep seeing
+the approved version. Docs: [`docs/member-4/`](docs/member-4/IMPLEMENTATION-NOTES.md) ·
+tests: [`tests/member-4/`](tests/member-4/MANUAL-TEST-CASES.md) · live check: `node scripts/verify-campaigns.mjs`.
+
 **Placeholders for the other modules:** the role areas exist with their shell, navigation and
 correct access guards, but their operational screens are wireframe-faithful placeholders — they show
 the wireframe structure, name the wireframe ID and owning module, and disable actions that are not
-built yet. These are the **other four members' Sprint 1 targets** (H-01, H-02, B-01…B-05, B-07,
-D-03…D-06, O-01…O-03) plus the screens reserved for Sprint 2 (H-03…H-07, B-06, D-01,
+built yet. These are the **other four members' Sprint 1 targets** (H-01, H-02, B-01…B-05, B-07) plus the screens reserved for Sprint 2 (H-03…H-07, B-06, D-01,
 D-02, A-01, A-05…A-08); they are not part of Member 1's delivery. See
 [`docs/WIREFRAMES.md`](docs/WIREFRAMES.md) for the exact status of every wireframe screen and
 [`docs/TRACEABILITY.md`](docs/TRACEABILITY.md) for the requirement-by-requirement status. Sprint work breakdown and ownership: [`docs/SPRINT-BACKLOG.md`](docs/SPRINT-BACKLOG.md).

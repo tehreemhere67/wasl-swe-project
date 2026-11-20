@@ -1,0 +1,554 @@
+{
+  "baseUrl": "http://127.0.0.1:3000",
+  "startedAt": "2026-11-19T22:31:20.969Z",
+  "finishedAt": "2026-11-19T22:31:40.484Z",
+  "total": 109,
+  "failed": 0,
+  "results": [
+    {
+      "name": "donor can log in",
+      "ok": true,
+      "detail": "200"
+    },
+    {
+      "name": "organizer can log in",
+      "ok": true,
+      "detail": "200"
+    },
+    {
+      "name": "blood bank can log in",
+      "ok": true,
+      "detail": "200"
+    },
+    {
+      "name": "hospital can log in",
+      "ok": true,
+      "detail": "200"
+    },
+    {
+      "name": "pending organization can log in",
+      "ok": true,
+      "detail": "200"
+    },
+    {
+      "name": "administrator can log in",
+      "ok": true,
+      "detail": "200"
+    },
+    {
+      "name": "anon: profile -> 401",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "anon: campaigns list -> 401",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "anon: organizer campaigns -> 401",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "hospital: donor profile -> 403",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "organizer: donor profile -> 403",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "donor: organizer campaigns -> 403",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "hospital: organizer campaigns -> 403",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "unverified organization: organizer campaigns refused (FR-VER-03)",
+      "ok": true,
+      "detail": "403"
+    },
+    {
+      "name": "cross-origin write refused (CSRF)",
+      "ok": true,
+      "detail": "403"
+    },
+    {
+      "name": "page: anon /donor/profile redirects",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "page: organizer cannot open /donor/profile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "page: donor cannot open /organizer/campaigns/new",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D-03 profile loads",
+      "ok": true,
+      "detail": "{\"ok\":true,\"profile\":{\"id\":\"d4dd6d4d-100e-49d4-965c-f796687bb577\",\"userId\":\"5da173c9-62be-4394-a664-ead24f5675d3\",\"name\":\"Ali Raza\",\"mobile\":\"+923009876543\",\"bl"
+    },
+    {
+      "name": "D-03 unknown blood group -> 400",
+      "ok": true,
+      "detail": "donor.error.bloodGroupInvalid"
+    },
+    {
+      "name": "D-03 area outside the Karachi list -> 400 (A-18)",
+      "ok": true,
+      "detail": "donor.error.areaInvalid"
+    },
+    {
+      "name": "D-03 no contact channel -> 400",
+      "ok": true,
+      "detail": "donor.error.channelRequired"
+    },
+    {
+      "name": "D-03 unknown language -> 400",
+      "ok": true,
+      "detail": "donor.error.languageInvalid"
+    },
+    {
+      "name": "D-03 valid save -> 200",
+      "ok": true,
+      "detail": "{\"ok\":true,\"language\":\"en\",\"redirect\":\"/donor/profile\"}"
+    },
+    {
+      "name": "D-03 saved values are returned",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D-03 page has the wireframe fields",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D-03 page has Save and Delete account",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D-03 page no longer shows the wireframe placeholder",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D-04 seeded history has 2 entries, one of each kind",
+      "ok": true,
+      "detail": "{\"ok\":true,\"total\":2,\"entries\":[{\"id\":\"3b7c1bdc-e6f9-42fd-b159-87a8af806410\",\"donatedOn\":\"2026-06-03\",\"place\":\"Community drive, Saddar\",\"source\":\"recorded_by_org\"},{\"id\":\"44e26917-8045-4095-9ef6-816f9"
+    },
+    {
+      "name": "D-04 future date -> 400 (FR-DON-03)",
+      "ok": true,
+      "detail": "donor.error.dateFuture"
+    },
+    {
+      "name": "D-04 impossible date -> 400",
+      "ok": true,
+      "detail": "donor.error.dateInvalid"
+    },
+    {
+      "name": "D-04 empty place -> 400",
+      "ok": true,
+      "detail": "donor.error.placeRequired"
+    },
+    {
+      "name": "D-04 add past donation -> 200",
+      "ok": true,
+      "detail": "{\"ok\":true,\"id\":\"afb4f00f-396c-4a91-859a-0edccc54968b\"}"
+    },
+    {
+      "name": "D-04 total goes up by one (A-19)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D-04 newest first",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D-04 page shows the total, both labels, add and reminder",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D-04 page no longer shows the wireframe placeholder",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D-04 reminder 0 -> 400",
+      "ok": true,
+      "detail": "donor.error.reminderInvalid"
+    },
+    {
+      "name": "D-04 reminder text -> 400",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D-04 reminder 500 -> 400",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D-04 reminder 90 days saved (FR-DON-06)",
+      "ok": true,
+      "detail": "{\"ok\":true,\"remindDays\":90}"
+    },
+    {
+      "name": "D-04 page shows the saved reminder value and next date",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D-04 empty reminder turns it off",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "FR-DON-06 reminder reaches the notification centre",
+      "ok": true,
+      "detail": "200"
+    },
+    {
+      "name": "O-01 empty title -> 400",
+      "ok": true,
+      "detail": "organizer.error.titleRequired"
+    },
+    {
+      "name": "O-01 past date -> 400",
+      "ok": true,
+      "detail": "organizer.error.datePast"
+    },
+    {
+      "name": "O-01 unknown area -> 400",
+      "ok": true,
+      "detail": "organizer.error.areaInvalid"
+    },
+    {
+      "name": "O-01 bad blood group -> 400",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "O-01 bad time -> 400",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "O-01 Save draft -> Draft",
+      "ok": true,
+      "detail": "{\"ok\":true,\"id\":\"1fd66682-66e7-470c-9e8a-7bfbaf709fdf\",\"status\":\"draft\",\"redirect\":\"/organizer/campaigns\"}"
+    },
+    {
+      "name": "FR-CAM-03 a Draft is not visible to donors",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "FR-CAM-03 a Draft detail page is a 404 for donors",
+      "ok": true,
+      "detail": "404"
+    },
+    {
+      "name": "FR-CAM-02 Submit for Approval -> Pending Approval",
+      "ok": true,
+      "detail": "{\"ok\":true,\"status\":\"pending_approval\",\"needsApproval\":false,\"redirect\":\"/organizer/campaigns\"}"
+    },
+    {
+      "name": "FR-CAM-03 a Pending campaign is not visible to donors",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "O-02 organizer sees own campaigns with status",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "O-02 other organization cannot read it",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "a Pending campaign cannot be edited",
+      "ok": true,
+      "detail": "409"
+    },
+    {
+      "name": "A-04 administrator approves",
+      "ok": true,
+      "detail": "{\"ok\":true,\"status\":\"approved\"}"
+    },
+    {
+      "name": "FR-CAM-03/04 approved campaign is visible with its verified organizer",
+      "ok": true,
+      "detail": "{\"id\":\"1fd66682-66e7-470c-9e8a-7bfbaf709fdf\",\"organizationId\":\"de0b4783-feb7-48fe-8b77-cc91f56a4b63\",\"organizationName\":\"Wasl Founding Initiative\",\"organization"
+    },
+    {
+      "name": "FR-CAM-06 donor of a targeted group in range is notified",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "approving twice is refused (no duplicate notice)",
+      "ok": true,
+      "detail": "409"
+    },
+    {
+      "name": "D-05 page lists the seeded drives and shows the filters",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D-05 page no longer shows the wireframe placeholder",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "FR-CAM-05 filter by area",
+      "ok": true,
+      "detail": "Saddar,Saddar"
+    },
+    {
+      "name": "FR-CAM-05 filter by blood group (O- only drives are left out for A+)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "FR-CAM-05 filter by blood group keeps matching drives",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "FR-CAM-05 filter by date (on or after)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "FR-CAM-05 search by words",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D-05 empty state when nothing matches",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "an already finished drive is not listed",
+      "ok": true,
+      "detail": "Drive - Library is under way, so it may still be listed: true"
+    },
+    {
+      "name": "D-06 detail shows title, venue, organizer and the attend button",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D-06 detail no longer shows the wireframe placeholder",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "FR-CAM-07 mark interest",
+      "ok": true,
+      "detail": "{\"ok\":true,\"interestedCount\":1,\"interested\":true}"
+    },
+    {
+      "name": "marking twice does not double count",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "organizer sees the interested donor",
+      "ok": true,
+      "detail": "[{\"name\":\"Ali Raza\",\"bloodGroup\":\"O-\",\"area\":\"Saddar\",\"markedAt\":\"2026-11-19T22:31:34.788Z\"}]"
+    },
+    {
+      "name": "organizer detail page lists interested donors",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "interest in an unknown campaign -> 404",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "an organizer cannot mark interest",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "A-29 contact-only edit stays Approved",
+      "ok": true,
+      "detail": "{\"ok\":true,\"status\":\"approved\",\"needsApproval\":false,\"redirect\":\"/organizer/campaigns\"}"
+    },
+    {
+      "name": "A-29 changing the venue returns it to Pending Approval",
+      "ok": true,
+      "detail": "{\"ok\":true,\"status\":\"pending_approval\",\"needsApproval\":true,\"redirect\":\"/organizer/campaigns\"}"
+    },
+    {
+      "name": "A-29 donors keep seeing the previously approved version",
+      "ok": true,
+      "detail": "Test Hall, Saddar"
+    },
+    {
+      "name": "A-29 administrator re-approves",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "A-29 the new version is shown after approval",
+      "ok": true,
+      "detail": "New Venue Hall"
+    },
+    {
+      "name": "another organization cannot cancel it",
+      "ok": true,
+      "detail": "404"
+    },
+    {
+      "name": "FR-CAM-08 organizer cancels",
+      "ok": true,
+      "detail": "{\"ok\":true,\"notified\":1,\"redirect\":\"/organizer/campaigns\"}"
+    },
+    {
+      "name": "FR-CAM-08 cancelled campaign disappears for donors",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "FR-CAM-08 interested donor is told it was cancelled",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "cancelling twice is refused",
+      "ok": true,
+      "detail": "409"
+    },
+    {
+      "name": "seeded drives are present for the organizer",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "outcomes cannot be recorded before the drive has started",
+      "ok": true,
+      "detail": "409"
+    },
+    {
+      "name": "O-03 page says outcomes come later for a future drive",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "O-03 attendees not a number -> 400",
+      "ok": true,
+      "detail": "organizer.error.attendeesInvalid"
+    },
+    {
+      "name": "O-03 donations above attendees -> 400",
+      "ok": true,
+      "detail": "organizer.error.donationsTooMany"
+    },
+    {
+      "name": "O-03 bad phone -> 400",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "O-03 phone of no registered donor -> 400",
+      "ok": true,
+      "detail": "organizer.error.donorNotFound"
+    },
+    {
+      "name": "O-03 save with donor phone -> 200",
+      "ok": true,
+      "detail": "{\"ok\":true,\"recorded\":\"donor\"}"
+    },
+    {
+      "name": "FR-DON-04 the donor's history gains a Recorded by org entry",
+      "ok": true,
+      "detail": "{\"id\":\"a5ceb296-cfa4-4961-a035-e052d3b325ea\",\"donatedOn\":\"2026-11-20\",\"place\":\"Wasl Founding Initiative - Drive - Library\",\"source\":\"recorded_by_org\"}"
+    },
+    {
+      "name": "the same donor cannot be recorded twice for one drive",
+      "ok": true,
+      "detail": "organizer.error.donorAlreadyRecorded"
+    },
+    {
+      "name": "donations below the donors already recorded -> 400",
+      "ok": true,
+      "detail": "organizer.error.donationsBelowRecorded"
+    },
+    {
+      "name": "O-03 counts can be corrected without a phone",
+      "ok": true,
+      "detail": "{\"ok\":true,\"recorded\":\"none\"}"
+    },
+    {
+      "name": "O-03 page shows the title, attendees, donations and donor phone",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "O-03 page no longer shows the wireframe placeholder",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "FR-CAM-08/09 the drive is now Completed with the saved counts",
+      "ok": true,
+      "detail": "{\"id\":\"cc20a215-f158-4afb-ba71-97a2f8ddd33e\",\"organizationId\":\"de0b4783-feb7-48fe-8b77-cc91f56a4b63\",\"organizationName\":\"Wasl Founding Initiative\",\"organizationVerified\":true,\"status\":\"completed\",\"tit"
+    },
+    {
+      "name": "O-01 page has every wireframe field and both buttons",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "O-01 page no longer shows the wireframe placeholder",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "O-02 page lists campaigns with status badges",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "O-02 page has the Cancel campaign action",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "O-02 page no longer shows the wireframe placeholder",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Urdu: the browse page renders RTL Urdu text",
+      "ok": true,
+      "detail": ""
+    }
+  ]
+}

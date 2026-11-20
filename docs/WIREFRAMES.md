@@ -84,18 +84,18 @@ coming. That keeps the demo walkable and fixes the integration points for the ow
 | --- | --- | --- | --- | --- | --- |
 | **D-01** | Home — relevant requests | `/donor` | Sprint 2 reserved | M3 | "Available" toggle, matching requests with distance, Campaigns button, Profile/History links |
 | **D-02** | Request detail + respond | `/donor/requests/[id]` | Sprint 2 reserved | M3 | Request summary, eligibility statement, "I'm willing" / "Decline". This is the screen shown in G-06 (Urdu RTL); its layout already mirrors under `dir="rtl"` |
-| **D-03** | Profile | `/donor/profile` | Sprint 1 target | M3 | Blood group, area, SMS/WhatsApp/Platform channels, urgent/campaign notices, language, Save, Delete account |
-| **D-04** | History + reminder | `/donor/history` | Sprint 1 target | M3 | Donations total, self-reported and organization-recorded rows, "+ Add past donation", "Remind me after N days" |
-| **D-05** | Campaigns browse | `/donor/campaigns` | Sprint 1 target | M6 | Area / Date / Group filters, verified campaign cards with dates |
-| **D-06** | Campaign detail | `/donor/campaigns/[id]` | Sprint 1 target | M6 | Title/date/venue/target, verified organizer, "I plan to attend" |
+| **D-03** | Profile | `/donor/profile` | **Delivered (Member 4)** | M3 | Blood group, area, SMS/WhatsApp/Platform channels, urgent/campaign notices, language, Save, Delete account |
+| **D-04** | History + reminder | `/donor/history` | **Delivered (Member 4)** | M3 | Donations total, self-reported and organization-recorded rows, "+ Add past donation", "Remind me after N days" |
+| **D-05** | Campaigns browse | `/donor/campaigns` | **Delivered (Member 4)** | M6 | Area / Date / Group filters, verified campaign cards with dates |
+| **D-06** | Campaign detail | `/donor/campaigns/[id]` | **Delivered (Member 4)** | M6 | Title/date/venue/target, verified organizer, "I plan to attend" |
 
 ## Campaign organizer area (O)
 
 | ID | Screen | Route | Status | Owner | Notes |
 | --- | --- | --- | --- | --- | --- |
-| **O-01** | Create campaign | `/organizer/campaigns/new` | Sprint 1 target | M6 | Bilingual title/description, date/time/venue, target groups, Save draft, Submit for approval |
-| **O-02** | My campaigns | `/organizer/campaigns` | Sprint 1 target | M6 | Draft / Pending / Approved rows, approved row links to the completion form, Cancel campaign |
-| **O-03** | Completion form | `/organizer/campaigns/[id]/complete` | Sprint 1 target | M6 | Attendees, donations, donor phone recorded at the drive, Save |
+| **O-01** | Create campaign | `/organizer/campaigns/new` | **Delivered (Member 4)** | M6 | Bilingual title/description, date/time/venue, target groups, Save draft, Submit for approval |
+| **O-02** | My campaigns | `/organizer/campaigns` | **Delivered (Member 4)** | M6 | Draft / Pending / Approved rows, approved row links to the completion form, Cancel campaign |
+| **O-03** | Completion form | `/organizer/campaigns/[id]/complete` | **Delivered (Member 4)** | M6 | Attendees, donations, donor phone recorded at the drive, Save |
 
 ## Administrator area (A)
 
