@@ -97,10 +97,10 @@ Status legend:
 | FR-INV-04..09 | Reservations, issuance, transfers, cross-bank search and exclusions | M4 (Member 3) | **Implemented** for inventory (FR-INV-04/05/06/08); FR-INV-07 (search screen H-02) and FR-INV-09 (hospital-facing last-updated + disclaimer) are **Implemented** by Member 5 (`src/lib/search/*`, `/hospital/search`, `/api/hospital/search`; tests in `tests/member-5/`) and read these tables. The exclusion rule lives in `rules.countsAsAvailable` and is proved by the availability unit tests (4.8) |
 | FR-REQ-01..09 | Hospital requests: create, statuses, history, auto-expiry, matching banks, offers, edits, listing | M5 (Member 5) | **Placeholder** — H-03/H-04/H-05/H-06/H-07 are Sprint 2 reserved; H-01/H-02 (dashboard, search) are Sprint 1 targets |
 | FR-DON-01 | Donor signup with mobile + OTP | M1 (Member 1) | **Implemented** |
-| FR-DON-02..13 | Donor profile, history, availability, matching, ranking, privacy of contact details, relevant requests | M3 (Member 4) | **Placeholder** — D-03/D-04 are Sprint 1 targets; D-01/D-02 and matching responsibility are Sprint 2 reserved |
+| FR-DON-02..13 | Donor profile, history, availability, matching, ranking, privacy of contact details, relevant requests | M3 (Member 4) | **Partial** — FR-DON-02..06 **Implemented** (D-03 profile + availability + delete account, D-04 history + reminder, "Recorded by org" entries from O-03); proved by `tests/member-4/unit/donor-rules.test.ts` and `scripts/verify-campaigns.mjs`. FR-DON-07..13 (matching, ranking, D-01/D-02) are Sprint 2 reserved |
 | FR-NOT-01..03, 05..11 | Donor responses/outcomes, multi-channel notifications, delivery status, escalation | M3/M5/M7 (Members 3–5) with the M9 shell | **Partial** — notification centre shell (FR-NOT-04) by Member 1; response/matching/notification business rules Sprint 2 |
 | FR-NOT-04 | In-platform notification centre with unread count; every notification stored | M9 (Member 1) | **Implemented** |
-| FR-CAM-01..09 | Campaign create/submit/approve/browse/interest/cancel/complete | M6 (Member 4) | **Placeholder** — O-01/O-02/O-03/D-05/D-06 are Sprint 1 targets; approval effects and records Sprint 2 |
+| FR-CAM-01..09 | Campaign create/submit/approve/browse/interest/cancel/complete | M6 (Member 4) | **Implemented** — O-01/O-02/O-03/D-05/D-06 plus the organizer detail/edit screen; create, submit, approval visibility, re-approval (A-29), browse and filter, interest, cancel with notice, auto-complete, outcomes and approval notices; proved by `tests/member-4/unit/campaign-rules.test.ts` and `scripts/verify-campaigns.mjs`. Docs: `docs/member-4/` |
 | FR-MON-01..06 | Expiry and low-stock alerts, thresholds, dashboard, evaluation interval | M7 (Member 3) | **Implemented** — B-01/B-05, `src/lib/inventory/monitoring.ts`, alerts + acknowledge + optional SMS + hourly guard; proved by `tests/member-3/unit/monitoring-rules.test.ts` and `scripts/verify-inventory.mjs` (7.3/7.4) |
 | FR-VER-01..06 | Organization verification lifecycle | M1 (Member 1) | **Implemented** (FR-VER-04/05 content-hiding completed with Sprint 2 modules) |
 | NFR-PERF-01..05 | Performance targets under load | All modules (Member 1 owns the foundation) | **Not measured** — requires load testing with seeded data (release task) |
@@ -121,10 +121,10 @@ Status legend:
 | IR-09 | No special hardware; supported browser + internet | All | **Satisfied by design** |
 | IR-10 | All communication encrypted and authenticated | Operations + M1 | **Partial** — authenticated sessions and `Secure` cookies in production; TLS is a deployment task |
 | DR-01 | Data consistency: non-negative quantities, valid expiry, valid needed-by, valid references | M1 schema foundation + all modules | **Partial** — `CHECK` constraints and foreign keys exist for the delivered tables; operational tables Sprint 2 |
-| DR-02 | Collect only SRS §4.1 data; no patient names/medical details; donor location is an area | M1 + M3/M5 | **Partial** — delivered forms collect only the listed fields; the request form is Sprint 2 |
+| DR-02 | Collect only SRS §4.1 data; no patient names/medical details; donor location is an area | M1 + M3/M5 | **Partial** — delivered forms (incl. the donor profile and campaign forms) collect only the listed fields; the request form is Sprint 2 |
 | DR-03 | Donor informed (EN/UR) that contact details are shared after Willing; consent recorded | M1 (Member 1) | **Implemented** |
 | DR-04 | Verification documents visible only to administrators and the submitting organization | M1 (Member 1) | **Implemented** — `GET /api/documents/[id]` |
-| DR-05 | Records kept ≥ 12 months; deleted donor persona removed within 30 days | M2/M3 + operations | **Sprint 2 / release task** — no retention or donor-deletion job exists yet |
+| DR-05 | Records kept ≥ 12 months; deleted donor persona removed within 30 days | M2/M3 + operations | **Partial** — a donor can delete their account (D-03): the profile and login are anonymised at once and sessions, notifications and campaign interest are removed; donation history rows are kept without any link to the donor. The 12-month retention job is a release task |
 
 ---
 

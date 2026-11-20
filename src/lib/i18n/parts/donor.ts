@@ -16,22 +16,11 @@ export const donor: DictionaryPart = {
     "donor.ph.sprint1": "Sprint 1 — module owner builds this",
     "donor.ph.sprint2": "Sprint 2",
     "donor.owner.requests": "Module 3 · Donor matching and responses",
-    "donor.owner.profile": "Module 3 · Donor profile and preferences",
-    "donor.owner.history": "Module 3 · Donation history",
-    "donor.owner.campaigns": "Module 6 · Donation campaigns",
 
     "donor.ph.d01":
       "Donor home with the availability toggle, the two nearest matching requests, campaigns and the profile/history links.",
     "donor.ph.d02":
       "A request with its summary, the eligibility notice and the willing/decline response buttons.",
-    "donor.ph.d03":
-      "Donor profile: blood group, area, notification channels, notice preferences and language.",
-    "donor.ph.d04":
-      "Donation history with the self-reported and organization-recorded entries, add-past-donation and the reminder interval.",
-    "donor.ph.d05":
-      "Campaign browse with the area, date and blood-group filters and the verified campaign cards.",
-    "donor.ph.d06":
-      "Campaign detail with the title/date/venue/target line, the verified organizer and the attend action.",
 
     // ---------------------------------------------------------------------
     // D-01 Home
@@ -51,7 +40,6 @@ export const donor: DictionaryPart = {
     // ---------------------------------------------------------------------
     // D-03 Profile
     // ---------------------------------------------------------------------
-    "donor.profile.areaPlaceholder": "Karachi",
     "donor.profile.channels": "Notification channels",
     "donor.channel.sms": "SMS",
     "donor.channel.whatsapp": "WhatsApp",
@@ -65,8 +53,6 @@ export const donor: DictionaryPart = {
     // D-04 History + reminder
     // ---------------------------------------------------------------------
     "donor.history.title": "Donations (total {count})",
-    "donor.history.selfReported": "12 Jan · Self reported",
-    "donor.history.recordedByOrg": "03 June · Recorded by org",
     "donor.history.addPast": "Add past donation",
     "donor.history.remindBefore": "Remind me after",
     "donor.history.remindAfter": "days",
@@ -75,40 +61,88 @@ export const donor: DictionaryPart = {
     // D-05 Campaigns browse
     // ---------------------------------------------------------------------
     "donor.campaigns.filterGroup": "Group",
-    "donor.campaigns.driveUniv": "Drive - Univ.",
-    "donor.campaigns.driveMosque": "Drive - Mosque",
-    "donor.campaigns.date20Nov": "20 Nov",
-    "donor.campaigns.date27Nov": "27 Nov",
 
     // ---------------------------------------------------------------------
     // D-06 Campaign detail
     // ---------------------------------------------------------------------
     "donor.campaign.title": "Campaign",
-    "donor.campaign.meta": "Title · date · venue · target",
     "donor.campaign.organizer": "Organizer",
     "donor.campaign.attend": "I plan to attend",
+
+    // ---------------------------------------------------------------------
+    // Module 3 / 6 - donor screens D-03..D-06 (Member 4)
+    // ---------------------------------------------------------------------
+    "donor.profile.chooseArea": "Choose your area",
+    "donor.profile.availability": "Availability",
+    "donor.availability.available": "Available",
+    "donor.availability.notAvailable": "Not available",
+    "donor.profile.saving": "Saving…",
+    "donor.profile.saved": "Profile saved.",
+    "donor.profile.errorGeneric": "Something went wrong. Please try again.",
+    "donor.profile.deleteHint": "Deleting removes your name, phone number and profile, and you will no longer be matched.",
+    "donor.profile.deleteConfirm": "Delete your account? This cannot be undone.",
+    "donor.profile.deleteYes": "Yes, delete my account",
+    "donor.profile.deleteKeep": "Keep my account",
+    "donor.profile.deleting": "Deleting…",
+    "donor.error.bloodGroupRequired": "Choose your blood group.",
+    "donor.error.bloodGroupInvalid": "Choose one of the listed blood groups.",
+    "donor.error.areaRequired": "Choose your area of Karachi.",
+    "donor.error.areaInvalid": "Choose one of the listed areas.",
+    "donor.error.availabilityInvalid": "Choose Available or Not available.",
+    "donor.error.languageInvalid": "Choose English or Urdu.",
+    "donor.error.channelRequired": "Keep at least one way of being contacted selected.",
+    "donor.error.dateInvalid": "Enter a valid date.",
+    "donor.error.dateFuture": "The date cannot be in the future.",
+    "donor.error.placeRequired": "Enter where you donated (at least 2 characters).",
+    "donor.error.placeTooLong": "The place is too long (120 characters at most).",
+    "donor.error.reminderInvalid": "Enter a whole number of days from 1 to 365, or leave it empty.",
+
+    "donor.history.selfReported": "Self reported",
+    "donor.history.recordedByOrg": "Recorded by org",
+    "donor.history.entry": "{date} · {label}",
+    "donor.history.empty": "No donations recorded yet.",
+    "donor.history.addDate": "Date of donation",
+    "donor.history.addPlace": "Place",
+    "donor.history.addSave": "Add donation",
+    "donor.history.cancelAdd": "Cancel",
+    "donor.history.saving": "Saving…",
+    "donor.history.added": "Donation added.",
+    "donor.history.reminderSave": "Set reminder",
+    "donor.history.reminderSaved": "Reminder saved.",
+    "donor.history.reminderCleared": "Reminder turned off.",
+    "donor.history.reminderHint": "Leave empty for no reminder. We remind you once, after your last donation.",
+    "donor.history.reminderNext": "Next reminder: {date}",
+
+    "donor.campaigns.search": "Search campaigns",
+    "donor.campaigns.allAreas": "All areas",
+    "donor.campaigns.allGroups": "All groups",
+    "donor.campaigns.fromDate": "From date",
+    "donor.campaigns.clear": "Clear filters",
+    "donor.campaigns.empty": "No upcoming campaigns match.",
+    "donor.campaigns.emptyHint": "Try another area, date or blood group, or check back soon.",
+    "donor.campaigns.resultCount": "{count} upcoming campaign(s)",
+    "donor.campaign.venue": "Venue",
+    "donor.campaign.target": "Target",
+    "donor.campaign.allGroups": "All blood groups",
+    "donor.campaign.description": "About this campaign",
+    "donor.campaign.contact": "Contact",
+    "donor.campaign.attending": "You plan to attend",
+    "donor.campaign.withdraw": "I no longer plan to attend",
+    "donor.campaign.interestedCount": "{count} donor(s) plan to attend",
+    "donor.campaign.nonBinding": "Marking interest is not a commitment. You can change your mind at any time.",
+    "donor.campaign.errorGeneric": "Something went wrong. Please try again.",
+    "donor.campaign.back": "Campaigns",
   },
   ur: {
     "donor.ph.wireframe": "وائرفریم {id}",
     "donor.ph.sprint1": "سپرنٹ 1 — ماڈیول کا ذمہ دار یہ بناتا ہے",
     "donor.ph.sprint2": "سپرنٹ 2",
     "donor.owner.requests": "ماڈیول 3 · عطیہ دہندہ کی مطابقت اور جوابات",
-    "donor.owner.profile": "ماڈیول 3 · عطیہ دہندہ کا پروفائل اور ترجیحات",
-    "donor.owner.history": "ماڈیول 3 · عطیے کی تاریخ",
-    "donor.owner.campaigns": "ماڈیول 6 · عطیے کی مہمیں",
 
     "donor.ph.d01":
       "عطیہ دہندہ کا ہوم: دستیابی کا ٹوگل، قریب ترین دو درخواستیں، مہمیں اور پروفائل/تاریخ کے لنک۔",
     "donor.ph.d02":
       "ایک درخواست اس کے خلاصے، اہلیت کے نوٹس اور رضامندی/انکار کے بٹنوں کے ساتھ۔",
-    "donor.ph.d03":
-      "عطیہ دہندہ کا پروفائل: بلڈ گروپ، علاقہ، اطلاع کے ذرائع، اطلاعات کی ترجیحات اور زبان۔",
-    "donor.ph.d04":
-      "عطیوں کی تاریخ خود رپورٹ اور تنظیم کے ریکارڈ کے اندراجات کے ساتھ، پچھلا عطیہ شامل کرنے اور یاد دہانی کے وقفے کے ساتھ۔",
-    "donor.ph.d05":
-      "مہموں کی فہرست علاقہ، تاریخ اور بلڈ گروپ کے فلٹرز اور تصدیق شدہ مہم کارڈز کے ساتھ۔",
-    "donor.ph.d06":
-      "مہم کی تفصیل عنوان/تاریخ/مقام/ہدف کی سطر، تصدیق شدہ منتظم اور شرکت کی کارروائی کے ساتھ۔",
 
     "donor.home.available": "دستیاب",
     "donor.home.row102": "O- · انتہائی فوری · ہسپتال X · 2 کلومیٹر",
@@ -119,7 +153,6 @@ export const donor: DictionaryPart = {
     "donor.request.willing": "میں رضامند ہوں",
     "donor.request.decline": "انکار کریں",
 
-    "donor.profile.areaPlaceholder": "کراچی",
     "donor.profile.channels": "اطلاع کے ذرائع",
     "donor.channel.sms": "SMS",
     "donor.channel.whatsapp": "واٹس ایپ",
@@ -130,21 +163,75 @@ export const donor: DictionaryPart = {
     "donor.profile.deleteAccount": "اکاؤنٹ حذف کریں",
 
     "donor.history.title": "عطیے (کل {count})",
-    "donor.history.selfReported": "12 جنوری · خود رپورٹ کیا",
-    "donor.history.recordedByOrg": "03 جون · تنظیم نے ریکارڈ کیا",
     "donor.history.addPast": "پچھلا عطیہ شامل کریں",
     "donor.history.remindBefore": "مجھے یاد دلائیں",
     "donor.history.remindAfter": "دن بعد",
 
     "donor.campaigns.filterGroup": "گروپ",
-    "donor.campaigns.driveUniv": "ڈرائیو - یونیورسٹی",
-    "donor.campaigns.driveMosque": "ڈرائیو - مسجد",
-    "donor.campaigns.date20Nov": "20 نومبر",
-    "donor.campaigns.date27Nov": "27 نومبر",
 
     "donor.campaign.title": "مہم",
-    "donor.campaign.meta": "عنوان · تاریخ · مقام · ہدف",
     "donor.campaign.organizer": "منتظم",
     "donor.campaign.attend": "میں شرکت کا ارادہ رکھتا ہوں",
+
+    "donor.profile.chooseArea": "اپنا علاقہ منتخب کریں",
+    "donor.profile.availability": "دستیابی",
+    "donor.availability.available": "دستیاب",
+    "donor.availability.notAvailable": "دستیاب نہیں",
+    "donor.profile.saving": "محفوظ ہو رہا ہے…",
+    "donor.profile.saved": "پروفائل محفوظ ہو گیا۔",
+    "donor.profile.errorGeneric": "کچھ غلط ہو گیا۔ براہ کرم دوبارہ کوشش کریں۔",
+    "donor.profile.deleteHint": "حذف کرنے سے آپ کا نام، فون نمبر اور پروفائل ہٹ جائے گا اور آپ مماثلت میں شامل نہیں رہیں گے۔",
+    "donor.profile.deleteConfirm": "کیا اپنا اکاؤنٹ حذف کریں؟ یہ عمل واپس نہیں ہو سکتا۔",
+    "donor.profile.deleteYes": "ہاں، میرا اکاؤنٹ حذف کریں",
+    "donor.profile.deleteKeep": "اکاؤنٹ رکھیں",
+    "donor.profile.deleting": "حذف ہو رہا ہے…",
+    "donor.error.bloodGroupRequired": "اپنا بلڈ گروپ منتخب کریں۔",
+    "donor.error.bloodGroupInvalid": "فہرست میں سے کوئی بلڈ گروپ منتخب کریں۔",
+    "donor.error.areaRequired": "کراچی میں اپنا علاقہ منتخب کریں۔",
+    "donor.error.areaInvalid": "فہرست میں سے کوئی علاقہ منتخب کریں۔",
+    "donor.error.availabilityInvalid": "دستیاب یا دستیاب نہیں منتخب کریں۔",
+    "donor.error.languageInvalid": "انگریزی یا اردو منتخب کریں۔",
+    "donor.error.channelRequired": "رابطے کا کم از کم ایک ذریعہ منتخب رکھیں۔",
+    "donor.error.dateInvalid": "درست تاریخ درج کریں۔",
+    "donor.error.dateFuture": "تاریخ مستقبل کی نہیں ہو سکتی۔",
+    "donor.error.placeRequired": "درج کریں کہ آپ نے کہاں عطیہ دیا (کم از کم 2 حروف)۔",
+    "donor.error.placeTooLong": "جگہ کا نام بہت لمبا ہے (زیادہ سے زیادہ 120 حروف)۔",
+    "donor.error.reminderInvalid": "1 سے 365 تک دنوں کی پوری تعداد درج کریں، یا خالی چھوڑ دیں۔",
+
+    "donor.history.selfReported": "خود درج کردہ",
+    "donor.history.recordedByOrg": "تنظیم نے درج کیا",
+    "donor.history.entry": "{date} · {label}",
+    "donor.history.empty": "ابھی تک کوئی عطیہ درج نہیں۔",
+    "donor.history.addDate": "عطیے کی تاریخ",
+    "donor.history.addPlace": "جگہ",
+    "donor.history.addSave": "عطیہ شامل کریں",
+    "donor.history.cancelAdd": "منسوخ کریں",
+    "donor.history.saving": "محفوظ ہو رہا ہے…",
+    "donor.history.added": "عطیہ شامل ہو گیا۔",
+    "donor.history.reminderSave": "یاد دہانی لگائیں",
+    "donor.history.reminderSaved": "یاد دہانی محفوظ ہو گئی۔",
+    "donor.history.reminderCleared": "یاد دہانی بند کر دی گئی۔",
+    "donor.history.reminderHint": "یاد دہانی نہ چاہیں تو خالی چھوڑ دیں۔ ہم آپ کے آخری عطیے کے بعد ایک بار یاد دلائیں گے۔",
+    "donor.history.reminderNext": "اگلی یاد دہانی: {date}",
+
+    "donor.campaigns.search": "مہمیں تلاش کریں",
+    "donor.campaigns.allAreas": "تمام علاقے",
+    "donor.campaigns.allGroups": "تمام گروپس",
+    "donor.campaigns.fromDate": "اس تاریخ سے",
+    "donor.campaigns.clear": "فلٹر صاف کریں",
+    "donor.campaigns.empty": "کوئی آنے والی مہم نہیں ملی۔",
+    "donor.campaigns.emptyHint": "کوئی اور علاقہ، تاریخ یا بلڈ گروپ آزمائیں، یا کچھ دیر بعد دیکھیں۔",
+    "donor.campaigns.resultCount": "{count} آنے والی مہم",
+    "donor.campaign.venue": "مقام",
+    "donor.campaign.target": "ہدف",
+    "donor.campaign.allGroups": "تمام بلڈ گروپس",
+    "donor.campaign.description": "اس مہم کے بارے میں",
+    "donor.campaign.contact": "رابطہ",
+    "donor.campaign.attending": "آپ شرکت کا ارادہ رکھتے ہیں",
+    "donor.campaign.withdraw": "اب میرا ارادہ نہیں",
+    "donor.campaign.interestedCount": "{count} عطیہ دہندہ شرکت کا ارادہ رکھتے ہیں",
+    "donor.campaign.nonBinding": "دلچسپی ظاہر کرنا کوئی وعدہ نہیں۔ آپ کسی بھی وقت رائے بدل سکتے ہیں۔",
+    "donor.campaign.errorGeneric": "کچھ غلط ہو گیا۔ براہ کرم دوبارہ کوشش کریں۔",
+    "donor.campaign.back": "مہمیں",
   },
 };

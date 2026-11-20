@@ -41,6 +41,16 @@ export type AuditAction =
   | "inventory_movement_recorded"
   | "inventory_settings_updated"
   | "inventory_alert_acknowledged"
+  // Member 4 Sprint 1: M3 donor profile / history, M6 campaigns. Additive only.
+  | "donor_profile_updated"
+  | "donor_account_deleted"
+  | "donor_donation_added"
+  | "donor_reminder_changed"
+  | "campaign_created"
+  | "campaign_updated"
+  | "campaign_submitted"
+  | "campaign_cancelled"
+  | "campaign_outcome_recorded"
   | "access_refused";
 
 export interface AuditEntry {

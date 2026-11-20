@@ -77,7 +77,7 @@ Every module below states its owner and its Sprint 1 scope. Items marked Sprint 
 
 ### Module 3 — Donor Registration and Profile Management (Member 4)
 
-*Sprint 1 status: Sprint 1 (signup + OTP already delivered by Member 1)*
+*Sprint 1 status: Delivered (signup + OTP by Member 1; profile, history and reminders by Member 4)*
 
 - **3.1 Donor registration.** Donor registration form; collect donor name and mobile number; verify the mobile number through OTP; obtain consent for sharing contact information after the donor responds Willing; create the account after verification. Delivered as part of the authentication foundation.
 - **3.2 Donor profile.** Name, mobile number, blood group (A+, A-, B+, B-, AB+, AB-, O+, O-), area of Karachi, donation history, availability (Available / Not Available), contact preferences (platform, SMS, WhatsApp), notification preferences (urgent requests, campaigns), preferred language (English / Urdu). View and edit the profile.
@@ -110,7 +110,7 @@ Every module below states its owner and its Sprint 1 scope. Items marked Sprint 
 
 ### Module 6 — Donation Campaign Management (Member 4)
 
-*Sprint 1 status: Sprint 1*
+*Sprint 1 status: Delivered*
 
 - **6.1 Create campaigns.** Campaign title, description, date, time, Karachi venue address, target blood groups (or all) and contact details.
 - **6.2 Campaign submission.** Save campaigns as Draft; allow the organizer to submit a campaign for approval, which changes the status to Pending Approval.
@@ -164,10 +164,10 @@ Every card comes from the module breakdown in section 3: **one card per numbered
 | Member 1 | 0 | 0 | 14 | 14 |
 | Member 2 | 14 | 0 | 0 | 14 |
 | Member 3 | 16 | 0 | 0 | 16 |
-| Member 4 | 15 | 0 | 0 | 15 |
+| Member 4 | 0 | 0 | 15 | 15 |
 | Member 5 | 0 | 0 | 13 | 13 |
 | All members | 1 | 0 | 0 | 1 |
-| **Total** | **46** | **0** | **27** | **73** |
+| **Total** | **31** | **0** | **42** | **73** |
 
 > Member 1's part is complete: all of their cards are in the **Done** list and they have no remaining To Do or In Progress work.
 
@@ -213,21 +213,21 @@ The remaining Sprint 1 work, grouped by member, plus the group-level User Manual
 
 ### Member 4
 
-- [ ] Module 3 — 3.2 Donor profile
-- [ ] Module 3 — 3.3 Profile management
-- [ ] Module 3 — 3.4 Donation history
-- [ ] Module 3 — 3.5 Personal donation reminders
-- [ ] Module 6 — 6.1 Create campaigns
-- [ ] Module 6 — 6.2 Campaign submission
-- [ ] Module 6 — 6.3 Administrator campaign approval
-- [ ] Module 6 — 6.4 Campaign visibility
-- [ ] Module 6 — 6.5 Campaign discovery
-- [ ] Module 6 — 6.6 Donor campaign interest
-- [ ] Module 6 — 6.7 Campaign management
-- [ ] Module 6 — 6.8 Campaign outcomes
-- [ ] Module 6 — 6.9 Campaign notifications
-- [ ] Tests and results for Modules 3 and 6
-- [ ] Documentation update for Modules 3 and 6
+- [x] Module 3 — 3.2 Donor profile
+- [x] Module 3 — 3.3 Profile management
+- [x] Module 3 — 3.4 Donation history
+- [x] Module 3 — 3.5 Personal donation reminders
+- [x] Module 6 — 6.1 Create campaigns
+- [x] Module 6 — 6.2 Campaign submission
+- [x] Module 6 — 6.3 Administrator campaign approval
+- [x] Module 6 — 6.4 Campaign visibility
+- [x] Module 6 — 6.5 Campaign discovery
+- [x] Module 6 — 6.6 Donor campaign interest
+- [x] Module 6 — 6.7 Campaign management
+- [x] Module 6 — 6.8 Campaign outcomes
+- [x] Module 6 — 6.9 Campaign notifications
+- [x] Tests and results for Modules 3 and 6
+- [x] Documentation update for Modules 3 and 6
 
 ### Member 5
 

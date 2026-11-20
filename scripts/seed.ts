@@ -363,6 +363,66 @@ async function ensureCampaign(db: Awaited<ReturnType<typeof connect>>): Promise<
   console.log("  + campaign awaiting review (A-04)");
 }
 
+//Member 4 Sprint 1: demo campaigns for D-05 / D-06 / O-02 / O-03 and demo history for D-04
+
+async function ensureMember4Demo(db: Awaited<ReturnType<typeof connect>>): Promise<void> {
+  const org = await db.query<{ id: string }>(
+    "SELECT id FROM organizations WHERE lower(official_email) = 'organizer@demo.wasl' LIMIT 1",
+  );
+  const organizationId = org.rows[0]?.id;
+  if (!organizationId) return;
+
+  const hour = 60 * 60 * 1000;
+  const day = 24 * hour;
+  const drives = [
+    // Upcoming approved drives (the two rows drawn on wireframe D-05).
+    { en: "Drive - Univ.", ur: "ڈرائیو - یونیورسٹی", venue: "University Main Hall", area: "Gulshan-e-Iqbal", start: 3 * day, length: 5 * hour, groups: '{}' },
+    { en: "Drive - Mosque", ur: "ڈرائیو - مسجد", venue: "Jamia Masjid Courtyard", area: "Saddar", start: 10 * day, length: 4 * hour, groups: '{"O-","O+"}' },
+    // A drive that is under way now, so the completion form (O-03) can be tried straight away.
+    { en: "Drive - Library", ur: "ڈرائیو - لائبریری", venue: "Central Library", area: "Clifton", start: -1 * hour, length: 7 * hour, groups: '{}' },
+  ];
+  for (const drive of drives) {
+    const exists = await db.query("SELECT 1 FROM campaigns WHERE organization_id = $1 AND title_en = $2", [
+      organizationId,
+      drive.en,
+    ]);
+    if (exists.rows.length > 0) continue;
+    const startsAt = new Date(Date.now() + drive.start);
+    await db.query(
+      `INSERT INTO campaigns
+         (organization_id, title_en, title_ur, description_en, description_ur, starts_at, ends_at,
+          venue, area, target_groups, contact_phone, status)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10::text[], '+923001112223', 'approved')`,
+      [
+        organizationId,
+        drive.en,
+        drive.ur,
+        "Walk-in blood donation. Please bring your CNIC and eat before you donate.",
+        "براہِ کرم اپنا شناختی کارڈ ساتھ لائیں اور عطیہ سے پہلے کچھ کھا لیں۔",
+        startsAt.toISOString(),
+        new Date(startsAt.getTime() + drive.length).toISOString(),
+        drive.venue,
+        drive.area,
+        drive.groups,
+      ],
+    );
+    console.log(`  + campaign ${drive.en}`);
+  }
+
+  const donor = await db.query<{ id: string }>("SELECT id FROM donors WHERE mobile = '+923009876543' LIMIT 1");
+  const donorId = donor.rows[0]?.id;
+  if (!donorId) return;
+  const has = await db.query("SELECT 1 FROM donation_history WHERE donor_id = $1 LIMIT 1", [donorId]);
+  if (has.rows.length > 0) return;
+  await db.query(
+    `INSERT INTO donation_history (donor_id, donated_on, place, source, recorded_by_organization_id)
+     VALUES ($1, DATE '2026-01-12', 'Aga Khan University Hospital', 'self_reported', NULL),
+            ($1, DATE '2026-06-03', 'Community drive, Saddar', 'recorded_by_org', $2)`,
+    [donorId, organizationId],
+  );
+  console.log("  + donor history (2 donations)");
+}
+
 async function main() {
   const db = await connect();
   try {
@@ -378,6 +438,7 @@ async function main() {
     }
     await ensureCampaign(db); //Member 2 Sprint 1: A-04 campaign review
     await ensureDonor(db, passwordHash);
+    await ensureMember4Demo(db); //Member 4 Sprint 1: D-04..D-06, O-02, O-03
     await adminQueueNotification(db);
 
     console.log("");

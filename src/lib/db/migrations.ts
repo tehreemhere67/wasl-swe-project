@@ -508,5 +508,56 @@ CREATE INDEX IF NOT EXISTS idx_inventory_batches_active
   WHERE archived_at IS NULL;
 `,
   },
-  
+
+  // Member 4, Sprint 1: Module 3 (donor profile, donation history, reminders) and
+  // Module 6 (campaign interest, edits that need re-approval, outcomes). Additive only:
+  // 001..006 are untouched.
+  {
+    id: "007_donor_campaign_m4",
+    name: "Donation history, campaign interest, campaign contact/outcome/snapshot columns, donor reminder tracking (M3/M6)",
+    sql: `
+-- FR-DON-03 / FR-DON-04 / A-19: two kinds of entry, both count towards the total.
+-- donor_id is set to NULL (not deleted) when a donor deletes their account, so only an
+-- anonymous total remains (DR-05).
+CREATE TABLE IF NOT EXISTS donation_history (
+  id                          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  donor_id                    UUID REFERENCES donors (id) ON DELETE SET NULL,
+  donated_on                  DATE NOT NULL,
+  place                       TEXT NOT NULL,
+  source                      TEXT NOT NULL CHECK (source IN ('self_reported', 'recorded_by_org')),
+  recorded_by_organization_id UUID REFERENCES organizations (id) ON DELETE SET NULL,
+  campaign_id                 UUID REFERENCES campaigns (id) ON DELETE SET NULL,
+  created_at                  TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idx_donation_history_donor ON donation_history (donor_id, donated_on DESC);
+
+-- A donor is recorded at most once per campaign.
+CREATE UNIQUE INDEX IF NOT EXISTS uq_donation_history_campaign_donor
+  ON donation_history (campaign_id, donor_id)
+  WHERE campaign_id IS NOT NULL AND donor_id IS NOT NULL;
+
+-- FR-CAM-07 / A-30: non-binding "I plan to attend".
+CREATE TABLE IF NOT EXISTS campaign_interests (
+  campaign_id UUID NOT NULL REFERENCES campaigns (id) ON DELETE CASCADE,
+  donor_id    UUID NOT NULL REFERENCES donors (id) ON DELETE CASCADE,
+  created_at  TIMESTAMPTZ NOT NULL DEFAULT now(),
+  PRIMARY KEY (campaign_id, donor_id)
+);
+
+-- FR-CAM-01 contact details, FR-CAM-09 outcomes, FR-CAM-08 / A-29 approved version kept while
+-- an edited campaign waits for the administrator.
+ALTER TABLE campaigns ADD COLUMN IF NOT EXISTS contact_phone        TEXT;
+ALTER TABLE campaigns ADD COLUMN IF NOT EXISTS contact_email        TEXT;
+ALTER TABLE campaigns ADD COLUMN IF NOT EXISTS attendees            INTEGER CHECK (attendees IS NULL OR attendees >= 0);
+ALTER TABLE campaigns ADD COLUMN IF NOT EXISTS donations_count      INTEGER CHECK (donations_count IS NULL OR donations_count >= 0);
+ALTER TABLE campaigns ADD COLUMN IF NOT EXISTS outcome_recorded_at  TIMESTAMPTZ;
+ALTER TABLE campaigns ADD COLUMN IF NOT EXISTS approved_snapshot    JSONB;
+ALTER TABLE campaigns ADD COLUMN IF NOT EXISTS cancelled_at         TIMESTAMPTZ;
+
+-- FR-DON-06: remember which last donation a reminder was already sent for.
+ALTER TABLE donors ADD COLUMN IF NOT EXISTS reminder_last_sent_for DATE;
+ALTER TABLE donors ADD COLUMN IF NOT EXISTS deleted_at             TIMESTAMPTZ;
+`,
+  },
 ];
