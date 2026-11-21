@@ -16,6 +16,8 @@ with qualified medical staff at the time of donation (SRS §1.3, BR-3, BR-4, BR-
 - **Sprint 1 backlog:** [`docs/SPRINT-BACKLOG.md`](docs/SPRINT-BACKLOG.md) — module breakdown, member
   responsibilities, and the To Do / In Progress / Done lists. Import [`docs/trello-board.json`](docs/trello-board.json)
   into Trello to create the matching board.
+- **Daily Scrum minutes (Sprint 1):** [`docs/DAILY-SCRUM-MINUTES.md`](docs/DAILY-SCRUM-MINUTES.md) —
+  the five minuted team check-ins, their durations and decisions.
 - **Tests:** [`tests/README.md`](tests/README.md) (how to run/add tests) and Member 1's
   [`tests/member-1/TEST-RESULTS.md`](tests/member-1/TEST-RESULTS.md).
 - Full requirements: [`docs/`](docs/) — start with [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md),
