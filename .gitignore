@@ -24,7 +24,6 @@ Thumbs.db
 coverage/
 test-results/
 playwright-report/
-screenshots/
 
 # typescript build info
 *.tsbuildinfo

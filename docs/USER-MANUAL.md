@@ -5,8 +5,8 @@ This manual explains every screen that is working in **Sprint 1**. Screens plann
 (hospital blood requests, donor matching and responses, the administrator dashboard and reports)
 are not part of this manual.
 
-> **Screenshots:** each section ends with a line like *[Screenshot: …]*. Paste the picture there
-> (see the list in section 11).
+> **Screenshots:** captured from the running Sprint 1 application with the seeded demo accounts.
+> Each section shows its relevant screens; the full set is in [`screenshots/`](screenshots/).
 
 ## Contents
 1. Getting started
@@ -19,7 +19,7 @@ are not part of this manual.
 8. Blood bank
 9. Administrator
 10. Troubleshooting
-11. Screenshot checklist
+11. Screens
 
 ---
 
@@ -44,7 +44,7 @@ use any working feature. Donors can use Wasl straight after signing up.
 **Language:** the **EN ⇄ اردو** button in the top bar switches the whole app between English and Urdu. Urdu
 pages read right-to-left. The app remembers your choice.
 
-*[Screenshot: login page (G-01)]*
+![G-01 — landing / login](screenshots/01-G-01-landing.png)
 
 ## 2. Registering
 
@@ -57,7 +57,7 @@ pages read right-to-left. The app remembers your choice.
 5. Choose a **Password** (at least 8 characters), repeat it, and press **Create account**.
 6. Open **Profile** and add your blood group and area (see section 5).
 
-*[Screenshot: donor registration (G-03)]*
+![G-03 — donor registration with OTP](screenshots/03-G-03-donor-signup-otp.png)
 
 ### Hospital, blood bank or donation organization
 1. On the login page choose **Register organization**.
@@ -69,7 +69,7 @@ pages read right-to-left. The app remembers your choice.
 6. You see the **account status** page showing **Pending**. You can use the working features after the
    administrator approves you.
 
-*[Screenshot: organization registration (G-02)]*
+![G-02 — organization registration](screenshots/02-G-02-organization-registration.png)
 
 ## 3. Logging in, account status and password reset
 
@@ -95,7 +95,9 @@ receive, then choose a new password.
 **Log out:** click your circle avatar (top right) and choose **Log out**. Your session also ends after 30 minutes
 of no activity.
 
-*[Screenshot: account status (G-04); forgot password]*
+![G-04 — account status (Pending)](screenshots/04-G-04-account-status-pending.png)
+
+![Forgot password](screenshots/forgot-password.png)
 
 ## 4. Everyday features for every user
 
@@ -103,7 +105,7 @@ of no activity.
   alerts, campaign notices, reminders). Notices are shown in your chosen language.
 * **Menu bar:** only shows the screens for your role; you cannot open another role's screens.
 
-*[Screenshot: notification centre (G-05)]*
+![G-05 — notification centre](screenshots/05-G-05-notification-centre.png)
 
 ## 5. Donor
 
@@ -122,7 +124,13 @@ turns it off.
 **Group** or the search box. Open a campaign to see its date, venue, target blood group, organizer and contact.
 Press **I plan to attend** to show interest (it is not a promise; you can withdraw any time).
 
-*[Screenshots: donor profile (D-03); history (D-04); campaigns (D-05); campaign detail (D-06)]*
+![D-03 — donor profile](screenshots/17-D-03-donor-profile.png)
+
+![D-04 — donation history](screenshots/18-D-04-donor-history.png)
+
+![D-05 — browse campaigns](screenshots/19-D-05-campaigns-browse.png)
+
+![D-06 — campaign detail](screenshots/20-D-06-campaign-detail.png)
 
 ## 6. Campaign organizer
 
@@ -141,7 +149,9 @@ administrator; donors keep seeing the old version until it is approved again.
 **Completion form** — after the drive starts, enter **Attendees** and **Donations**, and optionally a **donor's
 phone** to add a "Recorded by org" entry to that donor's history. Press **Save**; the campaign becomes Completed.
 
-*[Screenshots: create campaign (O-01); my campaigns (O-02); completion form (O-03)]*
+![O-01 — create campaign](screenshots/21-O-01-create-campaign.png)
+
+![O-02 — my campaigns](screenshots/22-O-02-my-campaigns.png)
 
 ## 7. Hospital
 
@@ -153,7 +163,7 @@ the earliest expiry, area, phone (tap to call), email and when its stock was las
 still awaiting testing is never counted. **Always confirm availability directly with the blood bank.** If nothing
 matches, a message offers to create a blood request (the request screens arrive in Sprint 2).
 
-*[Screenshot: hospital search with results (H-02)]*
+![H-02 — hospital blood availability search](screenshots/16-H-02-hospital-search.png)
 
 ## 8. Blood bank
 
@@ -166,7 +176,13 @@ Demo login: `bank@demo.wasl` / `WaslDemo#2026`. Full details: `docs/member-3/USE
 * **Settings** — low-stock thresholds and expiry warning periods.
 * **Record donation** — enter a donor's phone to add a donation to their history.
 
-*[Screenshots: dashboard (B-01); inventory (B-02); add batch (B-03); batch detail (B-04)]*
+![B-01 — blood-bank dashboard with alerts](screenshots/10-B-01-blood-bank-dashboard.png)
+
+![B-02 — inventory list](screenshots/11-B-02-inventory-list.png)
+
+![B-03 — add batch](screenshots/12-B-03-add-batch.png)
+
+![B-04 — batch detail](screenshots/13-B-04-batch-detail.png)
 
 ## 9. Administrator
 
@@ -180,7 +196,11 @@ Demo login: `admin@wasl.pk` / `WaslAdmin#2026`.
 * **Campaign review** — see submitted campaigns; **Approve**, **Reject** with a reason, or **Return for changes**.
   An approved campaign becomes visible to donors, and nearby donors of the targeted blood groups are notified.
 
-*[Screenshots: verification queue (A-02); accounts (A-03); campaign review (A-04)]*
+![A-02 — administrator verification queue](screenshots/07-A-02-admin-verification-queue.png)
+
+![A-03 — administrator account management](screenshots/08-A-03-admin-accounts.png)
+
+![A-04 — campaign review](screenshots/09-A-04-campaign-review.png)
 
 ## 10. Troubleshooting
 
@@ -193,18 +213,8 @@ Demo login: `admin@wasl.pk` / `WaslAdmin#2026`.
 | A page says "not found" | The item was removed or you do not own it |
 | Text looks wrong in Urdu | Press **EN ⇄ اردو** twice to reload the language |
 
-## 11. Screenshot checklist
+## 11. Screens
 
-Log in as each demo account, switch to English, and take these (add an Urdu one for any two screens):
-
-| Section | Screens |
-| --- | --- |
-| 1–3 | G-01 login, G-02 organization registration, G-03 donor registration, G-04 account status |
-| 4 | G-05 notification centre |
-| 5 | D-03 profile, D-04 history, D-05 campaigns, D-06 campaign detail |
-| 6 | O-01 create campaign, O-02 my campaigns, O-03 completion form |
-| 7 | H-02 search with results |
-| 8 | B-01 dashboard, B-02 inventory, B-03 add batch, B-04 batch detail |
-| 9 | A-02 verification queue, A-03 accounts, A-04 campaign review |
-
-Tip: on Windows press **Windows + Shift + S**, drag over the screen, and paste into the manual.
+The screenshots used in this manual are stored in [`screenshots/`](screenshots/); the README has
+the full table with captions, and every Sprint 1 screen was captured from the running application
+with the seeded demo data.

@@ -1,0 +1,66 @@
+﻿node.exe : (node:17648) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of 
+file:///C:/Users/tehreem/Desktop/swe%20project/wasl/tests/member-2/admin.test.ts is not specified and it doesn't parse 
+as CommonJS.
+At line:16 char:1
++ & $node "tests\member-2\admin.test.ts" 2>&1 | Out-File -Encoding utf8 ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:17648) [M...se as CommonJS.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\C:\Users\tehreem\Desktop\swe project\wasl\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+▶ normalizeQuery
+  ✔ trims, lower-cases and collapses whitespace (2.3194ms)
+  ✔ returns an empty string for non-strings (0.4517ms)
+✔ normalizeQuery (5.5441ms)
+▶ matchesAccountQuery
+  ✔ matches a name case-insensitively (0.8073ms)
+  ✔ matches an email (0.2282ms)
+  ✔ matches a local and an international phone fragment (0.4195ms)
+  ✔ matches an organization name (0.2858ms)
+  ✔ an empty query matches every account (0.6049ms)
+  ✔ returns false when nothing matches (0.8466ms)
+  ✔ treats regex and SQL wildcard characters as literal text (0.3572ms)
+✔ matchesAccountQuery (8.8192ms)
+▶ validateAccountAction
+  ✔ requires a user id (3.545ms)
+  ✔ requires an action (0.3208ms)
+  ✔ rejects an action outside the whitelist (0.3109ms)
+  ✔ accepts deactivate and reactivate (0.2421ms)
+  ✔ trims the user id (0.2034ms)
+✔ validateAccountAction (5.1921ms)
+▶ canChangeAccountStatus
+  ✔ refuses to change your own account (0.4652ms)
+  ✔ refuses to deactivate the last active administrator (0.178ms)
+  ✔ allows deactivating an administrator when another one stays active (0.1714ms)
+  ✔ allows deactivating a donor or an organization user (0.239ms)
+  ✔ refuses to deactivate an already deactivated account (0.2018ms)
+  ✔ allows reactivating a deactivated account (0.1771ms)
+  ✔ refuses to reactivate an account that is already active (0.1602ms)
+✔ canChangeAccountStatus (2.1015ms)
+▶ validateCampaignDecision
+  ✔ approving needs no reason (0.4653ms)
+  ✔ requires a reason to reject or return (0.3315ms)
+  ✔ accepts a reason of three or more characters (0.1808ms)
+  ✔ rejects an unknown decision (0.1915ms)
+  ✔ requires a campaign id (0.1801ms)
+✔ validateCampaignDecision (1.8266ms)
+▶ campaign decision mapping
+  ✔ approve -> approved, reject -> rejected, return -> draft (0.2611ms)
+  ✔ only pending_approval is reviewable (0.1983ms)
+  ✔ keeps the six SRS statuses (0.1577ms)
+  ✔ maps statuses to badge tones (0.1862ms)
+✔ campaign decision mapping (1.1597ms)
+▶ type guards
+  ✔ isAccountAction accepts only deactivate/reactivate (0.2736ms)
+  ✔ isCampaignDecision accepts only approve/reject/return (0.2213ms)
+✔ type guards (0.7293ms)
+ℹ tests 32
+ℹ suites 7
+ℹ pass 32
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 52.8406
