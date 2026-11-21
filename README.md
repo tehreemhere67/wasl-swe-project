@@ -237,6 +237,8 @@ organizer detail/edit page. Edits to an approved campaign go back to the adminis
 the approved version. Docs: [`docs/member-4/`](docs/member-4/IMPLEMENTATION-NOTES.md) ·
 tests: [`tests/member-4/`](tests/member-4/MANUAL-TEST-CASES.md) · live check: `node scripts/verify-campaigns.mjs`.
 
+**User Manual (all roles, Sprint 1):** [`docs/USER-MANUAL.md`](docs/USER-MANUAL.md).
+
 **Placeholders for the other modules:** the role areas exist with their shell, navigation and
 correct access guards, but their operational screens are wireframe-faithful placeholders — they show
 the wireframe structure, name the wireframe ID and owning module, and disable actions that are not
