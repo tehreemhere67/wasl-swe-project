@@ -154,127 +154,126 @@ Every module below states its owner and its Sprint 1 scope. Items marked Sprint 
 - **9.5 Common validation and error handling.** Required-field validation, invalid input messages, authentication errors, upload errors, OTP errors, unauthorized access messages and success confirmations.
 
 ---
-
 ## 4. Cards per member
 
-Every card comes from the module breakdown in section 3: **one card per numbered sub-item** of the modules a member owns, **plus one tests card and one documentation card** per member. Member 1 also has the donor-registration card (3.1), which was delivered with the authentication foundation. There is one **group-level card** for the User Manual, which the whole group writes after all Sprint 1 work is complete.
+Every card comes from the module breakdown in section 3: one card per numbered sub-item of the modules a member owns, plus one tests card and one documentation card per member. Member 1 also has the donor-registration card (3.1), which was delivered with the authentication foundation. There is one group-level card for the User Manual. **All 73 cards are complete.**
 
 | Member | To Do | In Progress | Done | Total |
 | --- | ---: | ---: | ---: | ---: |
 | Member 1 | 0 | 0 | 14 | 14 |
-| Member 2 | 14 | 0 | 0 | 14 |
-| Member 3 | 16 | 0 | 0 | 16 |
+| Member 2 | 0 | 0 | 14 | 14 |
+| Member 3 | 0 | 0 | 16 | 16 |
 | Member 4 | 0 | 0 | 15 | 15 |
 | Member 5 | 0 | 0 | 13 | 13 |
-| All members | 1 | 0 | 0 | 1 |
-| **Total** | **31** | **0** | **42** | **73** |
+| All members | 0 | 0 | 1 | 1 |
+| **Total** | **0** | **0** | **73** | **73** |
 
-> Member 1's part is complete: all of their cards are in the **Done** list and they have no remaining To Do or In Progress work.
+> Sprint 1 is complete: every card is in the **Done** list and there is no remaining work.
 
 ## 5. Board: To Do
 
-The remaining Sprint 1 work, grouped by member, plus the group-level User Manual card.
-
-### Member 2
-
-- [ ] Module 2 — 2.1 Registration form
-- [ ] Module 2 — 2.2 Registration submission
-- [ ] Module 2 — 2.3 Administrator verification interface
-- [ ] Module 2 — 2.4 Verification statuses
-- [ ] Module 2 — 2.5 Verification history
-- [ ] Module 2 — 2.6 Verification restrictions
-- [ ] Module 2 — 2.7 Registration outcome notifications
-- [ ] Module 8 — 8.1 Organization management
-- [ ] Module 8 — 8.2 Campaign management
-- [ ] Module 8 — 8.3 Basic inventory visibility
-- [ ] Module 8 — 8.4 Account management
-- [ ] Module 8 — 8.5 Access restrictions
-- [ ] Tests and results for Modules 2 and 8
-- [ ] Documentation update for Modules 2 and 8
-
-### Member 3
-
-- [x] Module 4 — 4.1 Add inventory
-- [x] Module 4 — 4.2 View inventory
-- [x] Module 4 — 4.3 Update inventory
-- [x] Module 4 — 4.4 Remove or reduce inventory
-- [x] Module 4 — 4.5 Inventory movement history
-- [x] Module 4 — 4.6 Inventory reservations
-- [x] Module 4 — 4.7 Inventory transfers
-- [x] Module 4 — 4.8 Inventory availability rules
-- [x] Module 7 — 7.1 Expiry monitoring
-- [x] Module 7 — 7.2 Expired inventory
-- [x] Module 7 — 7.3 Low-stock monitoring
-- [x] Module 7 — 7.4 Alert display
-- [x] Module 7 — 7.5 Optional SMS alerts
-- [x] Module 7 — 7.6 Monitoring frequency
-- [x] Tests and results for Modules 4 and 7
-- [x] Documentation update for Modules 4 and 7
-
-### Member 4
-
-- [x] Module 3 — 3.2 Donor profile
-- [x] Module 3 — 3.3 Profile management
-- [x] Module 3 — 3.4 Donation history
-- [x] Module 3 — 3.5 Personal donation reminders
-- [x] Module 6 — 6.1 Create campaigns
-- [x] Module 6 — 6.2 Campaign submission
-- [x] Module 6 — 6.3 Administrator campaign approval
-- [x] Module 6 — 6.4 Campaign visibility
-- [x] Module 6 — 6.5 Campaign discovery
-- [x] Module 6 — 6.6 Donor campaign interest
-- [x] Module 6 — 6.7 Campaign management
-- [x] Module 6 — 6.8 Campaign outcomes
-- [x] Module 6 — 6.9 Campaign notifications
-- [x] Tests and results for Modules 3 and 6
-- [x] Documentation update for Modules 3 and 6
-
-### Member 5
-
-- [x] Module 5 — 5.1 Form validation and hospital-only access guard
-- [x] Module 5 — 5.1 Hospital availability search form (blood group and component)
-- [x] Module 5 — 5.2 Results grouped per blood bank and sorted by quantity
-- [x] Module 5 — 5.2 Results: available quantity, earliest expiry and last updated time
-- [x] Module 5 — 5.2 Results: bank name, verification badge, area and contact details
-- [x] Module 5 — 5.3 Donors and the general public cannot view inventory
-- [x] Module 5 — 5.3 Exclusions: expired and unapproved stock
-- [x] Module 5 — 5.3 Exclusions: reserved stock and suspended/unverified banks
-- [x] Module 5 — 5.4 Availability disclaimer
-- [x] Module 5 — 5.5 No-results message and create-request option
-- [x] Module 5 — Availability query against Member 3's inventory tables
-- [ ] Tests and results for Module 5
-- [ ] Documentation update for Module 5
-
-### All members
-
-- [ ] User Manual for end users covering the Sprint 1 features (write after all Sprint 1 work is complete)
+No cards remain in To Do. All Sprint 1 work is complete.
 
 ## 6. Board: In Progress
 
-No cards are in progress at this point. Member 1's delivery is complete; the remaining Sprint 1 work is in the To Do list above.
+No cards are in progress.
 
 ## 7. Board: Done
 
-Member 1's complete Sprint 1 delivery.
+All 73 cards, grouped by member.
 
-- [x] **Member 1** — Module 1 — 1.1 Login
-- [x] **Member 1** — Module 1 — 1.2 Registration options
-- [x] **Member 1** — Module 1 — 1.3 Password management
-- [x] **Member 1** — Module 1 — 1.4 OTP verification
-- [x] **Member 1** — Module 1 — 1.5 Role-based access
-- [x] **Member 1** — Module 1 — 1.6 Administrator account
-- [x] **Member 1** — Module 3 — 3.1 Donor registration (delivered with the authentication foundation)
-- [x] **Member 1** — Module 9 — 9.1 English and Urdu
-- [x] **Member 1** — Module 9 — 9.2 Role-specific interfaces
-- [x] **Member 1** — Module 9 — 9.3 Navigation
-- [x] **Member 1** — Module 9 — 9.4 Responsive design
-- [x] **Member 1** — Module 9 — 9.5 Common validation and error handling
-- [x] **Member 1** — Tests and results for Modules 1 and 9 (157 unit tests, 29 API lifecycle checks, 65 manual cases)
-- [x] **Member 1** — Documentation for Modules 1 and 9 (README, architecture, traceability, wireframe map, handoff)
+### Member 1
 
----
+- [x] [Member 1] Module 1 — 1.1 Login
+- [x] [Member 1] Module 1 — 1.2 Registration options
+- [x] [Member 1] Module 1 — 1.3 Password management
+- [x] [Member 1] Module 1 — 1.4 OTP verification
+- [x] [Member 1] Module 1 — 1.5 Role-based access
+- [x] [Member 1] Module 1 — 1.6 Administrator account
+- [x] [Member 1] Module 3 — 3.1 Donor registration (delivered with the authentication foundation)
+- [x] [Member 1] Module 9 — 9.1 English and Urdu
+- [x] [Member 1] Module 9 — 9.2 Role-specific interfaces
+- [x] [Member 1] Module 9 — 9.3 Navigation
+- [x] [Member 1] Module 9 — 9.4 Responsive design
+- [x] [Member 1] Module 9 — 9.5 Common validation and error handling
+- [x] [Member 1] Tests and results for Modules 1 and 9 (157 unit tests, 29 API lifecycle checks, 65 manual cases)
+- [x] [Member 1] Documentation for Modules 1 and 9 (README, architecture, traceability, wireframe map, handoff)
+
+### Member 2
+
+- [x] [Member 2] Module 2 — 2.1 Registration form
+- [x] [Member 2] Module 2 — 2.2 Registration submission
+- [x] [Member 2] Module 2 — 2.3 Administrator verification interface
+- [x] [Member 2] Module 2 — 2.4 Verification statuses
+- [x] [Member 2] Module 2 — 2.5 Verification history
+- [x] [Member 2] Module 2 — 2.6 Verification restrictions
+- [x] [Member 2] Module 2 — 2.7 Registration outcome notifications
+- [x] [Member 2] Module 8 — 8.1 Organization management
+- [x] [Member 2] Module 8 — 8.2 Campaign management
+- [x] [Member 2] Module 8 — 8.3 Basic inventory visibility
+- [x] [Member 2] Module 8 — 8.4 Account management
+- [x] [Member 2] Module 8 — 8.5 Access restrictions
+- [x] [Member 2] Tests and results for Modules 2 and 8
+- [x] [Member 2] Documentation update for Modules 2 and 8
+
+### Member 3
+
+- [x] [Member 3] Module 4 — 4.1 Add inventory
+- [x] [Member 3] Module 4 — 4.2 View inventory
+- [x] [Member 3] Module 4 — 4.3 Update inventory
+- [x] [Member 3] Module 4 — 4.4 Remove or reduce inventory
+- [x] [Member 3] Module 4 — 4.5 Inventory movement history
+- [x] [Member 3] Module 4 — 4.6 Inventory reservations
+- [x] [Member 3] Module 4 — 4.7 Inventory transfers
+- [x] [Member 3] Module 4 — 4.8 Inventory availability rules
+- [x] [Member 3] Module 7 — 7.1 Expiry monitoring
+- [x] [Member 3] Module 7 — 7.2 Expired inventory
+- [x] [Member 3] Module 7 — 7.3 Low-stock monitoring
+- [x] [Member 3] Module 7 — 7.4 Alert display
+- [x] [Member 3] Module 7 — 7.5 Optional SMS alerts
+- [x] [Member 3] Module 7 — 7.6 Monitoring frequency
+- [x] [Member 3] Tests and results for Modules 4 and 7
+- [x] [Member 3] Documentation update for Modules 4 and 7
+
+### Member 4
+
+- [x] [Member 4] Module 3 — 3.2 Donor profile
+- [x] [Member 4] Module 3 — 3.3 Profile management
+- [x] [Member 4] Module 3 — 3.4 Donation history
+- [x] [Member 4] Module 3 — 3.5 Personal donation reminders
+- [x] [Member 4] Module 6 — 6.1 Create campaigns
+- [x] [Member 4] Module 6 — 6.2 Campaign submission
+- [x] [Member 4] Module 6 — 6.3 Administrator campaign approval
+- [x] [Member 4] Module 6 — 6.4 Campaign visibility
+- [x] [Member 4] Module 6 — 6.5 Campaign discovery
+- [x] [Member 4] Module 6 — 6.6 Donor campaign interest
+- [x] [Member 4] Module 6 — 6.7 Campaign management
+- [x] [Member 4] Module 6 — 6.8 Campaign outcomes
+- [x] [Member 4] Module 6 — 6.9 Campaign notifications
+- [x] [Member 4] Tests and results for Modules 3 and 6
+- [x] [Member 4] Documentation update for Modules 3 and 6
+
+### Member 5
+
+- [x] [Member 5] Module 5 — 5.1 Form validation and hospital-only access guard
+- [x] [Member 5] Module 5 — 5.1 Hospital availability search form (blood group and component)
+- [x] [Member 5] Module 5 — 5.2 Results grouped per blood bank and sorted by quantity
+- [x] [Member 5] Module 5 — 5.2 Results: available quantity, earliest expiry and last updated time
+- [x] [Member 5] Module 5 — 5.2 Results: bank name, verification badge, area and contact details
+- [x] [Member 5] Module 5 — 5.3 Donors and the general public cannot view inventory
+- [x] [Member 5] Module 5 — 5.3 Exclusions: expired and unapproved stock
+- [x] [Member 5] Module 5 — 5.3 Exclusions: reserved stock and suspended/unverified banks
+- [x] [Member 5] Module 5 — 5.4 Availability disclaimer
+- [x] [Member 5] Module 5 — 5.5 No-results message and create-request option
+- [x] [Member 5] Module 5 — Availability query against Member 3's inventory tables
+- [x] [Member 5] Tests and results for Module 5
+- [x] [Member 5] Documentation update for Module 5
+
+### All members
+
+- [x] [All members] User Manual for end users covering the Sprint 1 features (write after all Sprint 1 work is complete)
 
 ## 8. Trello board
 
-The board is generated from sections 5–7 and lives in **`docs/trello-board.json`**: three lists — **To Do**, **In Progress** (empty) and **Done** — with one card per task above, prefixed with the responsible member. Import that single file into Trello; no other setup is required.
+The live board is **https://trello.com/b/fdZkWZS7/wasltrelloboard** — **Done: 73, In Progress: 0, To Do: 0**. It also has a `Pre_Sprint` list with the six pre-sprint setup cards, kept as a record. `docs/trello-board.json` mirrors the 73 Sprint 1 cards.
 

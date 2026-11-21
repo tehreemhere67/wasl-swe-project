@@ -124,210 +124,210 @@
       "id": "card-15",
       "name": "[Member 2] Module 2 — 2.1 Registration form",
       "closed": false,
-      "idList": "list-todo",
+      "idList": "list-done",
       "pos": 15360
     },
     {
       "id": "card-16",
       "name": "[Member 2] Module 2 — 2.2 Registration submission",
       "closed": false,
-      "idList": "list-todo",
+      "idList": "list-done",
       "pos": 16384
     },
     {
       "id": "card-17",
       "name": "[Member 2] Module 2 — 2.3 Administrator verification interface",
       "closed": false,
-      "idList": "list-todo",
+      "idList": "list-done",
       "pos": 17408
     },
     {
       "id": "card-18",
       "name": "[Member 2] Module 2 — 2.4 Verification statuses",
       "closed": false,
-      "idList": "list-todo",
+      "idList": "list-done",
       "pos": 18432
     },
     {
       "id": "card-19",
       "name": "[Member 2] Module 2 — 2.5 Verification history",
       "closed": false,
-      "idList": "list-todo",
+      "idList": "list-done",
       "pos": 19456
     },
     {
       "id": "card-20",
       "name": "[Member 2] Module 2 — 2.6 Verification restrictions",
       "closed": false,
-      "idList": "list-todo",
+      "idList": "list-done",
       "pos": 20480
     },
     {
       "id": "card-21",
       "name": "[Member 2] Module 2 — 2.7 Registration outcome notifications",
       "closed": false,
-      "idList": "list-todo",
+      "idList": "list-done",
       "pos": 21504
     },
     {
       "id": "card-22",
       "name": "[Member 2] Module 8 — 8.1 Organization management",
       "closed": false,
-      "idList": "list-todo",
+      "idList": "list-done",
       "pos": 22528
     },
     {
       "id": "card-23",
       "name": "[Member 2] Module 8 — 8.2 Campaign management",
       "closed": false,
-      "idList": "list-todo",
+      "idList": "list-done",
       "pos": 23552
     },
     {
       "id": "card-24",
       "name": "[Member 2] Module 8 — 8.3 Basic inventory visibility",
       "closed": false,
-      "idList": "list-todo",
+      "idList": "list-done",
       "pos": 24576
     },
     {
       "id": "card-25",
       "name": "[Member 2] Module 8 — 8.4 Account management",
       "closed": false,
-      "idList": "list-todo",
+      "idList": "list-done",
       "pos": 25600
     },
     {
       "id": "card-26",
       "name": "[Member 2] Module 8 — 8.5 Access restrictions",
       "closed": false,
-      "idList": "list-todo",
+      "idList": "list-done",
       "pos": 26624
     },
     {
       "id": "card-27",
       "name": "[Member 2] Tests and results for Modules 2 and 8",
       "closed": false,
-      "idList": "list-todo",
+      "idList": "list-done",
       "pos": 27648
     },
     {
       "id": "card-28",
       "name": "[Member 2] Documentation update for Modules 2 and 8",
       "closed": false,
-      "idList": "list-todo",
+      "idList": "list-done",
       "pos": 28672
     },
     {
       "id": "card-29",
       "name": "[Member 3] Module 4 — 4.1 Add inventory",
       "closed": false,
-      "idList": "list-todo",
+      "idList": "list-done",
       "pos": 29696
     },
     {
       "id": "card-30",
       "name": "[Member 3] Module 4 — 4.2 View inventory",
       "closed": false,
-      "idList": "list-todo",
+      "idList": "list-done",
       "pos": 30720
     },
     {
       "id": "card-31",
       "name": "[Member 3] Module 4 — 4.3 Update inventory",
       "closed": false,
-      "idList": "list-todo",
+      "idList": "list-done",
       "pos": 31744
     },
     {
       "id": "card-32",
       "name": "[Member 3] Module 4 — 4.4 Remove or reduce inventory",
       "closed": false,
-      "idList": "list-todo",
+      "idList": "list-done",
       "pos": 32768
     },
     {
       "id": "card-33",
       "name": "[Member 3] Module 4 — 4.5 Inventory movement history",
       "closed": false,
-      "idList": "list-todo",
+      "idList": "list-done",
       "pos": 33792
     },
     {
       "id": "card-34",
       "name": "[Member 3] Module 4 — 4.6 Inventory reservations",
       "closed": false,
-      "idList": "list-todo",
+      "idList": "list-done",
       "pos": 34816
     },
     {
       "id": "card-35",
       "name": "[Member 3] Module 4 — 4.7 Inventory transfers",
       "closed": false,
-      "idList": "list-todo",
+      "idList": "list-done",
       "pos": 35840
     },
     {
       "id": "card-36",
       "name": "[Member 3] Module 4 — 4.8 Inventory availability rules",
       "closed": false,
-      "idList": "list-todo",
+      "idList": "list-done",
       "pos": 36864
     },
     {
       "id": "card-37",
       "name": "[Member 3] Module 7 — 7.1 Expiry monitoring",
       "closed": false,
-      "idList": "list-todo",
+      "idList": "list-done",
       "pos": 37888
     },
     {
       "id": "card-38",
       "name": "[Member 3] Module 7 — 7.2 Expired inventory",
       "closed": false,
-      "idList": "list-todo",
+      "idList": "list-done",
       "pos": 38912
     },
     {
       "id": "card-39",
       "name": "[Member 3] Module 7 — 7.3 Low-stock monitoring",
       "closed": false,
-      "idList": "list-todo",
+      "idList": "list-done",
       "pos": 39936
     },
     {
       "id": "card-40",
       "name": "[Member 3] Module 7 — 7.4 Alert display",
       "closed": false,
-      "idList": "list-todo",
+      "idList": "list-done",
       "pos": 40960
     },
     {
       "id": "card-41",
       "name": "[Member 3] Module 7 — 7.5 Optional SMS alerts",
       "closed": false,
-      "idList": "list-todo",
+      "idList": "list-done",
       "pos": 41984
     },
     {
       "id": "card-42",
       "name": "[Member 3] Module 7 — 7.6 Monitoring frequency",
       "closed": false,
-      "idList": "list-todo",
+      "idList": "list-done",
       "pos": 43008
     },
     {
       "id": "card-43",
       "name": "[Member 3] Tests and results for Modules 4 and 7",
       "closed": false,
-      "idList": "list-todo",
+      "idList": "list-done",
       "pos": 44032
     },
     {
       "id": "card-44",
       "name": "[Member 3] Documentation update for Modules 4 and 7",
       "closed": false,
-      "idList": "list-todo",
+      "idList": "list-done",
       "pos": 45056
     },
     {
@@ -530,7 +530,7 @@
       "id": "card-73",
       "name": "[All members] User Manual for end users covering the Sprint 1 features (write after all Sprint 1 work is complete)",
       "closed": false,
-      "idList": "list-todo",
+      "idList": "list-done",
       "pos": 74752
     }
   ]
