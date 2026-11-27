@@ -1,0 +1,523 @@
+{
+  "name": "Wasl — Sprint 2 Board",
+  "desc": "Sprint 2: complete blood-request loop (hospital requests, bank offers, donor matching), request notifications, administrator dashboard/audit/settings, admin flags/reports, and the new delivery date field. Member 1 works first (14 cards); Members 2-5 follow with 14 cards each; the final card is the group User Manual update. Import this file into Trello; keep the three lists.",
+  "lists": [
+    {
+      "id": "list-todo",
+      "name": "To Do",
+      "closed": false,
+      "pos": 1
+    },
+    {
+      "id": "list-progress",
+      "name": "In Progress",
+      "closed": false,
+      "pos": 2
+    },
+    {
+      "id": "list-done",
+      "name": "Done",
+      "closed": false,
+      "pos": 3
+    }
+  ],
+  "cards": [
+    {
+      "id": "card-1",
+      "name": "[Member 1] Sprint 2 1.1 — Contract + request schema",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 1024
+    },
+    {
+      "id": "card-2",
+      "name": "[Member 1] Sprint 2 1.2 — Request status machine + lifecycle APIs",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 2048
+    },
+    {
+      "id": "card-3",
+      "name": "[Member 1] Sprint 2 1.3 — Request validation incl. delivery date + unit tests",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 3072
+    },
+    {
+      "id": "card-4",
+      "name": "[Member 1] Sprint 2 1.4 — H-03 Create request page",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 4096
+    },
+    {
+      "id": "card-5",
+      "name": "[Member 1] Sprint 2 1.5 — Create-request API",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 5120
+    },
+    {
+      "id": "card-6",
+      "name": "[Member 1] Sprint 2 1.6 — H-04 Confirmation + matching banks",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 6144
+    },
+    {
+      "id": "card-7",
+      "name": "[Member 1] Sprint 2 1.7 — H-07 My requests + status filters",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 7168
+    },
+    {
+      "id": "card-8",
+      "name": "[Member 1] Sprint 2 1.8 — H-06 Edit request incl. delivery date",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 8192
+    },
+    {
+      "id": "card-9",
+      "name": "[Member 1] Sprint 2 1.9 — Notification templates + channel policy",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 9216
+    },
+    {
+      "id": "card-10",
+      "name": "[Member 1] Sprint 2 1.10 — Notification delivery + lifecycle notices",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 10240
+    },
+    {
+      "id": "card-11",
+      "name": "[Member 1] Sprint 2 1.11 — A-01 Admin inventory dashboard",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 11264
+    },
+    {
+      "id": "card-12",
+      "name": "[Member 1] Sprint 2 1.12 — A-06 Audit viewer + A-08 Settings",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 12288
+    },
+    {
+      "id": "card-13",
+      "name": "[Member 1] Sprint 2 1.13 — SRS v1.2 + wireframe amendment",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 13312
+    },
+    {
+      "id": "card-14",
+      "name": "[Member 1] Sprint 2 1.14 — Request seed + tests + traceability",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 14336
+    },
+    {
+      "id": "card-15",
+      "name": "[Member 2] Sprint 2 2.1 — Flags schema + flag API",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 15360
+    },
+    {
+      "id": "card-16",
+      "name": "[Member 2] Sprint 2 2.2 — Flag buttons on campaign/organization screens",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 16384
+    },
+    {
+      "id": "card-17",
+      "name": "[Member 2] Sprint 2 2.3 — A-05 Admin flags queue",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 17408
+    },
+    {
+      "id": "card-18",
+      "name": "[Member 2] Sprint 2 2.4 — Admin hide/cancel request action",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 18432
+    },
+    {
+      "id": "card-19",
+      "name": "[Member 2] Sprint 2 2.5 — A-07 Request report",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 19456
+    },
+    {
+      "id": "card-20",
+      "name": "[Member 2] Sprint 2 2.6 — A-07 Donation-activity report",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 20480
+    },
+    {
+      "id": "card-21",
+      "name": "[Member 2] Sprint 2 2.7 — FR-ADM-09 oversight queue",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 21504
+    },
+    {
+      "id": "card-22",
+      "name": "[Member 2] Sprint 2 2.8 — Aggregation helpers + unit tests",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 22528
+    },
+    {
+      "id": "card-23",
+      "name": "[Member 2] Sprint 2 2.9 — Report pages UI",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 23552
+    },
+    {
+      "id": "card-24",
+      "name": "[Member 2] Sprint 2 2.10 — Admin action audit + access control",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 24576
+    },
+    {
+      "id": "card-25",
+      "name": "[Member 2] Sprint 2 2.11 — Admin demo seed",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 25600
+    },
+    {
+      "id": "card-26",
+      "name": "[Member 2] Sprint 2 2.12 — Admin verification script + manual cases",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 26624
+    },
+    {
+      "id": "card-27",
+      "name": "[Member 2] Sprint 2 2.13 — Admin walkthrough + docs",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 27648
+    },
+    {
+      "id": "card-28",
+      "name": "[Member 2] Sprint 2 2.14 — Admin RBAC/CSRF regression",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 28672
+    },
+    {
+      "id": "card-29",
+      "name": "[Member 3] Sprint 2 3.1 — Broadcast selection rules + tests",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 29696
+    },
+    {
+      "id": "card-30",
+      "name": "[Member 3] Sprint 2 3.2 — Broadcast notifications",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 30720
+    },
+    {
+      "id": "card-31",
+      "name": "[Member 3] Sprint 2 3.3 — B-06 Bank open-requests page",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 31744
+    },
+    {
+      "id": "card-32",
+      "name": "[Member 3] Sprint 2 3.4 — Request status notices to banks",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 32768
+    },
+    {
+      "id": "card-33",
+      "name": "[Member 3] Sprint 2 3.5 — Offers schema + offer rules + tests",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 33792
+    },
+    {
+      "id": "card-34",
+      "name": "[Member 3] Sprint 2 3.6 — Offer API + optional reservation",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 34816
+    },
+    {
+      "id": "card-35",
+      "name": "[Member 3] Sprint 2 3.7 — Reservation release + availability",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 35840
+    },
+    {
+      "id": "card-36",
+      "name": "[Member 3] Sprint 2 3.8 — B-06 offer form + withdraw UI",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 36864
+    },
+    {
+      "id": "card-37",
+      "name": "[Member 3] Sprint 2 3.9 — New-offer notification to hospital",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 37888
+    },
+    {
+      "id": "card-38",
+      "name": "[Member 3] Sprint 2 3.10 — Offer/reservation demo seed",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 38912
+    },
+    {
+      "id": "card-39",
+      "name": "[Member 3] Sprint 2 3.11 — Broadcast/offers verification script",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 39936
+    },
+    {
+      "id": "card-40",
+      "name": "[Member 3] Sprint 2 3.12 — Bank manual cases + docs",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 40960
+    },
+    {
+      "id": "card-41",
+      "name": "[Member 3] Sprint 2 3.13 — Bank RBAC/CSRF tests",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 41984
+    },
+    {
+      "id": "card-42",
+      "name": "[Member 3] Sprint 2 3.14 — Bank walkthrough + integration",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 43008
+    },
+    {
+      "id": "card-43",
+      "name": "[Member 4] Sprint 2 4.1 — Area centres + distance helper",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 44032
+    },
+    {
+      "id": "card-44",
+      "name": "[Member 4] Sprint 2 4.2 — Compatibility helper + tests",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 45056
+    },
+    {
+      "id": "card-45",
+      "name": "[Member 4] Sprint 2 4.3 — Eligibility + ranking + tests",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 46080
+    },
+    {
+      "id": "card-46",
+      "name": "[Member 4] Sprint 2 4.4 — matches migration + matching run",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 47104
+    },
+    {
+      "id": "card-47",
+      "name": "[Member 4] Sprint 2 4.5 — D-01 Donor home",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 48128
+    },
+    {
+      "id": "card-48",
+      "name": "[Member 4] Sprint 2 4.6 — D-02 Request detail + respond",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 49152
+    },
+    {
+      "id": "card-49",
+      "name": "[Member 4] Sprint 2 4.7 — Responses API + contact reveal",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 50176
+    },
+    {
+      "id": "card-50",
+      "name": "[Member 4] Sprint 2 4.8 — Privacy/consent states",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 51200
+    },
+    {
+      "id": "card-51",
+      "name": "[Member 4] Sprint 2 4.9 — Availability toggle API",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 52224
+    },
+    {
+      "id": "card-52",
+      "name": "[Member 4] Sprint 2 4.10 — Escalation sweep",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 53248
+    },
+    {
+      "id": "card-53",
+      "name": "[Member 4] Sprint 2 4.11 — Donor demo seed",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 54272
+    },
+    {
+      "id": "card-54",
+      "name": "[Member 4] Sprint 2 4.12 — Matching verification script + manual cases",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 55296
+    },
+    {
+      "id": "card-55",
+      "name": "[Member 4] Sprint 2 4.13 — Donor RBAC/privacy tests",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 56320
+    },
+    {
+      "id": "card-56",
+      "name": "[Member 4] Sprint 2 4.14 — Donor walkthrough + docs",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 57344
+    },
+    {
+      "id": "card-57",
+      "name": "[Member 5] Sprint 2 5.1 — H-05 Request detail base",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 58368
+    },
+    {
+      "id": "card-58",
+      "name": "[Member 5] Sprint 2 5.2 — H-05 Bank offers section",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 59392
+    },
+    {
+      "id": "card-59",
+      "name": "[Member 5] Sprint 2 5.3 — H-05 Willing donors section",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 60416
+    },
+    {
+      "id": "card-60",
+      "name": "[Member 5] Sprint 2 5.4 — H-05 Status actions UI",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 61440
+    },
+    {
+      "id": "card-61",
+      "name": "[Member 5] Sprint 2 5.5 — Outcomes + donor history",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 62464
+    },
+    {
+      "id": "card-62",
+      "name": "[Member 5] Sprint 2 5.6 — Collection bank donor view",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 63488
+    },
+    {
+      "id": "card-63",
+      "name": "[Member 5] Sprint 2 5.7 — H-04 potential-match count",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 64512
+    },
+    {
+      "id": "card-64",
+      "name": "[Member 5] Sprint 2 5.8 — Request flag button on H-05",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 65536
+    },
+    {
+      "id": "card-65",
+      "name": "[Member 5] Sprint 2 5.9 — Notification deep-link/status integration",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 66560
+    },
+    {
+      "id": "card-66",
+      "name": "[Member 5] Sprint 2 5.10 — Offers/responses demo seed",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 67584
+    },
+    {
+      "id": "card-67",
+      "name": "[Member 5] Sprint 2 5.11 — Full request-flow verification script",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 68608
+    },
+    {
+      "id": "card-68",
+      "name": "[Member 5] Sprint 2 5.12 — Hospital manual cases + docs",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 69632
+    },
+    {
+      "id": "card-69",
+      "name": "[Member 5] Sprint 2 5.13 — Hospital/collection-bank RBAC + privacy tests",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 70656
+    },
+    {
+      "id": "card-70",
+      "name": "[Member 5] Sprint 2 5.14 — Full request-loop regression",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 71680
+    },
+    {
+      "id": "card-71",
+      "name": "[All members] Sprint 2 — User Manual update for Sprint 2",
+      "closed": false,
+      "idList": "list-todo",
+      "pos": 72704
+    }
+  ]
+}
